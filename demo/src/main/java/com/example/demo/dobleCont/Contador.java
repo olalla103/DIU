@@ -1,5 +1,7 @@
 package com.example.demo.dobleCont;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,19 +13,30 @@ import javafx.stage.Stage;
 
 public class Contador {
 
-
     // CONTAMOS PULSACIONES
-    private int numPulsaciones = 0;
     Label etiqueta = new Label();
+    private IntegerProperty numPulsaciones = new SimpleIntegerProperty(0);
 
+    public IntegerProperty numeroProperty() {
+        return numPulsaciones;
+    }
+
+    public int getNumPulsaciones() {
+        int n = numPulsaciones.get();
+        return n;
+    }
+
+    public IntegerProperty numPulsacionesProperty() {
+        return numPulsaciones;
+    }
 
     private void contandoPulsaciones(int n) {
-        numPulsaciones = n == 0 ? 0 : numPulsaciones + n;
+        numPulsaciones.set(n == 0 ? 0 : numPulsaciones.get() + n);
         etiqueta.setText(String.valueOf(numPulsaciones));
     }
 
-    public void setStage(Stage primaryStage) {
 
+    public void setStage(Stage primaryStage) {
         // VENTANA VERTICAL
         VBox vertical = new VBox();
         vertical.setPadding(new Insets(20, 20, 20, 20));
@@ -46,11 +59,13 @@ public class Contador {
         btTextoMenos.setText("-");
         btTextoCero.setText("0");
 
+        // AÑADO ACCIÓN A LOS BOTONES
         btTextoMas.setOnAction(e -> contandoPulsaciones(1));
         btTextoMenos.setOnAction(e -> contandoPulsaciones(-1));
         btTextoCero.setOnAction(e -> contandoPulsaciones(0));
 
-        etiqueta.setText("1");
+        // EL CONTADOR EMPIEZA EN 0
+        etiqueta.setText("0");
 
         // METO EN EL HORIZONTAL LOS BOTONES
         horizontal.getChildren().addAll(btTextoMas, btTextoMenos, btTextoCero);
@@ -58,7 +73,6 @@ public class Contador {
         // AÑADO AL VERTICAL EL HORIZONTAL Y LA ETIQUETA DEL NÚMERO
         vertical.getChildren().addAll(horizontal, etiqueta);
         vertical.getStyleClass().add("fondoPestania");
-
 
         // MUESTRO LA ESCENA
         Scene escena = new Scene(vertical, 400, 120);
