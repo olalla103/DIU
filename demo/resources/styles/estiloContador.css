@@ -1,0 +1,12 @@
+.uno {
+    -fx-text-fill: black;
+}
+
+.fondoPestania {
+    -fx-background-color: white;
+}
+
+.fondoBoton {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}

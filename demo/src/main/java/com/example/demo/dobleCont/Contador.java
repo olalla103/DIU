@@ -1,20 +1,16 @@
-package com.example.demo;
+package com.example.demo.dobleCont;
 
-import javafx.application.Application;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class Contador extends Application {
+public class Contador {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
     // CONTAMOS PULSACIONES
     private int numPulsaciones = 0;
@@ -26,8 +22,7 @@ public class Contador extends Application {
         etiqueta.setText(String.valueOf(numPulsaciones));
     }
 
-    @Override
-    public void start(Stage primaryStage) {
+    public void setStage(Stage primaryStage) {
 
         // VENTANA VERTICAL
         VBox vertical = new VBox();
@@ -50,7 +45,6 @@ public class Contador extends Application {
         btTextoMas.setText("+");
         btTextoMenos.setText("-");
         btTextoCero.setText("0");
-
 
         btTextoMas.setOnAction(e -> contandoPulsaciones(1));
         btTextoMenos.setOnAction(e -> contandoPulsaciones(-1));
@@ -76,6 +70,4 @@ public class Contador extends Application {
         primaryStage.show();
 
     }
-
-
 }
