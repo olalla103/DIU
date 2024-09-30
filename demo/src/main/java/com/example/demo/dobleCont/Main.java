@@ -1,7 +1,5 @@
 package com.example.demo.dobleCont;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -31,6 +29,7 @@ public class Main extends Application {
             // Mostrar ambas ventanas
             escenarioPrincipal.show();
             escenarioSecundario.show();
+
 
         } catch (Exception e) {
             e.printStackTrace();

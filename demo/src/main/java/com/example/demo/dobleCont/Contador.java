@@ -82,6 +82,7 @@ public class Contador {
         etiqueta.getStyleClass().add("uno");
         btTextoCero.getStyleClass().add("fondoBoton");
         primaryStage.show();
+        numPulsaciones.addListener(obs,oldValue,newValue);
 
     }
 }
