@@ -3,10 +3,10 @@
 }
 
 .fondoPestania {
-    -fx-background-color: white;
+    -fx-background-color: #AEC289;
 }
 
 .fondoBoton {
-    -fx-background-color: black;
-    -fx-text-fill: white;
+    -fx-background-color: #F4DBDB;
+    -fx-text-fill: #CD4662;
 }
