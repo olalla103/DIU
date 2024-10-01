@@ -32,7 +32,7 @@ public class Contador {
 
     private void contandoPulsaciones(int n) {
         numPulsaciones.set(n == 0 ? 0 : numPulsaciones.get() + n);
-        etiqueta.setText(String.valueOf(numPulsaciones));
+        etiqueta.setText(String.valueOf(numPulsaciones.get()));
     }
 
 
@@ -67,6 +67,12 @@ public class Contador {
         // EL CONTADOR EMPIEZA EN 0
         etiqueta.setText("0");
 
+        // Listener para actualizar la etiqueta cuando cambie numPulsaciones
+        numPulsaciones.addListener((obs, oldVal, newVal) -> {
+            etiqueta.setText(String.valueOf(newVal));
+        });
+
+
         // METO EN EL HORIZONTAL LOS BOTONES
         horizontal.getChildren().addAll(btTextoMas, btTextoMenos, btTextoCero);
 
@@ -82,7 +88,6 @@ public class Contador {
         etiqueta.getStyleClass().add("uno");
         btTextoCero.getStyleClass().add("fondoBoton");
         primaryStage.show();
-        numPulsaciones.addListener(obs,oldValue,newValue);
-
     }
+
 }
