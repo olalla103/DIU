@@ -1,13 +1,11 @@
-package com.example.demo;
+package com.example.demo.actividadesPrueba;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class BarraDesplazamiento extends Application {
 

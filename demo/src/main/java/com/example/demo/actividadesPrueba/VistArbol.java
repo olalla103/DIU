@@ -1,8 +1,7 @@
-package com.example.demo;
+package com.example.demo.actividadesPrueba;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -10,7 +9,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class VistArbol extends Application {
 

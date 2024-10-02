@@ -1,17 +1,17 @@
-package com.example.demo;
+package com.example.demo.actividadesPrueba;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
-public class CasillaVerificacion extends Application {
+
+public class CajasCombinadas extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -28,20 +28,14 @@ public class CasillaVerificacion extends Application {
             lbElige = new Label("Elige los extras:");
             lbElige.setFont(Font.font(20));
 
-            CheckBox cbNavegador, cbManosLibres, cbLunas;
-            cbNavegador = new CheckBox("Navegador");
-            cbManosLibres = new CheckBox("Manos libres");
-            cbLunas = new CheckBox("Lunas tintadas");
-            cbLunas.setAllowIndeterminate(true);
+            ComboBox<String> cbExtras = new ComboBox<String>();
+            cbExtras.setVisibleRowCount(2);
+            cbExtras.setItems(FXCollections.observableArrayList("Navegador", "Manos libres", "Lunas tintadas"));
 
-            VBox.setMargin(cbNavegador, new Insets(0, 0, 0, 30));
-            VBox.setMargin(cbManosLibres, new Insets(0, 0, 0, 30));
-            VBox.setMargin(cbLunas, new Insets(0, 0, 0, 30));
-
-            raiz.getChildren().addAll(lbElige, cbNavegador, cbManosLibres, cbLunas);
+            raiz.getChildren().addAll(lbElige, cbExtras);
 
             Scene escena = new Scene(raiz, 350, 200);
-            escenarioPrincipal.setTitle("Casillas de verificación");
+            escenarioPrincipal.setTitle("Cajas combinadas");
             escenarioPrincipal.setScene(escena);
             escenarioPrincipal.show();
         } catch (Exception e) {

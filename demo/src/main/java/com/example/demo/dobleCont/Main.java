@@ -1,5 +1,6 @@
 package com.example.demo.dobleCont;
 
+import com.example.demo.controller.HelloController;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -12,7 +13,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage escenarioPrincipal) {
-        try {
+        HelloController controlador = new HelloController();
+       /* try {
             Stage escenarioSecundario = new Stage();
 
             // Crear dos instancias de Contador
@@ -33,7 +35,7 @@ public class Main extends Application {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.actividadesPrueba;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;

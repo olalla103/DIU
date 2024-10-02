@@ -1,18 +1,16 @@
-package com.example.demo;
+package com.example.demo.actividadesPrueba;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
-public class BotonesDeActivacion extends Application {
+public class CajasDeEleccion extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -29,19 +27,13 @@ public class BotonesDeActivacion extends Application {
             lbElige = new Label("Elige los extras:");
             lbElige.setFont(Font.font(20));
 
-            ToggleButton tbNavegador, tbManosLibres, tbLunas;
-            tbNavegador = new ToggleButton("si");
-            tbManosLibres = new ToggleButton("no");
-            tbLunas = new ToggleButton("Pablo");
+            ChoiceBox<String> cbExtras = new ChoiceBox<String>();
+            cbExtras.setItems(FXCollections.observableArrayList("Navegador", "Manos libres", "Lunas tintadas"));
 
-            HBox panelBotones = new HBox();
-            panelBotones.setSpacing(10);
-            panelBotones.getChildren().addAll(tbNavegador, tbManosLibres, tbLunas);
+            raiz.getChildren().addAll(lbElige, cbExtras);
 
-            raiz.getChildren().addAll(lbElige, panelBotones);
-
-            Scene escena = new Scene(raiz, 420, 150);
-            escenarioPrincipal.setTitle("Botones de activación");
+            Scene escena = new Scene(raiz, 350, 200);
+            escenarioPrincipal.setTitle("Cajas de elección");
             escenarioPrincipal.setScene(escena);
             escenarioPrincipal.show();
         } catch (Exception e) {
