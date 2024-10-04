@@ -9,10 +9,18 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 public class HelloController {
+
     @FXML
     private Label etiquetaUno;
-    private Button btTextoMas, btTextoMenos, btTextoCero;
+    @FXML
+    private Button btTextoMas;
+    @FXML
+    private Button btTextoMenos;
+    @FXML
+    private Button btTextoCero;
+    @FXML
     private TextField campoTexto;
+    @FXML
     private ProgressBar barraProgreso;
 
     private IntegerProperty numPulsaciones = new SimpleIntegerProperty(0);
@@ -31,6 +39,27 @@ public class HelloController {
         btTextoMas.setOnAction(e -> contandoPulsaciones(1));
         btTextoMenos.setOnAction(e -> contandoPulsaciones(-1));
         btTextoCero.setOnAction(e -> contandoPulsaciones(0));
+
     }
 
+    // binding
+
+
+    // Método para inicializar los contadores
+    /*public void initialize() {
+        cont1 = new Contador();
+        cont2 = new Contador();
+
+        // Vincular ambas propiedades numPulsaciones de forma bidireccional
+        cont1.numPulsacionesProperty().bindBidirectional(cont2.numPulsacionesProperty());
+
+        // Actualizar la etiqueta para que refleje el valor del primer contador
+        etiquetaUno.textProperty().bind(cont1.numPulsacionesProperty().asString());
+
+        // Establecer acciones de los botones
+        btTextoMas.setOnAction(e -> cont1.contandoPulsaciones(1));
+        btTextoMenos.setOnAction(e -> cont1.contandoPulsaciones(-1));
+        btTextoCero.setOnAction(e -> cont1.contandoPulsaciones(0));
+    }*/
 }
+

@@ -30,10 +30,10 @@ public class Contador {
         return numPulsaciones;
     }
 
-    private void contandoPulsaciones(int n) {
+   /* private void contandoPulsaciones(int n) {
         numPulsaciones.set(n == 0 ? 0 : numPulsaciones.get() + n);
         etiqueta.setText(String.valueOf(numPulsaciones.get()));
-    }
+    }*/
 
 
     public void setStage(Stage primaryStage) {
@@ -59,10 +59,10 @@ public class Contador {
         btTextoMenos.setText("-");
         btTextoCero.setText("0");
 
-        // AÑADO ACCIÓN A LOS BOTONES
+       /* // AÑADO ACCIÓN A LOS BOTONES
         btTextoMas.setOnAction(e -> contandoPulsaciones(1));
         btTextoMenos.setOnAction(e -> contandoPulsaciones(-1));
-        btTextoCero.setOnAction(e -> contandoPulsaciones(0));
+        btTextoCero.setOnAction(e -> contandoPulsaciones(0));*/
 
         // EL CONTADOR EMPIEZA EN 0
         etiqueta.setText("0");
