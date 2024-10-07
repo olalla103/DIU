@@ -1,6 +1,8 @@
 module com.example.demo {
-    requires javafx.controls; // Requerido para JavaFX
-    requires javafx.fxml;     // Requerido si estás usando FXML
+    requires javafx.controls;
+    requires javafx.fxml;
 
-    exports com.example.demo.dobleCont; // Exporta tu paquete
+    exports com.example.demo.controller to javafx.fxml;
+
+    opens com.example.demo.controller to javafx.fxml;
 }

@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     // Controlador scene builder
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 320, 240);
             stage.setTitle("Contador");
             stage.setScene(scene);
