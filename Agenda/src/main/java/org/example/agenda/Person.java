@@ -1,4 +1,4 @@
-package main.java.org.example.agenda;
+package org.example.agenda;
 
 import java.time.LocalDate;
 

@@ -13,4 +13,8 @@ module org.example.agenda {
 
     opens org.example.agenda to javafx.fxml;
     exports org.example.agenda;
+    exports org.example.agenda.controller;
+    opens org.example.agenda.controller to javafx.fxml;
+
+
 }
