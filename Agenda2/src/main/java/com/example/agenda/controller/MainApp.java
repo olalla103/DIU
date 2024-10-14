@@ -81,19 +81,25 @@ public class MainApp extends Application {
      */
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+            // Cargar el layout desde el archivo FXML.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("/com/example/agenda/Root_Layout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
-            // Show the scene containing the root layout.
+            // Mostrar la escena que contiene el root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            // Obtener el controlador y pasarle la referencia de MainApp.
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);  // Aquí estás pasando la referencia de MainApp
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Shows the person overview inside the root layout.
@@ -154,6 +160,32 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void showBirthdayStatistics() {
+        try {
+            // Load the fxml file and create a new stage for the popup.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/com/example/agenda/BirthdayStatistics.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Estadísticas de cumpleaños");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the persons into the controller.
+            BirthdayStatisticsController controller = loader.getController();
+            controller.setPersonData(personData); // Asegúrate de que este método exista en el controlador
+
+            dialogStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
