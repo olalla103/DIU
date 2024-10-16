@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #edcde3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.monedas.controller.HelloController">
+   <children>
+      <Label layoutX="101.0" layoutY="127.0" text="Conversor de euros a dólares">
+         <font>
+            <Font name="DejaVu Sans Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="185.0" text="Euros">
+         <font>
+            <Font name="MathJax_AMS-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="419.0" layoutY="185.0" text="Dólares">
+         <font>
+            <Font name="MathJax_AMS-Regular" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="eurosField" layoutX="39.0" layoutY="220.0" promptText="Introduzca los euros">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <TextField fx:id="dolaresField" blendMode="COLOR_DODGE" layoutX="372.0" layoutY="220.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></TextField>
+      <Button fx:id="conversionBoton" layoutX="257.0" layoutY="275.0" mnemonicParsing="false" text="Conversión" />
+   </children>
+</AnchorPane>
