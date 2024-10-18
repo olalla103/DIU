@@ -1,6 +1,7 @@
 module org.example.monedas {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
     requires javafx.web;
 
     requires org.controlsfx.controls;
@@ -11,7 +12,6 @@ module org.example.monedas {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires AccesoBBDDMoneda;
-    requires java.sql;
 
     opens org.example.monedas to javafx.fxml;
     exports org.example.monedas;
