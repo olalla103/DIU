@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1643dbe-f2af-4a5b-823e-4335766cc755" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Monedas/src/main/java/org/example/monedas/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Monedas/src/main/java/org/example/monedas/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/model/repository/ExcepcionPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/model/repository/PersonRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/model/repository/PersonVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/model/repository/impl/Conexion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/model/repository/impl/PersonRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Prueba/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Prueba/src/main/java/Contador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/controller/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/controller/Person_Overview_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/controller/Person_Overview_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/controller/RootLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/com/example/agenda/controller/RootLayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Agenda2/src/main/resources/com/example/agenda/Person_Overview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Agenda2/src/main/resources/com/example/agenda/Person_Overview.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +83,7 @@
       <workItem from="1728979403453" duration="3559000" />
       <workItem from="1729068175409" duration="51000" />
       <workItem from="1729245008959" duration="5000" />
+      <workItem from="1729585766497" duration="5000" />
     </task>
     <servers />
   </component>

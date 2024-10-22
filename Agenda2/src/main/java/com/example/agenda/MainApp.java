@@ -1,7 +1,10 @@
-package com.example.agenda.controller;
+package com.example.agenda;
 
 import java.io.IOException;
 
+import com.example.agenda.controller.BirthdayStatisticsController;
+import com.example.agenda.controller.PersonEditDialogController;
+import com.example.agenda.controller.RootLayoutController;
 import com.example.agenda.model.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -64,6 +67,7 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("AddressApp");
 
         // Set the application icon.
+        // solo se ve en Windows
         this.primaryStage.getIcons().add(new Image("icono.png"));
 
         initRootLayout();
