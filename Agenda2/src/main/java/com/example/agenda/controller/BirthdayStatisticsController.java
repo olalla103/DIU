@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
-import com.example.agenda.model.Person;
+import com.example.agenda.view.Person;
 
 /**
  * The controller for the birthday statistics view.

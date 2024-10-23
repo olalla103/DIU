@@ -23,4 +23,6 @@ module com.example.agenda {
     opens com.example.agenda.model.repository to javafx.fxml;
     exports com.example.agenda.model.repository.impl;
     opens com.example.agenda.model.repository.impl to javafx.fxml;
+    exports com.example.agenda.view;
+    opens com.example.agenda.view to javafx.fxml;
 }

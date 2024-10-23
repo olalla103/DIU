@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.RootLayoutController;
-import com.example.agenda.model.Person;
+import com.example.agenda.view.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +30,7 @@ public class MainApp extends Application {
      * Constructor
      */
     public MainApp() {
-        // Add some sample data
+        // Aquí tengo que coger los datos de la base de datos y pasarlos a persona
         personData.add(new Person("Olalla", "López"));
         personData.add(new Person("Iñigo", "López"));
         personData.add(new Person("Paola", "Bernal"));

@@ -1,14 +1,14 @@
 package com.example.agenda.controller;
 
 import com.example.agenda.MainApp;
-import com.example.agenda.util.DateUtil;
+import com.example.agenda.model.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import com.example.agenda.model.Person;
+import com.example.agenda.view.Person;
 
 public class Person_Overview_Controller {
     @FXML

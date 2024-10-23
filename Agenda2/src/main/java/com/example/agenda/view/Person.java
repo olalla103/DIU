@@ -1,4 +1,4 @@
-package com.example.agenda.model;
+package com.example.agenda.view;
 import java.time.LocalDate;
 
 import javafx.beans.property.IntegerProperty;

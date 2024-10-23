@@ -1,12 +1,12 @@
 package com.example.agenda.controller;
 
-import com.example.agenda.util.DateUtil;
+import com.example.agenda.model.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import com.example.agenda.model.Person;
+import com.example.agenda.view.Person;
 
 /**
  * Dialog to edit details of a person.
