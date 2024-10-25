@@ -1,67 +1,99 @@
 package com.example.agenda.model.repository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class PersonVO {
     // aquí tengo que añadir los atributos de la persona
-    String nombre, apellidos, calle, ciudad;
-    Integer codigoPostal;
-    Date fechaNacimiento;
+    String firstName, lastName, street, city;
+    Integer postalCode, id;
+    LocalDate birthday;
 
-    public PersonVO(String nombre, String apellidos, String calle, String ciudad, Integer codigoPostal, Date fechaNacimiento) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.calle = calle;
-        this.ciudad = ciudad;
-        this.codigoPostal = codigoPostal;
-        this.fechaNacimiento = fechaNacimiento;
+    public PersonVO(String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.birthday = birthday;
     }
 
-    public String getNombre() {
-        return nombre;
+    public PersonVO(Integer id, String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.birthday = birthday;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    @Override
+    public String toString() {
+        return "PersonVO{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode=" + postalCode +
+                ", id=" + id +
+                ", birthday=" + birthday +
+                "\n";
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public Integer getId() {
+        return id;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getlastName() {
+        return lastName;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setlastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Integer getCodigoPostal() {
-        return codigoPostal;
+    public String getstreet() {
+        return street;
     }
 
-    public void setCodigoPostal(Integer codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setstreet(String street) {
+        this.street = street;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getcity() {
+        return city;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setcity(String city) {
+        this.city = city;
+    }
+
+    public Integer getpostalCode() {
+        return postalCode;
+    }
+
+    public void setpostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public LocalDate getbirthday() {
+        return birthday;
+    }
+
+    public void setbirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 }

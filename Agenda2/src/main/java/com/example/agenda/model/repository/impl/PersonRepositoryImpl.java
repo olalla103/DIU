@@ -1,7 +1,5 @@
 package com.example.agenda.model.repository.impl;
 
-import Modelo.ExcepcionMoneda;
-import Modelo.MonedaVO;
 import Modelo.repository.impl.ConexionJDBC;
 import com.example.agenda.model.repository.ExceptionPerson;
 import com.example.agenda.model.repository.PersonRepository;
@@ -11,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PersonRepositoryImpl implements PersonRepository {
@@ -20,7 +19,7 @@ public class PersonRepositoryImpl implements PersonRepository {
      * la interfaz*/
 
     // ATRIBUTOS
-    private final ConexionJDBC conexion = new ConexionJDBC();
+    private final Conexion conexion = new Conexion();
     private Statement stmt;
     private String sentenciaSQL;
     private ArrayList<PersonVO> personas;
@@ -31,18 +30,23 @@ public class PersonRepositoryImpl implements PersonRepository {
     public ArrayList<PersonVO> ObtenerListaPersonas() throws ExceptionPerson {
         try {
             Connection conn = this.conexion.conectarBD();
-            this.personas = new ArrayList<>();
+            this.personas = new ArrayList();
             this.stmt = conn.createStatement();
             this.sentenciaSQL = "SELECT * FROM persona";
-            ResultSet rs = this.stmt.executeQuery(this.sentenciaSQL);
+            ResultSet rs = this.stmt.executeQuery(this.sentenciaSQL); // Aquí salta al catch
 
             while (rs.next()) {
-                Integer codigo = rs.getInt("codigo");
-                this.persona = new PersonVO(persona.getNombre(), persona.getApellidos(), persona.getCalle(), persona.getCiudad(), persona.getCodigoPostal(), persona.getFechaNacimiento());
-                this.persona.setCodigoPostal(codigo);
+                Integer codigo = rs.getInt("id");
+                String nombre = rs.getString("firstName");
+                String apellidos = rs.getString("lastName");
+                String calle = rs.getString("street");
+                String ciudad = rs.getString("city");
+                Integer codigoPostal = rs.getInt("postalCode");
+                LocalDate fechaNacimiento = rs.getDate("birthday").toLocalDate();
+
+                this.persona = new PersonVO(codigo, nombre, apellidos, calle, ciudad, codigoPostal, fechaNacimiento);
                 this.personas.add(this.persona);
             }
-
             this.conexion.desconectarBD(conn);
             return this.personas;
         } catch (SQLException var6) {
@@ -56,9 +60,9 @@ public class PersonRepositoryImpl implements PersonRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             this.sentenciaSQL = "INSERT INTO persona (nombre,apellido,calle,ciudad,codigoPostal,fechaNacimiento) " +
-                    "VALUES ('" + persona.getNombre() + "','" + persona.getApellidos() + "', '" +
-                    persona.getCalle() + "', '" + persona.getCiudad() + "', '" +
-                    persona.getCodigoPostal() + "', '" + persona.getFechaNacimiento() + "');";
+                    "VALUES ('" + persona.getfirstName() + "','" + persona.getlastName() + "', '" +
+                    persona.getstreet() + "', '" + persona.getcity() + "', '" +
+                    persona.getpostalCode() + "', '" + persona.getbirthday() + "');";
             this.stmt.executeUpdate(this.sentenciaSQL);
             this.stmt.close();
             this.conexion.desconectarBD(conn);

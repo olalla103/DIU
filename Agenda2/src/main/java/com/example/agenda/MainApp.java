@@ -5,6 +5,8 @@ import java.io.IOException;
 import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.RootLayoutController;
+import com.example.agenda.model.AgendaModelo;
+import com.example.agenda.model.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.view.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -30,16 +32,12 @@ public class MainApp extends Application {
      * Constructor
      */
     public MainApp() {
-        // Aquí tengo que coger los datos de la base de datos y pasarlos a persona
-        personData.add(new Person("Olalla", "López"));
-        personData.add(new Person("Iñigo", "López"));
-        personData.add(new Person("Paola", "Bernal"));
-        personData.add(new Person("Berta", "Bernal"));
-        personData.add(new Person("Valentín", "López"));
-        personData.add(new Person("Rosa María", "Navarro-Casas"));
-        personData.add(new Person("Angelita", "Romero"));
-        personData.add(new Person("Antonio", "Navarro-Casas"));
-        personData.add(new Person("Carmen", "Meneses"));
+        PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+        AgendaModelo agendaModelo = new AgendaModelo();
+        agendaModelo.setPersonRepository(personRepository);
+        agendaModelo.mostrarPersonas();
+
+
     }
 
     /**
