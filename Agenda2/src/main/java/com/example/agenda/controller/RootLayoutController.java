@@ -26,5 +26,9 @@ public class RootLayoutController {
         this.mainApp = mainApp;
     }
 
+    @FXML
+    private void handleShowPersonOverview() {
+        mainApp.showPersonOverview(); // Muestra la vista de personas en la interfaz
+    }
 
 }

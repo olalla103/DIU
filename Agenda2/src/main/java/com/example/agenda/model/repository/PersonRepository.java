@@ -9,7 +9,7 @@ public interface PersonRepository {
 
     void editPersona(PersonVO personVO) throws ExceptionPerson;
 
-    void deletePersona(PersonVO personVO) throws ExceptionPerson;
+    void deletePersona(Integer id) throws ExceptionPerson;
 
     void lastID() throws ExceptionPerson;
 }

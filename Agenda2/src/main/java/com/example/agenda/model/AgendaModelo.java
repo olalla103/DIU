@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class AgendaModelo {
     PersonRepository personRepository;
-    ArrayList<PersonVO> personVOArrayList = new ArrayList<>();
-    ArrayList<Person> personArrayList = new ArrayList<>();
     PersonUtil personUtil;
 
     public AgendaModelo() {
@@ -29,9 +27,19 @@ public class AgendaModelo {
     public void mostrarPersonas() {
         try {
             ArrayList<PersonVO> listaPersonas = personRepository.ObtenerListaPersonas();
+
         } catch (ExceptionPerson e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public PersonVO recuperarPersonaCodigo(int codigo) {
+        for (PersonVO personVO : this.personRepository.ObtenerListaPersonas()) {
+            if (personVO.getId() == codigo) {
+                return personVO; // Retorna la persona encontrada
+            }
+        }
+        return null; // Retorna null si no se encuentra la persona
     }
 
 

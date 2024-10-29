@@ -1,6 +1,5 @@
 package com.example.agenda.model.repository.impl;
 
-import Modelo.repository.impl.ConexionJDBC;
 import com.example.agenda.model.repository.ExceptionPerson;
 import com.example.agenda.model.repository.PersonRepository;
 import com.example.agenda.model.repository.PersonVO;
@@ -79,8 +78,17 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public void deletePersona(PersonVO personVO) throws ExceptionPerson {
-
+    public void deletePersona(Integer id) throws ExceptionPerson {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            this.stmt = conn.createStatement();
+            this.sentenciaSQL = "DELETE FROM PERSONA WHERE id = " + id;
+            this.stmt.executeUpdate(this.sentenciaSQL);
+            this.stmt.close();
+            this.conexion.desconectarBD(conn);
+        } catch (SQLException var3) {
+            throw new ExceptionPerson("No se ha podido realizar la operación");
+        }
     }
 
     @Override

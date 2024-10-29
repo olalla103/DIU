@@ -1,6 +1,5 @@
 package com.example.agenda.model.repository;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class PersonVO {
@@ -96,4 +95,6 @@ public class PersonVO {
     public void setbirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
+
+
 }

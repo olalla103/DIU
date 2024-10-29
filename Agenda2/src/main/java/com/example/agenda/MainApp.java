@@ -36,8 +36,6 @@ public class MainApp extends Application {
         AgendaModelo agendaModelo = new AgendaModelo();
         agendaModelo.setPersonRepository(personRepository);
         agendaModelo.mostrarPersonas();
-
-
     }
 
     /**

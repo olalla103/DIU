@@ -12,6 +12,7 @@ module com.example.agenda {
     requires com.almasb.fxgl.all;
     requires AccesoBBDDMoneda;
     requires java.sql;
+    requires java.desktop;
 
     opens com.example.agenda to javafx.fxml;
     exports com.example.agenda.controller;
