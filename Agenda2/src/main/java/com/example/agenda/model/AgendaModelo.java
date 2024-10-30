@@ -9,7 +9,7 @@ import com.example.agenda.view.Person;
 import java.util.ArrayList;
 
 public class AgendaModelo {
-    PersonRepository personRepository;
+    public PersonRepository personRepository;
     PersonUtil personUtil;
 
     public AgendaModelo() {

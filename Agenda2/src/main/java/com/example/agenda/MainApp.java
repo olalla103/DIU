@@ -1,12 +1,16 @@
 package com.example.agenda;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.RootLayoutController;
 import com.example.agenda.model.AgendaModelo;
+import com.example.agenda.model.repository.PersonVO;
 import com.example.agenda.model.repository.impl.PersonRepositoryImpl;
+import com.example.agenda.model.util.PersonUtil;
 import com.example.agenda.view.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -33,9 +37,15 @@ public class MainApp extends Application {
      */
     public MainApp() {
         PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+        PersonUtil personUtil = new PersonUtil();
         AgendaModelo agendaModelo = new AgendaModelo();
         agendaModelo.setPersonRepository(personRepository);
         agendaModelo.mostrarPersonas();
+
+        ArrayList<PersonVO> personVOLista = personRepository.ObtenerListaPersonas();
+
+        // Convertir ArrayList<PersonVO> a ArrayList<Person> y añadir a personData
+        personData.addAll(personUtil.convierteVOAPerson());
     }
 
     /**

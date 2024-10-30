@@ -1,6 +1,8 @@
 package com.example.agenda.controller;
 
 import com.example.agenda.MainApp;
+import com.example.agenda.model.AgendaModelo;
+import com.example.agenda.model.repository.PersonVO;
 import com.example.agenda.model.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -38,6 +40,8 @@ public class Person_Overview_Controller {
      * The constructor.
      * The constructor is called before the initialize() method.
      */
+
+    // TENGO COMENTADOS TODOS LOS HANDLE
     public Person_Overview_Controller() {
     }
 
@@ -45,6 +49,21 @@ public class Person_Overview_Controller {
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
+
+    // Atributos agendaModelo
+    private AgendaModelo agendaModelo; // Agregar AgendaModelo aquí
+
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+        loadPersonData(); // Carga los datos cuando se establece el modelo
+    }
+
+    private void loadPersonData() {
+        if (agendaModelo != null) {
+            // Aquí puedes cargar los datos usando agendaModelo
+        }
+    }
+
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
@@ -90,21 +109,7 @@ public class Person_Overview_Controller {
         }
     }
 
-    @FXML
-    private void handleDeletePerson() {
-        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            personTable.getItems().remove(selectedIndex);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-            alert.showAndWait();
-        }
-    }
-
-    /**
+    /*
      * Is called by the main application to give a reference back to itself.
      *
      * @param mainApp
@@ -119,38 +124,49 @@ public class Person_Overview_Controller {
     /**
      * Called when the user clicks the new button. Opens a dialog to edit
      * details for a new person.
-     */
-    @FXML
-    private void handleNewPerson() {
-        Person tempPerson = new Person();
-        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
-        if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
-        }
-    }
 
-    /**
-     * Called when the user clicks the edit button. Opens a dialog to edit
-     * details for the selected person.
-     */
 
-    @FXML
-    private void handleEditPerson() {
-        Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
-        if (selectedPerson != null) {
-            boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
-            if (okClicked) {
-                showPersonDetails(selectedPerson);
-            }
-        } else {
-            // Nothing selected.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-            alert.showAndWait();
-        }
+     @FXML private void handleNewPerson() {
+     PersonVO tempPerson = new PersonVO(); // Crea una nueva instancia de PersonVO
+     boolean okClicked = mainApp.showPersonEditDialog(tempPerson); // Suponiendo que tu método de diálogo edita PersonVO
+     if (okClicked) {
+     agendaModelo.addPerson(tempPerson); // Agrega a través de AgendaModelo
+     loadPersonData(); // Recarga los datos
+     }
+     }
 
-    }
+     @FXML private void handleEditPerson() {
+     PersonVO selectedPerson = personTable.getSelectionModel().getSelectedItem();
+     if (selectedPerson != null) {
+     boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+     if (okClicked) {
+     agendaModelo.updatePerson(selectedPerson); // Actualiza a través de AgendaModelo
+     loadPersonData(); // Recarga los datos
+     }
+     } else {
+     // Nothing selected.
+     Alert alert = new Alert(Alert.AlertType.WARNING);
+     alert.setTitle("No Selection");
+     alert.setHeaderText("No Person Selected");
+     alert.setContentText("Please select a person in the table.");
+     alert.showAndWait();
+     }
+     }
+
+     @FXML private void handleDeletePerson() {
+     int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+     if (selectedIndex >= 0) {
+     PersonVO selectedPerson = personTable.getItems().get(selectedIndex);
+     agendaModelo.deletePerson(selectedPerson.getId()); // Elimina a través de AgendaModelo
+     loadPersonData(); // Recarga los datos después de la eliminación
+     } else {
+     Alert alert = new Alert(Alert.AlertType.WARNING);
+     alert.setTitle("No Selection");
+     alert.setHeaderText("No Person Selected");
+     alert.setContentText("Please select a person in the table.");
+     alert.showAndWait();
+     }
+     }  */
+
 }
 

@@ -1,18 +1,17 @@
 package com.example.agenda.controller;
 
+import com.example.agenda.model.AgendaModelo;
 import com.example.agenda.model.repository.ExceptionPerson;
-import com.example.agenda.model.repository.PersonRepository;
 import com.example.agenda.model.repository.PersonVO;
-import com.example.agenda.model.repository.impl.PersonRepositoryImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class AgendaController {
@@ -41,35 +40,37 @@ public class AgendaController {
     @FXML
     private Button deletePersonButton;
 
-    private PersonRepository personRepository;
+    private AgendaModelo agendaModelo; // Agregar el atributo para AgendaModelo
     private ObservableList<PersonVO> personList;
 
-    public AgendaController() {
-        this.personRepository = new PersonRepositoryImpl();
-        this.personList = FXCollections.observableArrayList();
+    // Método para inyectar AgendaModelo
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+        loadPersonData(); // Cargar datos cuando se establece el modelo
     }
 
     @FXML
     public void initialize() {
         // Configurar las columnas de la tabla
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
-        // Cargar la lista de personas
-        loadPersonData();
+        personList = FXCollections.observableArrayList(); // Inicializar la lista
+        personTable.setItems(personList); // Establecer la lista en la tabla
 
         // Configurar el evento de selección de la tabla
         personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     private void loadPersonData() {
-        try {
-            ArrayList<PersonVO> personas = personRepository.ObtenerListaPersonas();
-            personList.setAll(personas);
-            personTable.setItems(personList);
-        } catch (ExceptionPerson e) {
-            // Manejo de errores (puedes mostrar un mensaje al usuario)
-            e.printStackTrace();
+        if (agendaModelo != null) {
+            try {
+                ArrayList<PersonVO> personas = agendaModelo.getPersonVOArrayList(); // Obtener datos desde AgendaModelo
+                personList.setAll(personas); // Establecer la lista de personas en la tabla
+            } catch (ExceptionPerson e) {
+                // Manejo de errores
+                e.printStackTrace();
+            }
         }
     }
 
@@ -95,13 +96,11 @@ public class AgendaController {
     @FXML
     private void handleNewPerson() {
         // Lógica para añadir una nueva persona
-        // Podrías abrir un diálogo para ingresar nuevos datos
     }
 
     @FXML
     private void handleEditPerson() {
         // Lógica para editar la persona seleccionada
-        // Podrías abrir un diálogo para modificar los datos
     }
 
     @FXML
@@ -109,7 +108,7 @@ public class AgendaController {
         PersonVO selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             try {
-                personRepository.deletePersona(selectedPerson.getId());
+                agendaModelo.personRepository.deletePersona(selectedPerson.getId()); // Usa el repositorio de AgendaModelo
                 loadPersonData(); // Recargar la lista después de la eliminación
             } catch (ExceptionPerson e) {
                 // Manejo de errores

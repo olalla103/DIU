@@ -27,6 +27,10 @@ public class PersonVO {
         this.birthday = birthday;
     }
 
+    public PersonVO() {
+        // se queda vacío
+    }
+
     @Override
     public String toString() {
         return "PersonVO{" +

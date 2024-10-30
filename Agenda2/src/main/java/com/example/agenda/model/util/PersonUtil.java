@@ -24,7 +24,7 @@ public class PersonUtil {
     }
 
     // devuelve un arrayList de tipo personVO
-    public ArrayList<PersonVO> convierteVOAPersonVO() {
+    public ArrayList<PersonVO> convierteAPersonVO() {
         for (Person person : personArrayList) {
             personRepositoryArrayList.add(new PersonVO(person.getFirstName(), person.getLastName(),
                     person.getStreet(), person.getCity(), person.getPostalCode(), person.getBirthday()));
