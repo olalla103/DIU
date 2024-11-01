@@ -76,12 +76,12 @@ public class AgendaController {
 
     private void showPersonDetails(PersonVO person) {
         if (person != null) {
-            firstNameLabel.setText(person.getfirstName());
-            lastNameLabel.setText(person.getlastName());
-            streetLabel.setText(person.getstreet());
-            cityLabel.setText(person.getcity());
-            postalCodeLabel.setText(String.valueOf(person.getpostalCode()));
-            birthdayLabel.setText(person.getbirthday().toString());
+            firstNameLabel.setText(person.getNombre());
+            lastNameLabel.setText(person.getApellido());
+            streetLabel.setText(person.getCalle());
+            cityLabel.setText(person.getCiudad());
+            postalCodeLabel.setText(String.valueOf(person.getCodigoPostal()));
+            birthdayLabel.setText(person.getNacimiento().toString());
         } else {
             // Limpiar los detalles si no hay selección
             firstNameLabel.setText("");
@@ -108,7 +108,7 @@ public class AgendaController {
         PersonVO selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             try {
-                agendaModelo.personRepository.deletePersona(selectedPerson.getId()); // Usa el repositorio de AgendaModelo
+                agendaModelo.personRepository.deletePerson(selectedPerson.getId()); // Usa el repositorio de AgendaModelo
                 loadPersonData(); // Recargar la lista después de la eliminación
             } catch (ExceptionPerson e) {
                 // Manejo de errores

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public interface PersonRepository {
     ArrayList<PersonVO> ObtenerListaPersonas() throws ExceptionPerson;
 
-    void addPersona(PersonVO personVO) throws ExceptionPerson;
+    void addPerson(PersonVO var1) throws ExceptionPerson;
 
-    void editPersona(PersonVO personVO) throws ExceptionPerson;
+    void deletePerson(Integer var1) throws ExceptionPerson;
 
-    void deletePersona(Integer id) throws ExceptionPerson;
+    void editPerson(PersonVO var1) throws ExceptionPerson;
 
-    void lastID() throws ExceptionPerson;
+    int lastId() throws ExceptionPerson;
 }

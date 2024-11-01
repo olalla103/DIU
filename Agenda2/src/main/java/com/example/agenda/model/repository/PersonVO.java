@@ -3,102 +3,107 @@ package com.example.agenda.model.repository;
 import java.time.LocalDate;
 
 public class PersonVO {
-    // aquí tengo que añadir los atributos de la persona
-    String firstName, lastName, street, city;
-    Integer postalCode, id;
-    LocalDate birthday;
+    Integer id;
+    String nombre;
+    String apellido;
+    String calle;
+    Integer codigoPostal;
+    String ciudad;
+    LocalDate nacimiento;
 
-    public PersonVO(String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.birthday = birthday;
-    }
-
-    public PersonVO(Integer id, String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
+    /**
+     * Constructor de PersonVO
+     *
+     * @param id           Identificador de la PersonVO
+     * @param nombre
+     * @param apellido
+     * @param calle
+     * @param codigoPostal
+     * @param ciudad
+     * @param nacimiento   Formato mysql
+     */
+    public PersonVO(Integer id, String nombre, String apellido, String calle, Integer codigoPostal, String ciudad, LocalDate nacimiento) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.birthday = birthday;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.calle = calle;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.nacimiento = nacimiento;
     }
 
+    /**
+     * Constructor vacio
+     */
     public PersonVO() {
-        // se queda vacío
-    }
 
-    @Override
-    public String toString() {
-        return "PersonVO{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", postalCode=" + postalCode +
-                ", id=" + id +
-                ", birthday=" + birthday +
-                "\n";
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getfirstName() {
-        return firstName;
+    public Integer getId() {
+        return id;
     }
 
-    public void setfirstName(String firstName) {
-        this.firstName = firstName;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getlastName() {
-        return lastName;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setlastName(String lastName) {
-        this.lastName = lastName;
+    public String getCalle() {
+        return calle;
     }
 
-    public String getstreet() {
-        return street;
+    public Integer getCodigoPostal() {
+        return codigoPostal;
     }
 
-    public void setstreet(String street) {
-        this.street = street;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public String getcity() {
-        return city;
+    public LocalDate getNacimiento() {
+        return nacimiento;
     }
 
-    public void setcity(String city) {
-        this.city = city;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Integer getpostalCode() {
-        return postalCode;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public void setpostalCode(Integer postalCode) {
-        this.postalCode = postalCode;
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
-    public LocalDate getbirthday() {
-        return birthday;
+    public void setCodigoPostal(Integer codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
-    public void setbirthday(LocalDate birthday) {
-        this.birthday = birthday;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
+    public void setNacimiento(LocalDate nacimiento) {
+        this.nacimiento = nacimiento;
+    }
 
+    @Override
+    public String toString() {
+        return "PersonVO{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", calle='" + calle + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", nacimiento=" + nacimiento +
+                '}';
+    }
 }

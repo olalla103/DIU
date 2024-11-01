@@ -51,5 +51,6 @@
                 </Button>
             </children>
         </HBox>
+      <ProgressBar layoutX="29.0" layoutY="346.0" prefHeight="21.0" prefWidth="230.0" progress="0.0" />
     </children>
 </AnchorPane>

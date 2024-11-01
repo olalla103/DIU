@@ -1,12 +1,21 @@
 package com.example.agenda.controller;
 
-import com.example.agenda.model.util.DateUtil;
+import com.example.agenda.MainApp;
+import com.example.agenda.model.AgendaModelo;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import com.example.agenda.view.Person;
+import com.example.agenda.model.util.DateUtil;
 
 /**
  * Dialog to edit details of a person.
@@ -14,6 +23,7 @@ import com.example.agenda.view.Person;
  * @author Marco Jakob
  */
 public class PersonEditDialogController {
+
 
     @FXML
     private TextField firstNameField;
@@ -27,12 +37,41 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
-
-
+    @FXML
+    private ProgressBar barrita;
+    @FXML
+    private Label progreso;
     private Stage dialogStage;
     private Person person;
+    private AgendaModelo am;
+    private IntegerProperty numPerson = new SimpleIntegerProperty();
     private boolean okClicked = false;
 
+
+    public PersonEditDialogController() {
+    }
+
+    /**
+     * Instanciamos la agendaModelo
+     *
+     * @param am
+     */
+    public void setAm(AgendaModelo am) {
+        this.am = am;
+    }
+
+    public void setBarrita() {
+        this.numPerson.bind(am.numeroPersonasProperty());
+        this.barrita.setProgress((double) numPerson.get() / 50);
+        this.progreso.setText(String.valueOf(numPerson.get() * 100 / 50 + "%"));
+        numPerson.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                barrita.setProgress((double) numPerson.get() / 50);
+                progreso.setText(String.valueOf(numPerson.get() * 100 / 50 + "%"));
+            }
+        });
+    }
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -52,13 +91,12 @@ public class PersonEditDialogController {
     }
 
     /**
-     * Sets the person to be edited in the dialog.
+     * Crea la persona y le añade los campos
      *
      * @param person
      */
     public void setPerson(Person person) {
         this.person = person;
-
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         streetField.setText(person.getStreet());
@@ -82,16 +120,23 @@ public class PersonEditDialogController {
      */
     @FXML
     private void handleOk() {
-        if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-            person.setCity(cityField.getText());
-            person.setBirthday(DateUtil.parse(birthdayField.getText()));
-
-            okClicked = true;
-            dialogStage.close();
+        if (numPerson.getValue() < 50) {
+            if (isInputValid()) {
+                person.setFirstName(firstNameField.getText());
+                person.setLastName(lastNameField.getText());
+                person.setStreet(streetField.getText());
+                person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+                person.setCity(cityField.getText());
+                person.setBirthday(DateUtil.parse(birthdayField.getText()));
+                okClicked = true;
+                dialogStage.close();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error al añadir una persona");
+            alert.setTitle("Error al añadir");
+            alert.setContentText("Se ha alcanzado el tamaño maximo de personas de la agenda");
+            alert.showAndWait();
         }
     }
 
@@ -121,7 +166,8 @@ public class PersonEditDialogController {
             errorMessage += "No valid street!\n";
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0 ||
+                postalCodeField.getText().length() != 5) {
             errorMessage += "No valid postal code!\n";
         } else {
             // try to parse the postal code into an int.
@@ -147,13 +193,14 @@ public class PersonEditDialogController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
-            alert.setContentText("Please select a person in the table.");
-            alert.showAndWait();
+            // Show the error message.
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Invalid Fields");
+            alerta.setHeaderText("Please correct invalid fields");
+            alerta.setContentText(errorMessage);
+            alerta.showAndWait();
             return false;
         }
     }
-}
 
+}
