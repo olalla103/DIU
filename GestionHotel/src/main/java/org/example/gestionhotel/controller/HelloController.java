@@ -1,4 +1,4 @@
-package org.example.gestionhotel;
+package org.example.gestionhotel.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

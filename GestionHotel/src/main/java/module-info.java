@@ -10,7 +10,11 @@ module org.example.gestionhotel {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires AccesoBBDDMoneda;
 
     opens org.example.gestionhotel to javafx.fxml;
     exports org.example.gestionhotel;
+    exports org.example.gestionhotel.controller;
+    opens org.example.gestionhotel.controller to javafx.fxml;
 }
