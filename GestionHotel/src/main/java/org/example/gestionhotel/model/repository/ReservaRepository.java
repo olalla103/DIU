@@ -15,7 +15,7 @@ public interface ReservaRepository {
     public void eliminarReserva(int idReserva) throws ExcepcionHotel;
 
     // editar editReserva
-    public void editReserva(int idReserva) throws ExcepcionHotel;
+    public void editReserva(ReservaVO reservaVO) throws ExcepcionHotel;
 
     // obtener último reserva
     public int ultimaReserva() throws ExcepcionHotel;

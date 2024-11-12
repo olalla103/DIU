@@ -16,7 +16,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
     private Statement stmt;
     private String sentencia;
     private ArrayList<ReservaVO> reservas;
-    private ReservaVO reserva;
+    public ReservaVO reserva;
 
     @Override
     public ArrayList<ReservaVO> ObtenerListaReservas() throws ExcepcionHotel {
@@ -28,15 +28,29 @@ public class ReservaRepositoryImpl implements ReservaRepository {
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
             while (rs.next()) {
-                String idReserva = rs.getString("idReserva");
+                Integer idReserva = rs.getInt("idReserva");
                 LocalDate llegada = rs.getDate("llegada").toLocalDate();
                 LocalDate salida = rs.getDate("salida").toLocalDate();
-                tipoHabitacion tipoHabitacion = org.example.gestionhotel.model.repository.impl.tipoHabitacion.valueOf(rs.getString("tipoHabitacion"));
-                Integer numeroHabitaciones = rs.getInt("numeroHabitaciones");
+                tipoHabitacion tipoHabitacion = null;
+                if (rs.getString("tipoHabitacion") != null) {
+                    try {
+                        tipoHabitacion = org.example.gestionhotel.model.repository.impl.tipoHabitacion.valueOf(rs.getString("tipoHabitacion"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna tipoHabitacion");
+                    }
+                }
+                Integer numHabitaciones = rs.getInt("numHabitaciones");
                 Boolean fumador = rs.getBoolean("fumador");
-                regimenAlojamiento regimenAlojamiento = org.example.gestionhotel.model.repository.impl.regimenAlojamiento.valueOf(rs.getString("regimenAlojamiento"));
+                regimenAlojamiento regimenAlojamiento = null;
+                if (rs.getString("regimenAlojamiento") != null) {
+                    try {
+                        regimenAlojamiento = org.example.gestionhotel.model.repository.impl.regimenAlojamiento.valueOf(rs.getString("regimenAlojamiento"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna regimenAlojamiento");
+                    }
+                }
                 String dniCliente = rs.getString("dniCliente");
-                this.reserva = new ReservaVO(idReserva, llegada, salida, tipoHabitacion, numeroHabitaciones, fumador, regimenAlojamiento, dniCliente); // poner variables
+                this.reserva = new ReservaVO(idReserva, llegada, salida, tipoHabitacion, numHabitaciones, fumador, regimenAlojamiento, dniCliente); // poner variables
                 this.reserva.setIdReserva(idReserva);
                 this.reservas.add(this.reserva);
             }
@@ -53,7 +67,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO reserva (idReserva, llegada, salida, tipoHabitacion, numeroHabitaciones, fumador, regimenAlojamiento,dniCliente)" +
+            this.sentencia = "INSERT INTO reserva (idReserva, llegada, salida, tipoHabitacion, numHabitaciones, fumador, regimenAlojamiento,dniCliente)" +
                     " VALUES ('" + reserva.getIdReserva() + "','" + reserva.getLlegada() +
                     "','" + reserva.getSalida() + "','" + reserva.getNumeroHabitaciones() + "','" + reserva.getTipoHabitacion() + "','"
                     + reserva.getFumador() + "','" + reserva.getRegimenAlojamiento() + "','" + reserva.getCliente().getDni() + "');";
@@ -79,7 +93,8 @@ public class ReservaRepositoryImpl implements ReservaRepository {
     }
 
     @Override
-    public void editReserva(int id) throws ExcepcionHotel {
+    // DA ERROR
+    public void editReserva(ReservaVO reservaVO) throws ExcepcionHotel {
         // revisar si se puede cambiar el dni del cliente
         //  por ahora lo dejo como que NO
         try {
@@ -91,7 +106,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                     "', tipoHabitacion = '" + reserva.getTipoHabitacion() +
                     "', fumador = '" + reserva.getFumador() +
                     "', regimenAlojamiento = '" + reserva.getRegimenAlojamiento() +
-                    "' WHERE dni = '" + reserva.getDni() + "';";
+                    "' WHERE idReserva = '" + reserva.getIdReserva() + "';";
 
             this.stmt.executeUpdate(this.sentencia);
             this.stmt.close();

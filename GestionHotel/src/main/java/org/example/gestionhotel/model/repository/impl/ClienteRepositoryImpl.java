@@ -79,7 +79,8 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     }
 
     @Override
-    public void editCliente(String dni) throws ExcepcionHotel {
+    // DA ERROR
+    public void editCliente(ClienteVO clienteVO) throws ExcepcionHotel {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();

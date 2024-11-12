@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class ReservaVO {
 
-    String idReserva;
+    Integer idReserva;
     LocalDate llegada;
     LocalDate salida;
     tipoHabitacion tipoHabitacion;
@@ -17,7 +17,7 @@ public class ReservaVO {
     ClienteVO cliente;
     String dni;
 
-    public ReservaVO(String idReserva, LocalDate llegada, LocalDate salida, org.example.gestionhotel.model.repository.impl.tipoHabitacion
+    public ReservaVO(Integer idReserva, LocalDate llegada, LocalDate salida, org.example.gestionhotel.model.repository.impl.tipoHabitacion
             tipoHabitacion, Integer numeroHabitaciones, Boolean fumador,
                      org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento, String dni) {
         this.idReserva = idReserva;
@@ -27,7 +27,7 @@ public class ReservaVO {
         this.numeroHabitaciones = numeroHabitaciones;
         this.fumador = fumador;
         this.regimenAlojamiento = regimenAlojamiento;
-        this.dni = cliente.getDni();
+        this.dni = dni;
     }
 
     public ClienteVO getCliente() {
@@ -46,11 +46,11 @@ public class ReservaVO {
         this.dni = dni;
     }
 
-    public String getIdReserva() {
+    public Integer getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(String idReserva) {
+    public void setIdReserva(Integer idReserva) {
         this.idReserva = idReserva;
     }
 
@@ -100,5 +100,19 @@ public class ReservaVO {
 
     public void setRegimenAlojamiento(org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento) {
         this.regimenAlojamiento = regimenAlojamiento;
+    }
+
+    @Override
+    public String toString() {
+        return "ReservaVO{" +
+                "idReserva='" + idReserva + '\'' +
+                ", llegada=" + llegada +
+                ", salida=" + salida +
+                ", tipoHabitacion=" + tipoHabitacion +
+                ", numeroHabitaciones=" + numeroHabitaciones +
+                ", fumador=" + fumador +
+                ", regimenAlojamiento=" + regimenAlojamiento +
+                ", dni='" + dni + '\'' +
+                '}';
     }
 }

@@ -15,7 +15,7 @@ public interface ClienteRepository {
     public void eliminarCliente(String dni) throws ExcepcionHotel;
 
     // editar cliente
-    public void editCliente(String dni) throws ExcepcionHotel;
+    public void editCliente(ClienteVO clienteVO) throws ExcepcionHotel;
 
     // obtener último cliente
     public int ultimoCliente() throws ExcepcionHotel;
