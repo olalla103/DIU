@@ -70,10 +70,9 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM reserva WHERE idReserva = %d", idReserva);
-            comando.executeUpdate(sql);
-            this.conexion.desconectarBD(conn);
+            this.sentencia = "DELETE FROM reserva WHERE idReserva='" + idReserva + "'";
+            this.stmt.executeUpdate(this.sentencia);
+            this.stmt.close();
         } catch (SQLException var5) {
             throw new ExcepcionHotel("No se ha podido eliminar");
         }
@@ -86,15 +85,20 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE reserva SET llegada = '%s', salida = '%s',numHabitaciones = '%s', tipoHabitacion = '%s'," +
-                            "fumador = '%s', regimenAlojamiento = '%s'" +
-                            " WHERE dni = %d",
-                    reserva.getLlegada(), reserva.getSalida(), reserva.getNumeroHabitaciones(),
-                    reserva.getTipoHabitacion(), reserva.getFumador(), reserva.getRegimenAlojamiento());
-            this.stmt.executeUpdate(sql);
-        } catch (Exception var4) {
+            this.sentencia = "UPDATE reserva SET llegada = '" + reserva.getLlegada() +
+                    "', salida = '" + reserva.getSalida() +
+                    "', numHabitaciones = '" + reserva.getNumeroHabitaciones() +
+                    "', tipoHabitacion = '" + reserva.getTipoHabitacion() +
+                    "', fumador = '" + reserva.getFumador() +
+                    "', regimenAlojamiento = '" + reserva.getRegimenAlojamiento() +
+                    "' WHERE dni = '" + reserva.getDni() + "';";
+
+            this.stmt.executeUpdate(this.sentencia);
+            this.stmt.close();
+        } catch (SQLException var4) {
             throw new ExcepcionHotel("No se ha podido editar la reserva");
         }
+
     }
 
     @Override

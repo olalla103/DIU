@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.gestionhotel.model.repository.ClienteRepository;
+import org.example.gestionhotel.model.repository.ExcepcionHotel;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 import org.example.gestionhotel.model.util.ClienteVO;
 import org.example.gestionhotel.view.Cliente;
@@ -28,17 +29,7 @@ public class Main extends Application {
         ClienteRepository clienteRepository = new ClienteRepositoryImpl();
         System.out.println("Clientes: " + clienteRepository.ObtenerListaClientes() + "\n");
 
-        // añadir un cliente
-        ClienteVO papa = new ClienteVO("12345678B", "Valentín", "López Meneses", "José Gallego Góngora 17"
-                , "Villanueva del Ariscal", "Sevilla");
-        clienteRepository.aniadirCliente(papa);
-        System.out.println(clienteRepository.ObtenerListaClientes() + "\n");
 
-        // eliminar un cliente
-        // ME DA ERROR LA ELIMINACIÓN
-        clienteRepository.eliminarCliente("12345678B");
-        System.out.println(clienteRepository.ObtenerListaClientes() + "\n");
-
-        launch();
+        //  launch();
     }
 }

@@ -50,9 +50,12 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO cliente (dni,nombre,apellidos,direccion,localidad,provincia) VALUES ('" + cliente.getDni() + "','" + cliente.getNombre() +
-                    "','" + cliente.getApellidos() + "','" + cliente.getDireccion() + "','" + cliente.getLocalidad()
-                    + "','" + cliente.getDireccion() + "');";
+            this.sentencia = "INSERT INTO cliente (dni,nombre,apellidos,direccion,localidad,provincia) VALUES ('" +
+                    cliente.getDni() + "','" + cliente.getNombre() +
+                    "','" + cliente.getApellidos() + "','" + cliente.getDireccion() +
+                    "','" + cliente.getLocalidad()
+                    + "','" + cliente.getProvincia()
+                    + "');";
             this.stmt.executeUpdate(this.sentencia);
             this.stmt.close();
             this.conexion.desconectarBD(conn);
@@ -66,10 +69,10 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM cliente WHERE dni = %s", dni);
-            comando.executeUpdate(sql);
-            this.conexion.desconectarBD(conn);
+            this.sentencia = "DELETE FROM cliente WHERE dni = '" + dni + "';";
+            this.stmt.executeUpdate(this.sentencia);
+            this.stmt.close();
+            // he cambiado el código y ahora funciona
         } catch (SQLException var5) {
             throw new ExcepcionHotel("No se ha podido eliminar");
         }
@@ -80,13 +83,16 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE cliente SET dni = '%s', nombre = '%s',apellidos = '%s', direccion = '%s'," +
-                            "localidad = '%s', provincia = '%s'" +
-                            " WHERE dni = %d",
-                    cliente.getDni(), cliente.getNombre(), cliente.getApellidos(),
-                    cliente.getDireccion(), cliente.getLocalidad(), cliente.getProvincia());
-            this.stmt.executeUpdate(sql);
-        } catch (Exception var4) {
+            this.sentencia = "UPDATE cliente SET nombre = '" + cliente.getNombre() +
+                    "', apellidos = '" + cliente.getApellidos() +
+                    "', direccion = '" + cliente.getDireccion() +
+                    "', localidad = '" + cliente.getLocalidad() +
+                    "', provincia = '" + cliente.getProvincia() +
+                    "' WHERE dni = '" + cliente.getDni() + "';";
+
+            this.stmt.executeUpdate(this.sentencia);
+            this.stmt.close();
+        } catch (SQLException var4) {
             throw new ExcepcionHotel("No se ha podido editar el cliente");
         }
     }
