@@ -12,6 +12,7 @@ module org.example.gestionhotel {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires AccesoBBDDMoneda;
+    requires mysql.connector.java;
 
     opens org.example.gestionhotel to javafx.fxml;
     exports org.example.gestionhotel;
