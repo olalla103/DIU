@@ -2,7 +2,7 @@ package org.example.gestionhotel.model.repository.impl;
 
 import org.example.gestionhotel.model.repository.ExcepcionHotel;
 import org.example.gestionhotel.model.repository.ReservaRepository;
-import org.example.gestionhotel.model.util.ReservaVO;
+import org.example.gestionhotel.model.ReservaVO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

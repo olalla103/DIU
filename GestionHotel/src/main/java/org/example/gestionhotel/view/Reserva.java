@@ -1,6 +1,5 @@
 package org.example.gestionhotel.view;
 
-import org.example.gestionhotel.model.util.ClienteVO;
 import javafx.beans.property.*;
 
 import java.time.LocalDate;
@@ -18,21 +17,18 @@ public class Reserva {
     StringProperty dni;
 
     // CONSTRUCTOR
-
-
-    public Reserva(IntegerProperty idReserva, IntegerProperty numHabitaciones, LocalDate llegada, LocalDate salida,
+    public Reserva(Integer idReserva, Integer numHabitaciones, LocalDate llegada, LocalDate salida,
                    org.example.gestionhotel.model.repository.impl.tipoHabitacion tipoHabitacion,
-                   BooleanProperty fumador, org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento,
-                   ClienteVO cliente,
-                   StringProperty dni) {
-        this.idReserva = new SimpleIntegerProperty(idReserva.get());
-        this.numHabitaciones = new SimpleIntegerProperty(numHabitaciones.get());
+                   Boolean fumador, org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento,
+                   String dni) {
+        this.idReserva = new SimpleIntegerProperty(idReserva);
+        this.numHabitaciones = new SimpleIntegerProperty(numHabitaciones);
         this.llegada = new SimpleObjectProperty<LocalDate>(llegada);
         this.salida = new SimpleObjectProperty<LocalDate>(salida);
         this.tipoHabitacion = tipoHabitacion;
-        this.fumador = new SimpleBooleanProperty(fumador.get());
+        this.fumador = new SimpleBooleanProperty(fumador);
         this.regimenAlojamiento = regimenAlojamiento;
-        this.dni = new SimpleStringProperty(dni.get());
+        this.dni = new SimpleStringProperty(dni);
     }
 
 

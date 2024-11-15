@@ -1,80 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="438.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionhotel.controller.ClienteOverView">
-   <children>
-      <Button layoutX="434.0" layoutY="381.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" text="Eliminar" />
-      <Button layoutX="272.0" layoutY="381.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="60.0" text="Añadir" />
-      <TableView layoutY="29.0" prefHeight="408.0" prefWidth="243.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Nombre" />
-          <TableColumn prefWidth="75.0" text="Apellidos" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <Button layoutX="352.0" layoutY="381.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="60.0" text="Editar" />
-      <Text layoutX="475.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="273.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="275.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="273.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="274.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="469.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <MenuBar prefHeight="29.0" prefWidth="703.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
+<AnchorPane prefHeight="438.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.gestionhotel.controller.ClienteOverviewController">
+    <children>
+        <SplitPane dividerPositions="0.3" prefHeight="438.0" prefWidth="703.0" AnchorPane.topAnchor="0.0">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                <!-- Lado izquierdo: Tabla -->
+                <TableView fx:id="tabla" prefHeight="408.0" prefWidth="243.0">
+                    <columns>
+                        <TableColumn fx:id="nombreColumna" prefWidth="75.0" text="Nombre"/>
+                        <TableColumn fx:id="apellidosColumna" prefWidth="75.0" text="Apellidos"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <!-- Lado derecho: Formulario en GridPane -->
+                <GridPane hgap="10.0" vgap="10.0" padding="10.0 10.0 10.0 10.0">
+                    <children>
+                        <!-- Fila 1 -->
+                        <Text text="DNI" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="dniCampo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <!-- Fila 2 -->
+                        <Text text="Nombre" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="nombreCampo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <!-- Fila 3 -->
+                        <Text text="Apellidos" GridPane.rowIndex="2" GridPane.columnIndex="0">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="apellidosCampo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <!-- Fila 4 -->
+                        <Text text="Direccion" GridPane.rowIndex="3" GridPane.columnIndex="0">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="direccionCampo" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2"/>
+
+                        <!-- Fila 5 -->
+                        <Text text="Localidad" GridPane.rowIndex="4" GridPane.columnIndex="0">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="localidadCampo" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                        <Text text="Provincia" GridPane.rowIndex="4" GridPane.columnIndex="2">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Text>
+                        <TextField fx:id="provinciaCampo" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+                        <!-- Botones -->
+                        <HBox spacing="10.0" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                              alignment="CENTER">
+                            <children>
+                                <Button text="Añadir" prefWidth="60.0"/>
+                                <Button text="Editar" prefWidth="60.0"/>
+                                <Button text="Eliminar" prefWidth="70.0"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </GridPane>
             </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextField layoutX="271.0" layoutY="64.0" />
-      <TextField layoutX="459.0" layoutY="138.0" />
-      <TextField layoutX="271.0" layoutY="138.0" />
-      <TextField layoutX="271.0" layoutY="207.0" prefHeight="29.0" prefWidth="359.0" />
-      <TextField layoutX="271.0" layoutY="281.0" />
-      <TextField layoutX="469.0" layoutY="281.0" />
-   </children>
+        </SplitPane>
+    </children>
 </AnchorPane>

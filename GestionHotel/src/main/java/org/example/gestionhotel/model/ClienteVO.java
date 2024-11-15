@@ -1,4 +1,4 @@
-package org.example.gestionhotel.model.util;
+package org.example.gestionhotel.model;
 
 public class ClienteVO {
     String dni, nombre, apellidos, direccion, localidad, provincia;
@@ -10,6 +10,10 @@ public class ClienteVO {
         this.direccion = direccion;
         this.localidad = localidad;
         this.provincia = provincia;
+    }
+
+    public ClienteVO() {
+
     }
 
     public String getDni() {

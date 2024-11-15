@@ -1,4 +1,4 @@
-package org.example.gestionhotel.model.util;
+package org.example.gestionhotel.model;
 
 import org.example.gestionhotel.model.repository.impl.regimenAlojamiento;
 import org.example.gestionhotel.model.repository.impl.tipoHabitacion;

@@ -5,15 +5,20 @@ import javafx.beans.property.*;
 public class Cliente {
     StringProperty dni, nombre, apellidos, direccion, localidad, provincia;
 
-    public Cliente(StringProperty dni, StringProperty nombre, StringProperty apellidos, StringProperty direccion,
-                   StringProperty localidad, StringProperty provincia) {
-        this.dni = new SimpleStringProperty(dni.get());
-        this.nombre = new SimpleStringProperty(nombre.get());
-        this.apellidos = new SimpleStringProperty(apellidos.get());
-        this.direccion = new SimpleStringProperty(direccion.get());
-        this.localidad = new SimpleStringProperty(localidad.get());
-        this.provincia = new SimpleStringProperty(provincia.get());
+    public Cliente(String dni, String nombre, String apellidos, String direccion,
+                   String localidad, String provincia) {
+        this.dni = new SimpleStringProperty(dni);
+        this.nombre = new SimpleStringProperty(nombre);
+        this.apellidos = new SimpleStringProperty(apellidos);
+        this.direccion = new SimpleStringProperty(direccion);
+        this.localidad = new SimpleStringProperty(localidad);
+        this.provincia = new SimpleStringProperty(provincia);
     }
+
+    public Cliente() {
+
+    }
+
 
     public StringProperty getDni() {
         return dni;
