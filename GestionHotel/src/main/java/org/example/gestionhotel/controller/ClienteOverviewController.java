@@ -1,13 +1,17 @@
 package org.example.gestionhotel.controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.view.Cliente;
-import org.w3c.dom.Text;
 
 public class ClienteOverviewController {
 
@@ -40,6 +44,10 @@ public class ClienteOverviewController {
     @FXML
     private TextField provinciaCampo;
 
+    @FXML
+    private CheckBox fumador;
+
+
     private ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
 
     public ClienteOverviewController() {
@@ -52,15 +60,44 @@ public class ClienteOverviewController {
 
     @FXML
     private void initialize() {
-        nombreColumna.setCellValueFactory(cellData -> cellData.getValue().getNombre());
-        apellidosColumna.setCellValueFactory(cellData -> cellData.getValue().getApellidos());
+        // Configurar las columnas de la tabla
+        nombreColumna.setCellValueFactory(new PropertyValueFactory<Cliente, StringProperty>("nombre"));
+        apellidosColumna.setCellValueFactory(new PropertyValueFactory<Cliente, StringProperty>("apellidos"));
 
+        // Hacer las columnas editables
+        nombreColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+        apellidosColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        // Gestionar la edición de las celdas
+        nombreColumna.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cliente, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Cliente, String> event) {
+                Cliente cliente = event.getRowValue();
+                cliente.setNombre(new SimpleStringProperty(event.getNewValue()));  // Actualizar el valor del nombre
+            }
+        });
+
+        apellidosColumna.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cliente, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Cliente, String> event) {
+                Cliente cliente = event.getRowValue();
+                cliente.setApellidos(new SimpleStringProperty(event.getNewValue()));  // Actualizar el valor de apellidos
+            }
+        });
+
+        // Mostrar los detalles del cliente seleccionado
         mostrarDetallesCliente(null);
 
-        tablaCliente.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> mostrarDetallesCliente(newValue)
-        );
+        // Añadir un listener para cuando se seleccione un cliente en la tabla
+        tablaCliente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cliente>() {
+            @Override
+            public void changed(ObservableValue<? extends Cliente> observable, Cliente oldValue, Cliente newValue) {
+                mostrarDetallesCliente(newValue);
+            }
+        });
     }
+
+
 
     private void cargarClientes() {
         try {
@@ -70,6 +107,7 @@ public class ClienteOverviewController {
             mostrarAlerta("Error", "No se pudieron cargar los clientes", AlertType.ERROR);
         }
     }
+
 
     private void mostrarDetallesCliente(Cliente cliente) {
         if (cliente != null) {
@@ -119,6 +157,7 @@ public class ClienteOverviewController {
             }
         }
     }
+
 
     @FXML
     private void handleEditarCliente() {

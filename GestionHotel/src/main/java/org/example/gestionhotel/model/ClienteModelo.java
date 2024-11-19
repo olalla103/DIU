@@ -22,10 +22,10 @@ public class ClienteModelo {
 
     public ArrayList<Cliente> mostrarClientes() {
         ArrayList<ClienteVO> listaClientesVO = obtenerClientes();
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
-        listaClientes = ClienteUtil.getCliente(listaClientesVO);
-        return listaClientes;
+        return ClienteUtil.getCliente(listaClientesVO);
     }
+    //ArrayList<Cliente> listaClientes = ClienteUtil.getCliente(listaClientesVO);
+
 
     public void insertarCliente(Cliente cliente) throws ExcepcionHotel {
         ClienteVO clienteVO = ClienteUtil.getClienteVO(cliente);

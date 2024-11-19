@@ -68,5 +68,15 @@ public class Cliente {
         this.provincia = provincia;
     }
 
-
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dni=" + dni +
+                ", nombre=" + nombre +
+                ", apellidos=" + apellidos +
+                ", direccion=" + direccion +
+                ", localidad=" + localidad +
+                ", provincia=" + provincia +
+                '}';
+    }
 }
