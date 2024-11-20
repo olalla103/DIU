@@ -68,6 +68,14 @@ public class Cliente {
         this.provincia = provincia;
     }
 
+    public StringProperty nombreProperty() {
+        return nombre;
+    }
+
+    public StringProperty apellidosProperty() {
+        return apellidos;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +

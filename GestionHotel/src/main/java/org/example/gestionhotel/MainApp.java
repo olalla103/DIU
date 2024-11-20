@@ -11,10 +11,10 @@ import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("clienteOverView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("clienteOverView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Gestión Hotel");
 

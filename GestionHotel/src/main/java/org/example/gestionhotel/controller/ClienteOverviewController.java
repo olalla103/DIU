@@ -1,6 +1,8 @@
 package org.example.gestionhotel.controller;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.view.Cliente;
 
@@ -49,6 +52,7 @@ public class ClienteOverviewController {
 
 
     private ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
+    private MainApp mainApp;
 
     public ClienteOverviewController() {
     }
@@ -58,45 +62,32 @@ public class ClienteOverviewController {
         cargarClientes();
     }
 
+    // método initialize
     @FXML
     private void initialize() {
-        // Configurar las columnas de la tabla
-        nombreColumna.setCellValueFactory(new PropertyValueFactory<Cliente, StringProperty>("nombre"));
-        apellidosColumna.setCellValueFactory(new PropertyValueFactory<Cliente, StringProperty>("apellidos"));
+        // Initialize the person table with the two columns.
+        nombreColumna.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        apellidosColumna.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
 
-        // Hacer las columnas editables
-        nombreColumna.setCellFactory(TextFieldTableCell.forTableColumn());
-        apellidosColumna.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        // Gestionar la edición de las celdas
-        nombreColumna.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cliente, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Cliente, String> event) {
-                Cliente cliente = event.getRowValue();
-                cliente.setNombre(new SimpleStringProperty(event.getNewValue()));  // Actualizar el valor del nombre
-            }
-        });
-
-        apellidosColumna.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Cliente, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Cliente, String> event) {
-                Cliente cliente = event.getRowValue();
-                cliente.setApellidos(new SimpleStringProperty(event.getNewValue()));  // Actualizar el valor de apellidos
-            }
-        });
-
-        // Mostrar los detalles del cliente seleccionado
+        // Clear person details
         mostrarDetallesCliente(null);
 
-        // Añadir un listener para cuando se seleccione un cliente en la tabla
-        tablaCliente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cliente>() {
-            @Override
-            public void changed(ObservableValue<? extends Cliente> observable, Cliente oldValue, Cliente newValue) {
-                mostrarDetallesCliente(newValue);
-            }
-        });
+        // Listen for selection changes and show the person details when changed.
+        tablaCliente.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> mostrarDetallesCliente(newValue));
     }
 
+    /**
+     * Is called by the main application to give a reference back to itself.
+     *
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+        // Add observable list data to the table
+        tablaCliente.setItems(mainApp.getPersonData()); // corregir
+    }
 
 
     private void cargarClientes() {
