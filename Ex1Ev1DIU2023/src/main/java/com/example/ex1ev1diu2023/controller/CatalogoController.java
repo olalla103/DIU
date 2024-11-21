@@ -10,6 +10,7 @@ import com.example.ex1ev1diu2023.util.Conversor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 
 public class CatalogoController {
 
@@ -70,6 +71,12 @@ public class CatalogoController {
         // Listen for selection changes and show the person details when changed.
         articuloTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showArticuloDetails(newValue));
+
+        unidades.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                handleTotal(new ActionEvent());
+            }
+        });
     }
 
     public void setMainApp(MainApp mainApp) throws ExcepcionArticulo {
