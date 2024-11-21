@@ -2,7 +2,6 @@ package com.example.ex1ev1diu2023.controller;
 
 import Modelo.ArticuloVO;
 import Modelo.ExcepcionArticulo;
-import Modelo.Repository.ArticuloRepository;
 import com.example.ex1ev1diu2023.MainApp;
 import com.example.ex1ev1diu2023.Modelo.Articulo;
 import com.example.ex1ev1diu2023.Modelo.CatalogoModelo;
