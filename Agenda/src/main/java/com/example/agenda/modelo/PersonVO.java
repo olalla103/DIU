@@ -11,14 +11,6 @@ public class PersonVO {
     String city;
     LocalDate birthday;
 
-    /*public PersonVO(String nombre, String apellido, String calle, String codigoPostal, String ciudad, LocalDate fechaNacimiento) {
-        this.firstName = nombre;
-        this.lastName = apellido;
-        this.street = calle;
-        this.postalCode = codigoPostal;
-        this.city = ciudad;
-        this.birthday = fechaNacimiento;
-    }*/
 
     public PersonVO() {
         this(0, null, null, null, null, null, null);
