@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="361.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.examendiuolalla.controller.RootLayoutController">
+    <top>
+        <MenuBar prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Carga Imagen">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleImagen" text="Imagen" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

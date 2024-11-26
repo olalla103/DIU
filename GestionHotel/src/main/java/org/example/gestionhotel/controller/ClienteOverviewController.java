@@ -86,7 +86,7 @@ public class ClienteOverviewController {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        tablaCliente.setItems(mainApp.getPersonData()); // corregir
+        tablaCliente.setItems(mainApp.getClienteData()); // corregir
     }
 
 
