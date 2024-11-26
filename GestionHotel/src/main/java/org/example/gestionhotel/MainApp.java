@@ -43,8 +43,8 @@ public class MainApp extends Application {
         initRootLayout();
         showClienteOverview();
 
-        /*stage.setScene(scene);
-        stage.show();*/
+        stage.setScene(scene);
+        stage.show();
     }
 
     // Inicializamos el RootLayout
@@ -53,7 +53,7 @@ public class MainApp extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("rootlayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = (BorderPane)  loader.load();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
