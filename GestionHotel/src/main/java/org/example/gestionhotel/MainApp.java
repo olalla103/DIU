@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ import java.io.IOException;
 public class MainApp extends Application {
     // VARIABLES
     private Stage primaryStage; // Escenario principal
-    private Pane rootLayout; // Cambiado a Pane porque no usas BorderPane como nodo raíz
+    private BorderPane rootLayout; // Cambiado a Pane porque no usas BorderPane como nodo raíz
     private ObservableList<Cliente> clienteData = FXCollections.observableArrayList();
     ClienteModelo clienteModelo;
 
@@ -76,10 +77,11 @@ public class MainApp extends Application {
             AnchorPane clienteOverview = loader.load(); // Se espera que sea un AnchorPane
 
             // Añadir el clienteOverview al RootLayout
-            ((Pane) rootLayout).getChildren().add(clienteOverview); // Añadido como nodo hijo
+            rootLayout.setCenter(clienteOverview);
 
             // Inyectar modelo y referencia al controlador
             ClienteOverviewController controller = loader.getController();
+            System.out.println("hola juan");
             controller.setMainApp(this);
             controller.setClienteModelo(clienteModelo);
         } catch (IOException e) {
