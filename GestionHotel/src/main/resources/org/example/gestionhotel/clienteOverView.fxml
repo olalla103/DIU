@@ -62,7 +62,7 @@
                             </font>
                         </Text>
                         <TextField fx:id="localidadCampo" layoutX="14.0" layoutY="294.0" />
-                        <Text layoutX="221.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
+                        <Text layoutX="194.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
                             <font>
                                 <Font size="20.0" />
                             </font>
