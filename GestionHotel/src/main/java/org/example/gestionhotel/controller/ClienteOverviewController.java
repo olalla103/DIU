@@ -128,10 +128,10 @@ public class ClienteOverviewController {
                 clienteModelo.eliminarCliente(clienteSeleccionado.getDni().get());
                 tablaCliente.getItems().remove(selectedIndex);
             } catch (Exception e) {
-                mostrarAlerta("Error", "No se pudo eliminar el cliente", AlertType.ERROR);
+                mostrarAlerta("Error", "No se pudo eliminar el cliente", Alert.AlertType.ERROR);
             }
         } else {
-            mostrarAlerta("Advertencia", "No se ha seleccionado ningún cliente", AlertType.WARNING);
+            mostrarAlerta("Advertencia", "No se ha seleccionado ningún cliente", Alert.AlertType.WARNING);
         }
     }
 

@@ -7,10 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.gestionhotel.controller.ClienteOverviewController;
+import org.example.gestionhotel.controller.RootLayoutController;
 import org.example.gestionhotel.model.ClienteModelo;
-import org.example.gestionhotel.model.repository.ClienteRepository;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 import org.example.gestionhotel.view.Cliente;
 
@@ -18,11 +19,12 @@ import java.io.IOException;
 
 public class MainApp extends Application {
     // VARIABLES
-    private Stage primaryStage;
-    private BorderPane rootLayout;
+    private Stage primaryStage; // Escenario principal
+    private Pane rootLayout; // Cambiado a Pane porque no usas BorderPane como nodo raíz
     private ObservableList<Cliente> clienteData = FXCollections.observableArrayList();
-    ClienteModelo clienteModelo = new ClienteModelo();
+    ClienteModelo clienteModelo;
 
+    // Constructor
     public MainApp() {
         try {
             ClienteRepositoryImpl clienteRepository = new ClienteRepositoryImpl();
@@ -35,47 +37,48 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("clienteOverView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("Gestión Hotel");
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage; // Inicializa el escenario principal
+        this.primaryStage.setTitle("Gestión Hotel");
 
-        initRootLayout();
-        showClienteOverview();
-
-        stage.setScene(scene);
-        stage.show();
+        initRootLayout(); // Inicializamos el layout principal
+        showClienteOverview(); // Mostramos el contenido del ClienteOverview
     }
 
     // Inicializamos el RootLayout
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+            // Carga el archivo FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("rootlayout.fxml"));
-            rootLayout = (BorderPane)  loader.load();
+            loader.setLocation(MainApp.class.getResource("rootLayout.fxml"));
+            rootLayout = loader.load(); // Carga como Pane
 
-            // Show the scene containing the root layout.
+            // Mostrar escena en el escenario principal
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            // Inyectar modelo en el controlador del RootLayout
+            RootLayoutController controller = loader.getController();
+            controller.setClienteModelo(clienteModelo);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // mete el Cliente OverView dentro del rootLayout, tendría que cambiarlo y poner otra pantalla
+    // Muestra el ClienteOverview dentro del rootLayout
     public void showClienteOverview() {
         try {
-            // Load person overview.
+            // Cargar el archivo FXML del ClienteOverview
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("clienteOverView.fxml"));
+            AnchorPane clienteOverview = loader.load(); // Se espera que sea un AnchorPane
 
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            // Añadir el clienteOverview al RootLayout
+            ((Pane) rootLayout).getChildren().add(clienteOverview); // Añadido como nodo hijo
 
-            // Give the controller access to the main app.
+            // Inyectar modelo y referencia al controlador
             ClienteOverviewController controller = loader.getController();
             controller.setMainApp(this);
             controller.setClienteModelo(clienteModelo);
@@ -84,6 +87,7 @@ public class MainApp extends Application {
         }
     }
 
+    // Método para acceder a la lista de clientes
     public ObservableList<Cliente> getClienteData() {
         return clienteData;
     }
@@ -91,15 +95,4 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    // Instancia del modelo y repositorio
-      /*  ClienteRepository clienteRepository = new ClienteRepositoryImpl();
-        ClienteModelo clienteModelo = new ClienteModelo();
-        clienteModelo.setClienteRepository(clienteRepository);
-
-        // Inyectar modelo en el controlador
-        ClienteOverviewController controller = fxmlLoader.getController();
-        controller.setClienteModelo(clienteModelo);*/
 }
-
-

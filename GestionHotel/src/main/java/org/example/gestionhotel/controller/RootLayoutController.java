@@ -6,12 +6,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ClienteModelo;
+import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
+import org.example.gestionhotel.model.util.ClienteUtil;
 import org.example.gestionhotel.view.Cliente;
 
 public class RootLayoutController {
     // Referencias a los elementos del FXML
     @FXML
     private TableView<Cliente> tablaClientes; // Tabla para mostrar los clientes
+
+    @FXML
+    private TableColumn<Cliente, String> columnaNombre; // Define las columnas
+    @FXML
+    private TableColumn<Cliente, String> columnaApellidos;
 
     @FXML
     private TextField dniCliente;
@@ -44,17 +51,29 @@ public class RootLayoutController {
     // Métodos de inicialización y control de eventos
     @FXML
     private void initialize() {
-        // Aquí puedes inicializar la tabla con datos o configuraciones
+        // Configurar las columnas para que usen las propiedades del objeto Cliente
+        columnaNombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        columnaApellidos.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
+
+        cargarClientes(); // Cargar los datos al inicializar
     }
 
     private void cargarClientes() {
         try {
-            listaClientes.addAll(clienteModelo.mostrarClientes());
-            tablaClientes.setItems(listaClientes);
+            listaClientes.clear(); // Limpiar la lista para evitar duplicados
+            ClienteRepositoryImpl clienteRepository = new ClienteRepositoryImpl(); // Instancia del repositorio
+            listaClientes.addAll(ClienteUtil.getCliente(clienteRepository.ObtenerListaClientes()));
+            tablaClientes.setItems(listaClientes); // Vincular los datos al TableView
         } catch (Exception e) {
-            mostrarAlerta("Error", "No se pudieron cargar los clientes", Alert.AlertType.ERROR);
+            mostrarAlerta("Error", "No se pudieron cargar los clientes: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
+    public void setClienteModelo(ClienteModelo clienteModelo) {
+        this.clienteModelo = clienteModelo;
+    }
+
+
 
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);
@@ -64,3 +83,6 @@ public class RootLayoutController {
         alerta.showAndWait();
     }
 }
+
+
+
