@@ -59,9 +59,9 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            // Inyectar modelo en el controlador del RootLayout
+            // Inyectar el MainApp en el controlador de RootLayout
             RootLayoutController controller = loader.getController();
-            controller.setClienteModelo(clienteModelo);
+            controller.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,6 +84,22 @@ public class MainApp extends Application {
             System.out.println("hola juan");
             controller.setMainApp(this);
             controller.setClienteModelo(clienteModelo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Método para mostrar la vista de reservas
+    public void showReservaOverview() {
+        try {
+            // Cargar el archivo FXML de reservaOverview
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("reservaOverView.fxml"));
+            AnchorPane reservaOverview = loader.load(); // Se espera que sea un AnchorPane
+
+            // Añadir la vista de reservas al RootLayout (puedes cambiarlo si quieres usar otro contenedor)
+            rootLayout.setCenter(reservaOverview);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

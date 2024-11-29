@@ -8,57 +8,57 @@
 <?import javafx.scene.layout.*?>
 
 <!--me falta poner el controlador-->
-<AnchorPane prefHeight="462.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.gestionhotel.ClientEditDialog">
+
+<AnchorPane prefHeight="462.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionhotel.ClientEditDialog">
     <children>
-        <ProgressBar layoutX="209.0" layoutY="107.0" prefHeight="20.0" prefWidth="363.0" progress="0.0"/>
-        <Text layoutX="21.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI:">
+        <ProgressBar layoutX="209.0" layoutY="107.0" prefHeight="20.0" prefWidth="363.0" progress="0.0" />
+        <Text layoutX="34.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
         <Text layoutX="19.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
         <Text layoutX="277.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
         <Text layoutX="15.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
-        <Text layoutX="312.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad:">
+        <Text layoutX="275.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidad:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
         <Text layoutX="16.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
-        <TextField layoutX="88.0" layoutY="161.0"/>
-        <TextField layoutX="88.0" layoutY="229.0"/>
-        <TextField layoutX="88.0" layoutY="382.0"/>
-        <TextField layoutX="391.0" layoutY="382.0"/>
-        <TextField layoutX="90.0" layoutY="304.0" prefHeight="29.0" prefWidth="372.0"/>
-        <TextField layoutX="346.0" layoutY="229.0"/>
+        <TextField layoutX="88.0" layoutY="161.0" />
+        <TextField layoutX="88.0" layoutY="229.0" />
+        <TextField layoutX="88.0" layoutY="382.0" />
+        <TextField layoutX="346.0" layoutY="382.0" />
+        <TextField layoutX="90.0" layoutY="304.0" prefHeight="29.0" prefWidth="372.0" />
+        <TextField layoutX="346.0" layoutY="229.0" />
         <Text layoutX="90.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ocupación total:">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
         </Text>
         <Text layoutX="229.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
             <font>
-                <Font size="30.0"/>
+                <Font size="30.0" />
             </font>
         </Text>
-        <Button layoutX="571.0" layoutY="265.0" mnemonicParsing="false" text="Añadir"/>
-        <Button layoutX="564.0" layoutY="319.0" mnemonicParsing="false" text="Cancelar"/>
+        <Button layoutX="571.0" layoutY="265.0" mnemonicParsing="false" text="Añadir" />
+        <Button layoutX="564.0" layoutY="319.0" mnemonicParsing="false" text="Cancelar" />
     </children>
 </AnchorPane>

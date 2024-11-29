@@ -29,7 +29,6 @@ public class ClienteUtil {
     public static ArrayList<Cliente> getCliente(ArrayList<ClienteVO> clienteVOS) {
         ArrayList<Cliente> clientes = new ArrayList<>();
         for (ClienteVO clienteVO : clienteVOS) {
-
             clientes.add(new Cliente(
                     clienteVO.getDni(),
                     clienteVO.getNombre(),
