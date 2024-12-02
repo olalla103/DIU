@@ -4,12 +4,16 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.gestionhotel.controller.ClientEditDialogController;
 import org.example.gestionhotel.controller.ClienteOverviewController;
 import org.example.gestionhotel.controller.RootLayoutController;
 import org.example.gestionhotel.model.ClienteModelo;
@@ -46,6 +50,11 @@ public class MainApp extends Application {
         showClienteOverview(); // Mostramos el contenido del ClienteOverview
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+
     // Inicializamos el RootLayout
     public void initRootLayout() {
         try {
@@ -74,14 +83,13 @@ public class MainApp extends Application {
             // Cargar el archivo FXML del ClienteOverview
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("clienteOverView.fxml"));
-            AnchorPane clienteOverview = loader.load(); // Se espera que sea un AnchorPane
+            AnchorPane clienteOverview = loader.load();
 
             // Añadir el clienteOverview al RootLayout
             rootLayout.setCenter(clienteOverview);
 
             // Inyectar modelo y referencia al controlador
             ClienteOverviewController controller = loader.getController();
-            System.out.println("hola juan");
             controller.setMainApp(this);
             controller.setClienteModelo(clienteModelo);
         } catch (IOException e) {
@@ -105,6 +113,37 @@ public class MainApp extends Application {
         }
     }
 
+    public boolean mostrarDialogoEdicionCliente(Cliente cliente) {
+        try {
+            // Cargar el archivo FXML de edición
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("clientEditDialog.fxml")); // Ruta al FXML
+            Parent page = loader.load();
+
+            // Crear la ventana de diálogo
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Editar Cliente");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Pasar el cliente al controlador
+            ClientEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCliente(cliente);
+
+            // Mostrar y esperar hasta que se cierre
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked(); // Retorna si se confirmó la edición
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     // Método para acceder a la lista de clientes
     public ObservableList<Cliente> getClienteData() {
         return clienteData;
@@ -114,3 +153,32 @@ public class MainApp extends Application {
         launch(args);
     }
 }
+/*   public boolean mostrarDialogoEdicionCliente(Cliente cliente) {
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/org/example/gestionhotel/clientEditDialog.fxml"));
+            Parent page = loader.load();
+
+            // Crear el diálogo
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Editar Cliente");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage); // primaryStage es la ventana principal
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Pasar el cliente al controlador
+            ClientEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCliente(cliente);
+
+            // Mostrar el diálogo y esperar hasta que el usuario lo cierre
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }*/

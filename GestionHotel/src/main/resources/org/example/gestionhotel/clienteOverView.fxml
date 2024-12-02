@@ -6,56 +6,56 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionhotel.controller.ClienteOverviewController">
-    <children>
-        <SplitPane dividerPositions="0.3696060037523452" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <items>
-                <!-- Panel izquierdo: Tabla de clientes -->
-                <AnchorPane>
-                   <children>
-                       <TableView fx:id="tablaClientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <columns>
-                               <TableColumn fx:id="columnaNombre" prefWidth="100.0" text="Nombre" />
-                               <TableColumn fx:id="columnaApellidos" prefWidth="100.0" text="Apellidos" />
-                           </columns>
-                           <columnResizePolicy>
-                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                       </TableView>
-                   </children>
-                </AnchorPane>
-
-                <!-- Panel derecho: Información del cliente -->
-                <AnchorPane prefHeight="400.0" prefWidth="341.0">
-                    <children>
-                        <!-- Etiquetas y campos de texto -->
-                        <Text layoutX="14.0" layoutY="76.0" text="DNI" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="62.0" />
-                        <TextField fx:id="dniCliente" layoutX="9.0" layoutY="89.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="89.0" />
-
-                        <Text layoutX="10.0" layoutY="141.0" text="NOMBRE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="127.0" />
-                        <TextField fx:id="direccionCliente" layoutX="9.0" layoutY="219.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="219.0" />
-
-                        <Text layoutX="197.0" layoutY="280.0" text="LOCALIDAD" AnchorPane.leftAnchor="197.0" AnchorPane.topAnchor="266.0" />
-                        <TextField fx:id="localidadCliente" layoutX="194.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="285.0" />
-
-                        <Text layoutX="14.0" layoutY="280.0" text="PROVINCIA" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="266.0" />
-                        <TextField fx:id="provinciaCliente" layoutX="9.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="285.0" />
-
-                        <!-- Botones de acciones -->
-                        <Button fx:id="nuevoCliente" layoutX="14.0" layoutY="356.0" onAction="#handleNuevoCliente" text="Nuevo Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" />
-                        <Button fx:id="editarReserva" layoutX="133.0" layoutY="356.0" onAction="#handleEditarCliente" text="Editar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="133.0" />
-                        <Button fx:id="eliminarCliente" layoutX="213.0" layoutY="356.0" onAction="#handleEliminarCliente" text="Eliminar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                  <Text layoutX="93.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
-                     <font>
-                        <Font name="Lucida Bright Regular" size="23.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="200.0" layoutY="141.0" text="APELLIDOS" />
-                  <Text layoutX="14.0" layoutY="214.0" text="DIRECCIÓN" />
-                  <TextField fx:id="apellidosCliente" layoutX="199.0" layoutY="151.0" />
-                  <TextField fx:id="nombreCliente" layoutX="12.0" layoutY="151.0" />
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-    </children>
+   <children>
+       <SplitPane dividerPositions="0.3696060037523452" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <items>
+              <!-- Panel izquierdo: Tabla de clientes -->
+              <AnchorPane>
+                 <children>
+                     <TableView fx:id="tablaClientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <columns>
+                             <TableColumn fx:id="columnaNombre" prefWidth="100.0" text="Nombre" />
+                             <TableColumn fx:id="columnaApellidos" prefWidth="100.0" text="Apellidos" />
+                         </columns>
+                         <columnResizePolicy>
+                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                         </columnResizePolicy>
+                     </TableView>
+                 </children>
+              </AnchorPane>
+      
+              <!-- Panel derecho: Información del cliente -->
+              <AnchorPane prefHeight="400.0" prefWidth="341.0">
+         <children>
+                     <!-- Etiquetas y campos de texto -->
+                     <Text layoutX="14.0" layoutY="76.0" text="DNI" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="62.0" />
+                     <TextField fx:id="dniCliente" layoutX="9.0" layoutY="89.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="89.0" />
+         
+                     <Text layoutX="10.0" layoutY="141.0" text="NOMBRE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="127.0" />
+                     <TextField fx:id="direccionCliente" layoutX="9.0" layoutY="219.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="219.0" />
+         
+                     <Text layoutX="197.0" layoutY="280.0" text="LOCALIDAD" AnchorPane.leftAnchor="197.0" AnchorPane.topAnchor="266.0" />
+                     <TextField fx:id="localidadCliente" layoutX="194.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="285.0" />
+         
+                     <Text layoutX="14.0" layoutY="280.0" text="PROVINCIA" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="266.0" />
+                     <TextField fx:id="provinciaCliente" layoutX="9.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="285.0" />
+         
+                     <!-- Botones de acciones -->
+                     <Button fx:id="nuevoCliente" layoutX="14.0" layoutY="356.0" onAction="#handleNuevoCliente" text="Nuevo Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" />
+                     <Button fx:id="editarReserva" layoutX="133.0" layoutY="356.0" onAction="#handleEditarCliente" text="Editar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="133.0" />
+                     <Button fx:id="eliminarCliente" layoutX="213.0" layoutY="356.0" onAction="#handleEliminarCliente" text="Eliminar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+                     <Text layoutX="93.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
+                         <font>
+                             <Font name="Lucida Bright Regular" size="23.0" />
+                         </font>
+                     </Text>
+                     <Text layoutX="200.0" layoutY="141.0" text="APELLIDOS" />
+                     <Text layoutX="14.0" layoutY="214.0" text="DIRECCIÓN" />
+                     <TextField fx:id="apellidosCliente" layoutX="199.0" layoutY="151.0" />
+                     <TextField fx:id="nombreCliente" layoutX="12.0" layoutY="151.0" />
+         </children>
+              </AnchorPane>
+          </items>
+       </SplitPane>
+   </children>
 </AnchorPane>

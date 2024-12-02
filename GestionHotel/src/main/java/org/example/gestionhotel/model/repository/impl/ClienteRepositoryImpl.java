@@ -4,10 +4,7 @@ import org.example.gestionhotel.model.repository.ClienteRepository;
 import org.example.gestionhotel.model.ClienteVO;
 import org.example.gestionhotel.model.repository.ExcepcionHotel;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ClienteRepositoryImpl implements ClienteRepository {
@@ -79,24 +76,30 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     }
 
     @Override
-    // DA ERROR
     public void editCliente(ClienteVO clienteVO) throws ExcepcionHotel {
-        try {
-            Connection conn = this.conexion.conectarBD();
-            this.stmt = conn.createStatement();
-            this.sentencia = "UPDATE cliente SET nombre = '" + cliente.getNombre() +
-                    "', apellidos = '" + cliente.getApellidos() +
-                    "', direccion = '" + cliente.getDireccion() +
-                    "', localidad = '" + cliente.getLocalidad() +
-                    "', provincia = '" + cliente.getProvincia() +
-                    "' WHERE dni = '" + cliente.getDni() + "';";
+        String query = "UPDATE cliente SET nombre = ?, apellidos = ?, direccion = ?, localidad = ?, provincia = ? WHERE dni = ?";
 
-            this.stmt.executeUpdate(this.sentencia);
-            this.stmt.close();
-        } catch (SQLException var4) {
-            throw new ExcepcionHotel("No se ha podido editar el cliente");
+        try (Connection conn = this.conexion.conectarBD();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Establecer los parámetros
+            pstmt.setString(1, clienteVO.getNombre());
+            pstmt.setString(2, clienteVO.getApellidos());
+            pstmt.setString(3, clienteVO.getDireccion());
+            pstmt.setString(4, clienteVO.getLocalidad());
+            pstmt.setString(5, clienteVO.getProvincia());
+            pstmt.setString(6, clienteVO.getDni());
+
+            // Ejecutar la sentencia
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas == 0) {
+                throw new ExcepcionHotel("No se encontró ningún cliente con el DNI proporcionado.");
+            }
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido editar el cliente: " + e.getMessage());
         }
     }
+
 
     @Override
     public int ultimoCliente() throws ExcepcionHotel {
