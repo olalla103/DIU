@@ -8,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ReservaModelo;
+import org.example.gestionhotel.model.repository.ExcepcionHotel;
 import org.example.gestionhotel.model.repository.impl.regimenAlojamiento;
 import org.example.gestionhotel.model.repository.impl.tipoHabitacion;
 import org.example.gestionhotel.Reserva;
@@ -52,6 +53,18 @@ public class ReservaOverViewController {
     private ObservableList<Reserva> listaReservas = FXCollections.observableArrayList();
     private MainApp mainApp;
 
+    // Inyección del modelo en el controlador
+    public void setReservaModelo(ReservaModelo reservaModelo) {
+        this.reservaModelo = reservaModelo;
+
+        // Intentar cargar las reservas cuando se reciba el modelo
+        cargarReservas();
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
     @FXML
     private void initialize() {
         // Inicializar el spinner
@@ -74,8 +87,14 @@ public class ReservaOverViewController {
     }
 
     private void cargarReservas() {
-        // Simulación de carga de datos
-        tablaReservas.setItems(listaReservas);
+        try {
+            // Obtener las reservas desde el modelo
+            listaReservas.setAll(reservaModelo.mostrarReservas());
+            tablaReservas.setItems(listaReservas);
+        } catch (ExcepcionHotel e) {
+            mostrarAlerta("Error", "No se pudo cargar la lista de reservas: " + e.getMessage(), AlertType.ERROR);
+            e.printStackTrace();
+        }
     }
 
 
@@ -94,6 +113,7 @@ public class ReservaOverViewController {
         }
     }
 
+
     private void limpiarCampos() {
         idReserva.clear();
         dniCliente.clear();
@@ -108,31 +128,29 @@ public class ReservaOverViewController {
     @FXML
     private void handleAniadirReserva() {
         try {
-            // Obtener los valores seleccionados de los ChoiceBox como Strings
-            String tipoHabitacionSeleccionado = tipoHab.getValue();  // String
-            String regimenAlojamientoSeleccionado = regAlojamiento.getValue();  // String
+            String tipoHabitacionSeleccionado = tipoHab.getValue();
+            String regimenAlojamientoSeleccionado = regAlojamiento.getValue();
 
-            // Verificar si los valores seleccionados no son nulos
             if (tipoHabitacionSeleccionado != null && regimenAlojamientoSeleccionado != null) {
-                // Convertir los Strings a los valores correspondientes del enum
                 tipoHabitacion tipoHabitacionEnum = tipoHabitacion.valueOf(tipoHabitacionSeleccionado.toUpperCase());
                 regimenAlojamiento regimenAlojamientoEnum = regimenAlojamiento.valueOf(regimenAlojamientoSeleccionado.toUpperCase());
 
-                // Crear la nueva reserva
                 Reserva nuevaReserva = new Reserva(
-                        Integer.parseInt(idReserva.getText()),       // idReserva como int
-                        miSpinner.getValue(),                        // numHabitaciones como int
-                        fechaLlegada.getValue(),                     // llegada como LocalDate
-                        fechaSalida.getValue(),                      // salida como LocalDate
-                        tipoHabitacionEnum,                          // tipoHabitacion como tipoHabitacion (enum)
-                        fumador.isSelected(),                        // fumador como boolean
-                        regimenAlojamientoEnum,                      // regimenAlojamiento como regimenAlojamiento (enum)
-                        dniCliente.getText()                         // dni como String
+                        Integer.parseInt(idReserva.getText()),
+                        miSpinner.getValue(),
+                        fechaLlegada.getValue(),
+                        fechaSalida.getValue(),
+                        tipoHabitacionEnum,
+                        fumador.isSelected(),
+                        regimenAlojamientoEnum,
+                        dniCliente.getText()
                 );
 
-                // Añadir la nueva reserva a la lista y actualizar la tabla
-                listaReservas.add(nuevaReserva);
-                tablaReservas.refresh();
+                // Insertar la nueva reserva a través del modelo
+                reservaModelo.insertarReserva(nuevaReserva);
+
+                // Recargar la lista
+                cargarReservas();
             } else {
                 mostrarAlerta("Error", "Debe seleccionar un tipo de habitación y un régimen de alojamiento.", AlertType.ERROR);
             }
@@ -146,7 +164,12 @@ public class ReservaOverViewController {
     private void handleEliminarReserva() {
         Reserva seleccionada = tablaReservas.getSelectionModel().getSelectedItem();
         if (seleccionada != null) {
-            listaReservas.remove(seleccionada);
+            try {
+                reservaModelo.eliminarReserva(seleccionada.getIdReserva().get());
+                cargarReservas(); // Recargar la lista después de eliminar
+            } catch (ExcepcionHotel e) {
+                mostrarAlerta("Error", "No se pudo eliminar la reserva: " + e.getMessage(), AlertType.ERROR);
+            }
         } else {
             mostrarAlerta("Advertencia", "No se ha seleccionado ninguna reserva", AlertType.WARNING);
         }
@@ -154,28 +177,21 @@ public class ReservaOverViewController {
 
     @FXML
     private void handleEditarReserva() {
-        // Obtengo la reserva seleccionada
         Reserva reservaSeleccionada = tablaReservas.getSelectionModel().getSelectedItem();
 
         if (reservaSeleccionada != null) {
-            // Llama al método para mostrar un diálogo de edición y obtener la reserva editada
             boolean okClicked = mainApp.mostrarDialogoEdicionReserva(reservaSeleccionada);
 
             if (okClicked) {
                 try {
-                    // Actualiza la reserva en el modelo
                     reservaModelo.modificarReserva(reservaSeleccionada);
-
-                    // Refresca la tabla con los nuevos datos
-                    tablaReservas.refresh();
-                    mostrarDetallesReserva(reservaSeleccionada);
-                } catch (Exception e) {
-                    mostrarAlerta("Error", "No se pudo actualizar la reserva: " + e.getMessage(), Alert.AlertType.ERROR);
-                    e.printStackTrace();
+                    cargarReservas(); // Recargar la lista después de editar
+                } catch (ExcepcionHotel e) {
+                    mostrarAlerta("Error", "No se pudo actualizar la reserva: " + e.getMessage(), AlertType.ERROR);
                 }
             }
         } else {
-            mostrarAlerta("Advertencia", "No se ha seleccionado ninguna reserva", Alert.AlertType.WARNING);
+            mostrarAlerta("Advertencia", "No se ha seleccionado ninguna reserva", AlertType.WARNING);
         }
     }
 

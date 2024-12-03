@@ -21,7 +21,7 @@ public class ReservaModelo {
 
     public ArrayList<Reserva> mostrarReservas() throws ExcepcionHotel {
         ArrayList<ReservaVO> listaReservasVO = obtenerReservas();
-        ArrayList<Reserva> listaReservas = new ArrayList<>();
+        ArrayList<Reserva> listaReservas;
         listaReservas = ReservaUtil.getReserva(listaReservasVO);
         return listaReservas;
     }

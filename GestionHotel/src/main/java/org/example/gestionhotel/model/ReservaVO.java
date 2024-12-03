@@ -58,16 +58,8 @@ public class ReservaVO {
         return llegada;
     }
 
-    public void setLlegada(LocalDate llegada) {
-        this.llegada = llegada;
-    }
-
     public LocalDate getSalida() {
         return salida;
-    }
-
-    public void setSalida(LocalDate salida) {
-        this.salida = salida;
     }
 
     public org.example.gestionhotel.model.repository.impl.tipoHabitacion getTipoHabitacion() {

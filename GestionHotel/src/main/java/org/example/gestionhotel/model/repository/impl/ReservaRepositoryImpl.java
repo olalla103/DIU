@@ -49,7 +49,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                         throw new ExcepcionHotel("Valor no válido en columna regimenAlojamiento");
                     }
                 }
-                String dniCliente = rs.getString("dniCliente");
+                String dniCliente = rs.getString("dni");
                 this.reserva = new ReservaVO(idReserva, llegada, salida, tipoHabitacion, numHabitaciones, fumador, regimenAlojamiento, dniCliente); // poner variables
                 this.reserva.setIdReserva(idReserva);
                 this.reservas.add(this.reserva);
@@ -59,6 +59,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
             return this.reservas;
         } catch (SQLException var6) {
             throw new ExcepcionHotel("No se ha podido realizar la operación");
+
         }
     }
 
