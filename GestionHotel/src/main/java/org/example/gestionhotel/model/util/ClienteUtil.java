@@ -2,7 +2,7 @@ package org.example.gestionhotel.model.util;
 
 import javafx.beans.property.SimpleStringProperty;
 import org.example.gestionhotel.model.ClienteVO;
-import org.example.gestionhotel.view.Cliente;
+import org.example.gestionhotel.Cliente;
 
 import java.util.ArrayList;
 

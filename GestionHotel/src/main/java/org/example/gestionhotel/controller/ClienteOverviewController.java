@@ -7,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ClienteModelo;
-import org.example.gestionhotel.view.Cliente;
+import org.example.gestionhotel.Cliente;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 import org.example.gestionhotel.model.util.ClienteUtil;
 
@@ -85,7 +85,7 @@ public class ClienteOverviewController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         // Add observable list data to the table
-        tablaClientes.setItems(mainApp.getClienteData()); // corregir
+        tablaClientes.setItems(mainApp.getClienteData());
     }
 
     private void cargarClientes() {

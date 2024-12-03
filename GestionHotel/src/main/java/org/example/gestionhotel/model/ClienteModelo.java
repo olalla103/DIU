@@ -3,7 +3,7 @@ package org.example.gestionhotel.model;
 import org.example.gestionhotel.model.repository.ClienteRepository;
 import org.example.gestionhotel.model.repository.ExcepcionHotel;
 import org.example.gestionhotel.model.util.ClienteUtil;
-import org.example.gestionhotel.view.Cliente;
+import org.example.gestionhotel.Cliente;
 
 import java.util.ArrayList;
 

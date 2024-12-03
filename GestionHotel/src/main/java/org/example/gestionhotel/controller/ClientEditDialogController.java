@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.model.ClienteVO;
-import org.example.gestionhotel.view.Cliente;
+import org.example.gestionhotel.Cliente;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,5 @@
 package org.example.gestionhotel.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +8,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ClienteModelo;
-import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
-import org.example.gestionhotel.model.util.ClienteUtil;
-import org.example.gestionhotel.view.Cliente;
 
 import java.io.IOException;
 
@@ -40,23 +35,10 @@ public class RootLayoutController {
     }
 
 
-    public void handleReservasMenu(ActionEvent event) {
-        try {
-            // Cargar el archivo FXML de ReservaOverview
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/org/example/gestionhotel/view/ReservaOverview.fxml"));
-            Scene scene = new Scene(loader.load());
-
-            // Crear la nueva ventana
-            Stage stage = new Stage();
-            stage.setTitle("Vista de Reservas");
-            stage.setScene(scene);
-
-            // Mostrar la ventana
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Manejo de errores si no se pudo cargar el archivo FXML
+    @FXML
+    private void handleReservasMenu(ActionEvent event) {
+        if (mainApp != null) {
+            mainApp.showReservaOverview();
         }
     }
 

@@ -1,7 +1,7 @@
 package org.example.gestionhotel.model.util;
 
 import org.example.gestionhotel.model.ReservaVO;
-import org.example.gestionhotel.view.Reserva;
+import org.example.gestionhotel.Reserva;
 
 import java.util.ArrayList;
 

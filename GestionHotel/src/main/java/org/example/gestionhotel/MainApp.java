@@ -6,11 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.gestionhotel.controller.ClientEditDialogController;
@@ -19,8 +16,6 @@ import org.example.gestionhotel.controller.ReservaEditDialogController;
 import org.example.gestionhotel.controller.RootLayoutController;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
-import org.example.gestionhotel.view.Cliente;
-import org.example.gestionhotel.view.Reserva;
 
 import java.io.IOException;
 
@@ -56,9 +51,8 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-
     // Inicializamos el RootLayout
-    public void initRootLayout() {
+   /* public void initRootLayout() {
         try {
             // Carga el archivo FXML
             FXMLLoader loader = new FXMLLoader();
@@ -77,7 +71,40 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+
+    public void initRootLayout() {
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("rootLayout.fxml"));
+            rootLayout = loader.load();
+
+            // Crear la escena y añadir el rootLayout
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+
+            // Configurar tamaño inicial y mínimo de la ventana
+            primaryStage.setTitle("Gestión Hotel");
+            primaryStage.setMinWidth(100); // Ancho mínimo
+            primaryStage.setMinHeight(200); // Alto mínimo
+
+            // Ajustar dinámicamente el tamaño del rootLayout
+            rootLayout.prefWidthProperty().bind(scene.widthProperty());
+            rootLayout.prefHeightProperty().bind(scene.heightProperty());
+
+            // Mostrar la ventana principal
+            primaryStage.show();
+
+            // Inyectar el MainApp en el controlador de RootLayout
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     // Muestra el ClienteOverview dentro del rootLayout
     public void showClienteOverview() {
@@ -105,7 +132,7 @@ public class MainApp extends Application {
             // Cargar el archivo FXML de reservaOverview
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("reservaOverView.fxml"));
-            AnchorPane reservaOverview = loader.load(); // Se espera que sea un AnchorPane
+            AnchorPane reservaOverview = loader.load();
 
             // Añadir la vista de reservas al RootLayout (puedes cambiarlo si quieres usar otro contenedor)
             rootLayout.setCenter(reservaOverview);
@@ -175,21 +202,12 @@ public class MainApp extends Application {
         }
     }
 
-    // mostrar diálogo para editar reserva
-    // Método para mostrar el diálogo de edición de Reserva
-    public boolean mostrarDialogoEdicionReserva(Reserva reserva) {
-        try {
-            // Cargar el archivo FXML de edición de Reserva// Método para acceder a la lista de clientes
-            FXMLLoader loader = new FXMLLoader();
-            public ObservableList<Cliente> getClienteData () {
-                loader.setLocation(MainApp.class.getResource("reservaEditDialog.fxml"));
-                return clienteData;
-                Parent page = loader.load();
-            }
+    // Método para acceder a la lista de clientes
+    public ObservableList<Cliente> getClienteData() {
+        return clienteData;
+    }
 
-            // Crear la ventana de diálogopublic static void main(String[] args) {
-            Stage dialogStage = new Stage();
-            launch(args);
-            dialogStage.setTitle("Editar Reserva");
-        }
-    }               dialogStage.initModality(Modality.WINDOW_MODAL);
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

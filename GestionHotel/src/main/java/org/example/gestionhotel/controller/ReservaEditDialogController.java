@@ -3,11 +3,9 @@ package org.example.gestionhotel.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.gestionhotel.view.Reserva;
+import org.example.gestionhotel.Reserva;
 import org.example.gestionhotel.model.repository.impl.tipoHabitacion;
 import org.example.gestionhotel.model.repository.impl.regimenAlojamiento;
-
-import java.time.LocalDate;
 
 public class ReservaEditDialogController {
 

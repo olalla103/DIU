@@ -1,4 +1,4 @@
-package org.example.gestionhotel.view;
+package org.example.gestionhotel;
 
 import javafx.beans.property.*;
 

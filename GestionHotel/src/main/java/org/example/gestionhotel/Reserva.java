@@ -1,6 +1,7 @@
-package org.example.gestionhotel.view;
+package org.example.gestionhotel;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 import java.time.LocalDate;
 
@@ -113,5 +114,17 @@ public class Reserva {
                 ", regimenAlojamiento=" + regimenAlojamiento +
                 ", dni='" + dni + '\'' +
                 '}';
+    }
+
+    public IntegerProperty idReservaProperty() {
+        return idReserva;
+    }
+
+    public ObjectProperty<LocalDate> llegadaProperty() {
+        return llegada;
+    }
+
+    public ObjectProperty<LocalDate> salidaProperty() {
+        return salida;
     }
 }

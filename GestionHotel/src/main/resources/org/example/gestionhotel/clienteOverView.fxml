@@ -27,32 +27,46 @@
               <!-- Panel derecho: Información del cliente -->
               <AnchorPane prefHeight="400.0" prefWidth="341.0">
          <children>
-                     <!-- Etiquetas y campos de texto -->
-                     <Text layoutX="14.0" layoutY="76.0" text="DNI" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="62.0" />
-                     <TextField fx:id="dniCliente" layoutX="9.0" layoutY="89.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="89.0" />
-         
-                     <Text layoutX="10.0" layoutY="141.0" text="NOMBRE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="127.0" />
-                     <TextField fx:id="direccionCliente" layoutX="9.0" layoutY="219.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="219.0" />
-         
-                     <Text layoutX="197.0" layoutY="280.0" text="LOCALIDAD" AnchorPane.leftAnchor="197.0" AnchorPane.topAnchor="266.0" />
-                     <TextField fx:id="localidadCliente" layoutX="194.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="285.0" />
-         
-                     <Text layoutX="14.0" layoutY="280.0" text="PROVINCIA" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="266.0" />
-                     <TextField fx:id="provinciaCliente" layoutX="9.0" layoutY="285.0" prefHeight="29.0" prefWidth="158.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="285.0" />
-         
-                     <!-- Botones de acciones -->
-                     <Button fx:id="nuevoCliente" layoutX="14.0" layoutY="356.0" onAction="#handleNuevoCliente" text="Nuevo Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" />
-                     <Button fx:id="editarReserva" layoutX="133.0" layoutY="356.0" onAction="#handleEditarCliente" text="Editar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="133.0" />
-                     <Button fx:id="eliminarCliente" layoutX="213.0" layoutY="356.0" onAction="#handleEliminarCliente" text="Eliminar Cliente" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                     <Text layoutX="93.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del cliente">
-                         <font>
-                             <Font name="Lucida Bright Regular" size="23.0" />
-                         </font>
-                     </Text>
-                     <Text layoutX="200.0" layoutY="141.0" text="APELLIDOS" />
-                     <Text layoutX="14.0" layoutY="214.0" text="DIRECCIÓN" />
-                     <TextField fx:id="apellidosCliente" layoutX="199.0" layoutY="151.0" />
-                     <TextField fx:id="nombreCliente" layoutX="12.0" layoutY="151.0" />
+                  <GridPane layoutX="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" prefWidth="100.0" />
+                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                           <!-- Etiquetas y campos de texto -->
+                           <Text text="DNI" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                           <TextField fx:id="dniCliente" prefHeight="29.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                           <Text text="APELLIDOS" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                           <TextField fx:id="apellidosCliente" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+               
+                           <Text text="NOMBRE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <TextField fx:id="nombreCliente" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                           <Text text="DIRECCIÓN" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <TextField fx:id="direccionCliente" prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+               
+                           <Text text="PROVINCIA" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <TextField fx:id="provinciaCliente" prefHeight="29.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+               
+                           <Text text="LOCALIDAD" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                           <TextField fx:id="localidadCliente" prefHeight="29.0" prefWidth="158.0" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+               
+                           <!-- Botones de acciones -->
+                           <Button fx:id="nuevoCliente" onAction="#handleNuevoCliente" text="Nuevo Cliente" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <Button fx:id="editarReserva" onAction="#handleEditarCliente" text="Editar Cliente" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                           <Button fx:id="eliminarCliente" onAction="#handleEliminarCliente" text="Eliminar Cliente" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
          </children>
               </AnchorPane>
           </items>

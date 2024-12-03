@@ -2,7 +2,7 @@ package org.example.gestionhotel.model;
 
 import org.example.gestionhotel.model.repository.ExcepcionHotel;
 import org.example.gestionhotel.model.repository.ReservaRepository;
-import org.example.gestionhotel.view.Reserva;
+import org.example.gestionhotel.Reserva;
 import org.example.gestionhotel.model.util.ReservaUtil;
 
 import java.util.ArrayList;

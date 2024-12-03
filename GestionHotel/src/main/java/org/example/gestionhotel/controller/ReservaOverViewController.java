@@ -10,7 +10,7 @@ import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ReservaModelo;
 import org.example.gestionhotel.model.repository.impl.regimenAlojamiento;
 import org.example.gestionhotel.model.repository.impl.tipoHabitacion;
-import org.example.gestionhotel.view.Reserva;
+import org.example.gestionhotel.Reserva;
 
 import java.time.LocalDate;
 
@@ -29,8 +29,6 @@ public class ReservaOverViewController {
     private TextField idReserva;
     @FXML
     private TextField dniCliente;
-    @FXML
-    private TextField numHabitaciones;
     @FXML
     private DatePicker fechaLlegada;
     @FXML
@@ -56,18 +54,22 @@ public class ReservaOverViewController {
 
     @FXML
     private void initialize() {
-        columnaIdReserva.setCellValueFactory(new PropertyValueFactory<>("idReserva"));
-        columnaLlegada.setCellValueFactory(new PropertyValueFactory<>("llegada"));
-        columnaSalida.setCellValueFactory(new PropertyValueFactory<>("salida"));
+        // Inicializar el spinner
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1); // Rango de 1 a 10, valor inicial 1
+        miSpinner.setValueFactory(valueFactory);
+        // Inicializar las columnas de la tabla de reservas con las propiedades correspondientes
+        columnaIdReserva.setCellValueFactory(cellData -> cellData.getValue().idReservaProperty().asObject());  // Convertir IntegerProperty a ObservableValue<Integer>
+        columnaLlegada.setCellValueFactory(cellData -> cellData.getValue().llegadaProperty());
+        columnaSalida.setCellValueFactory(cellData -> cellData.getValue().salidaProperty());
 
-        tipoHab.setItems(FXCollections.observableArrayList("Individual", "Doble", "Suite"));
-        regAlojamiento.setItems(FXCollections.observableArrayList("Solo alojamiento", "Media pensión", "Pensión completa"));
+        // Limpiar los detalles de la reserva
+        mostrarDetallesReserva(null);
 
-        miSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1));
-
+        // Escuchar los cambios de selección y mostrar los detalles de la reserva cuando cambie la selección
         tablaReservas.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> mostrarDetallesReserva(newValue));
 
+        // Cargar las reservas al inicializar
         cargarReservas();
     }
 
@@ -183,5 +185,29 @@ public class ReservaOverViewController {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+
+    public Button getEditarReserva() {
+        return editarReserva;
+    }
+
+    public void setEditarReserva(Button editarReserva) {
+        this.editarReserva = editarReserva;
+    }
+
+    public Button getEliminarReserva() {
+        return eliminarReserva;
+    }
+
+    public void setEliminarReserva(Button eliminarReserva) {
+        this.eliminarReserva = eliminarReserva;
+    }
+
+    public Button getAniadirReserva() {
+        return aniadirReserva;
+    }
+
+    public void setAniadirReserva(Button aniadirReserva) {
+        this.aniadirReserva = aniadirReserva;
     }
 }
