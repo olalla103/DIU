@@ -1,22 +1,15 @@
 package org.example.gestionhotel.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.example.gestionhotel.MainApp;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.view.Cliente;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 import org.example.gestionhotel.model.util.ClienteUtil;
-
-import java.io.IOException;
 
 public class ClienteOverviewController {
     private ClienteModelo clienteModelo;
@@ -140,19 +133,18 @@ public class ClienteOverviewController {
         }
     }
 
-    // CORREGIR EL HANDLE DE NUEVO CLIENTE
     @FXML
     private void handleNuevoCliente() {
         // Crear un nuevo cliente con los valores de los campos de texto
         Cliente nuevoCliente = new Cliente();
 
         // Rellenamos el cliente con los valores de los campos de texto
-        nuevoCliente.setDni(dniCliente.getText());
-        nuevoCliente.setNombre(nombreCliente.getText());
-        nuevoCliente.setApellidos(apellidosCliente.getText());
-        nuevoCliente.setDireccion(direccionCliente.getText());
-        nuevoCliente.setLocalidad(localidadCliente.getText());
-        nuevoCliente.setProvincia(provinciaCliente.getText());
+        nuevoCliente.getDni().set(dniCliente.getText());
+        nuevoCliente.getNombre().set(nombreCliente.getText());
+        nuevoCliente.getApellidos().set(apellidosCliente.getText());
+        nuevoCliente.getDireccion().set(direccionCliente.getText());
+        nuevoCliente.getLocalidad().set(localidadCliente.getText());
+        nuevoCliente.getProvincia().set(provinciaCliente.getText());
 
         // Verificar si los campos no están vacíos
         if (!dniCliente.getText().isEmpty() && !nombreCliente.getText().isEmpty() &&
@@ -170,62 +162,6 @@ public class ClienteOverviewController {
         } else {
             // Mostrar alerta si falta información
             mostrarAlerta("Error", "Todos los campos deben ser llenados.", AlertType.ERROR);
-        }
-    }
-
-
-    @FXML
-    private void handleNuevoCliente() {
-        // Crear un nuevo Cliente con las propiedades como String simples (no StringProperty)
-        Cliente nuevoCliente = new Cliente();
-
-        // Asignar los valores de los campos de texto a las propiedades StringProperty
-        nuevoCliente.getDni().set(dniCliente.getText());
-        nuevoCliente.getNombre().set(nombreCliente.getText());
-        nuevoCliente.getApellidos().set(apellidosCliente.getText());
-        nuevoCliente.getDireccion().set(direccionCliente.getText());
-        nuevoCliente.getLocalidad().set(localidadCliente.getText());
-        nuevoCliente.getProvincia().set(provinciaCliente.getText());
-
-        // Ahora se convierte el cliente en StringProperty en su lugar
-        // Los valores del cliente ahora están en formato StringProperty, pero no modificamos la clase Cliente
-
-        boolean okClicked = mainApp.mostrarDialogoEdicionCliente();
-        if (okClicked) {
-            try {
-                clienteModelo.insertarCliente(nuevoCliente);  // Se usa el cliente como está
-                listaClientes.add(nuevoCliente);
-            } catch (Exception e) {
-                mostrarAlerta("Error", "No se pudo añadir el cliente", AlertType.ERROR);
-                mostrarAlerta("Error", "No se pudieron cargar los clientes: " + e.getMessage(), Alert.AlertType.ERROR);
-            }
-        }
-
-
-        // Verificar si los campos necesarios no están vacíos
-        if (nuevoCliente.getDni().get().isEmpty() || nuevoCliente.getNombre().get().isEmpty() || nuevoCliente.getApellidos().get().isEmpty()) {
-            mostrarAlerta("Advertencia", "Por favor, complete los campos obligatorios.", AlertType.WARNING);
-            return; // No proceder si falta información obligatoria
-        }
-
-        try {
-            // Insertar el nuevo cliente en la base de datos a través del modelo
-            clienteModelo.insertarCliente(nuevoCliente);
-
-            // Añadir a la lista de clientes de la interfaz (esto actualizará la tabla de clientes)
-            listaClientes.add(nuevoCliente);
-
-            // Limpiar los campos después de la inserción si es necesario
-            dniCliente.clear();
-            nombreCliente.clear();
-            apellidosCliente.clear();
-            direccionCliente.clear();
-            localidadCliente.clear();
-            provinciaCliente.clear();
-
-        } catch (Exception e) {
-            mostrarAlerta("Error", "No se pudo añadir el cliente", AlertType.ERROR);
-            mostrarAlerta("Error", "No se pudieron cargar los clientes: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

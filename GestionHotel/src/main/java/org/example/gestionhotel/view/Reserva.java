@@ -31,6 +31,11 @@ public class Reserva {
         this.dni = new SimpleStringProperty(dni);
     }
 
+    public Reserva() {
+        this(null, null, null,
+                null, null, null, null, "");
+    }
+
 
     public StringProperty getDni() {
         return dni;
@@ -110,5 +115,3 @@ public class Reserva {
                 '}';
     }
 }
-
-

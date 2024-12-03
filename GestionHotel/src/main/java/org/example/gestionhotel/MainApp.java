@@ -15,10 +15,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.gestionhotel.controller.ClientEditDialogController;
 import org.example.gestionhotel.controller.ClienteOverviewController;
+import org.example.gestionhotel.controller.ReservaEditDialogController;
 import org.example.gestionhotel.controller.RootLayoutController;
 import org.example.gestionhotel.model.ClienteModelo;
 import org.example.gestionhotel.model.repository.impl.ClienteRepositoryImpl;
 import org.example.gestionhotel.view.Cliente;
+import org.example.gestionhotel.view.Reserva;
 
 import java.io.IOException;
 
@@ -143,42 +145,51 @@ public class MainApp extends Application {
         }
     }
 
-
-    // Método para acceder a la lista de clientes
-    public ObservableList<Cliente> getClienteData() {
-        return clienteData;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-/*   public boolean mostrarDialogoEdicionCliente(Cliente cliente) {
+    public boolean mostrarDialogoEdicionReserva(Reserva reserva) {
         try {
-            // Cargar el archivo FXML
+            // Cargar el archivo FXML de edición
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/org/example/gestionhotel/clientEditDialog.fxml"));
+            loader.setLocation(MainApp.class.getResource("reservaEditDialog.fxml")); // Ruta al FXML
             Parent page = loader.load();
 
-            // Crear el diálogo
+            // Crear la ventana de diálogo
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Editar Cliente");
+            dialogStage.setTitle("Editar Reserva");
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage); // primaryStage es la ventana principal
+            dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
             // Pasar el cliente al controlador
-            ClientEditDialogController controller = loader.getController();
+            ReservaEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setCliente(cliente);
+            controller.setReserva(reserva);
 
-            // Mostrar el diálogo y esperar hasta que el usuario lo cierre
+            // Mostrar y esperar hasta que se cierre
             dialogStage.showAndWait();
 
-            return controller.isOkClicked();
+            return controller.isOkClicked(); // Retorna si se confirmó la edición
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-    }*/
+    }
+
+    // mostrar diálogo para editar reserva
+    // Método para mostrar el diálogo de edición de Reserva
+    public boolean mostrarDialogoEdicionReserva(Reserva reserva) {
+        try {
+            // Cargar el archivo FXML de edición de Reserva// Método para acceder a la lista de clientes
+            FXMLLoader loader = new FXMLLoader();
+            public ObservableList<Cliente> getClienteData () {
+                loader.setLocation(MainApp.class.getResource("reservaEditDialog.fxml"));
+                return clienteData;
+                Parent page = loader.load();
+            }
+
+            // Crear la ventana de diálogopublic static void main(String[] args) {
+            Stage dialogStage = new Stage();
+            launch(args);
+            dialogStage.setTitle("Editar Reserva");
+        }
+    }               dialogStage.initModality(Modality.WINDOW_MODAL);
