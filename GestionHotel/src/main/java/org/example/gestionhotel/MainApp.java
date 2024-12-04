@@ -94,8 +94,8 @@ public class MainApp extends Application {
 
             // Configurar tamaño inicial y mínimo de la ventana
             primaryStage.setTitle("Gestión Hotel");
-            primaryStage.setMinWidth(100); // Ancho mínimo
-            primaryStage.setMinHeight(200); // Alto mínimo
+            primaryStage.setMinWidth(600); // Ancho mínimo
+            primaryStage.setMinHeight(400); // Alto mínimo
 
             // Ajustar dinámicamente el tamaño del rootLayout
             rootLayout.prefWidthProperty().bind(scene.widthProperty());

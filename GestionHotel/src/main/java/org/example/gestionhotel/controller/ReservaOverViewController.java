@@ -67,9 +67,13 @@ public class ReservaOverViewController {
 
     @FXML
     private void initialize() {
+        if (reservaModelo == null) {
+            reservaModelo = new ReservaModelo();  // Crea una nueva instancia
+        }
         // Inicializar el spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1); // Rango de 1 a 10, valor inicial 1
         miSpinner.setValueFactory(valueFactory);
+
         // Inicializar las columnas de la tabla de reservas con las propiedades correspondientes
         columnaIdReserva.setCellValueFactory(cellData -> cellData.getValue().idReservaProperty().asObject());  // Convertir IntegerProperty a ObservableValue<Integer>
         columnaLlegada.setCellValueFactory(cellData -> cellData.getValue().llegadaProperty());
@@ -84,6 +88,10 @@ public class ReservaOverViewController {
 
         // Cargar las reservas al inicializar
         cargarReservas();
+
+        // Inicializar los ChoiceBox
+        tipoHab.getItems().addAll("Individual", "Doble", "Suite");  // Opciones para el tipo de habitación
+        regAlojamiento.getItems().addAll("Desayuno incluido", "Solo alojamiento", "Pensión completa");  // Opciones para el régimen de alojamiento
     }
 
     private void cargarReservas() {

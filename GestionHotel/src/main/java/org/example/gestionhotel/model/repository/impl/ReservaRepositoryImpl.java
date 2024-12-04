@@ -49,7 +49,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                         throw new ExcepcionHotel("Valor no válido en columna regimenAlojamiento");
                     }
                 }
-                String dniCliente = rs.getString("dni");
+                String dniCliente = rs.getString("dniCliente");
                 this.reserva = new ReservaVO(idReserva, llegada, salida, tipoHabitacion, numHabitaciones, fumador, regimenAlojamiento, dniCliente); // poner variables
                 this.reserva.setIdReserva(idReserva);
                 this.reservas.add(this.reserva);
