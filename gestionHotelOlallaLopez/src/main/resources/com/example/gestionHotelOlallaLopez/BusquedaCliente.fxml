@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gestionHotelOlallaLopez.controller.BusquedaClienteController">
+    <children>
+        <TableView fx:id="tablaCliente" layoutX="17.0" layoutY="71.0" prefHeight="66.0" prefWidth="565.0">
+            <columns>
+                <TableColumn fx:id="dniC" prefWidth="91.20001411437988" resizable="false" text="DNI"/>
+                <TableColumn fx:id="nombreC" prefWidth="79.20000457763672" resizable="false" text="Nombre"/>
+                <TableColumn fx:id="apellidosC" prefWidth="131.0" resizable="false" text="Apellidos"/>
+                <TableColumn fx:id="direcionC" prefWidth="68.19998168945312" resizable="false" text="Direción"/>
+                <TableColumn fx:id="localidadC" prefWidth="94.79998779296875" resizable="false" text="Localidad"/>
+                <TableColumn fx:id="provinciaC" prefWidth="97.0" resizable="false" text="Provincia"/>
+            </columns>
+        </TableView>
+        <TextField fx:id="DNIbusq" layoutX="214.0" layoutY="39.0" promptText="DNI"/>
+        <Label layoutX="248.0" layoutY="14.0" text="Introduzca DNI"/>
+        <Button fx:id="lupa" layoutX="392.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleBuscar"
+                styleClass="btnLupa" text="Buscar"/>
+        <TableView fx:id="tablaReserva" layoutY="155.0" prefHeight="207.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="idC" prefWidth="30.0" resizable="false" text="ID"/>
+                <TableColumn fx:id="fechaEntradaC" prefWidth="110.0" text="Fecha entrada"/>
+                <TableColumn fx:id="fechaFinC" prefWidth="72.0" text="Fecha fin"/>
+                <TableColumn fx:id="numHabC" prefWidth="23.0" text="Nº"/>
+                <TableColumn fx:id="tipHabC" prefWidth="143.0" text="Tipo de Habitacion"/>
+                <TableColumn fx:id="fumC" prefWidth="70.0" text="Fumador"/>
+                <TableColumn fx:id="regAlojC" prefWidth="156.0" text="Reg de alojamiento"/>
+            </columns>
+        </TableView>
+        <Button layoutX="505.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCerrar" styleClass="btnClose"
+                text="Cerrar"/>
+        <Button layoutX="28.0" layoutY="368.0" minHeight="25.0" minWidth="33.0" mnemonicParsing="false"
+                onAction="#handleVaciar" prefHeight="25.0" prefWidth="117.0" styleClass="btnPapeleta" text="Vaciar"/>
+    </children>
+</AnchorPane>

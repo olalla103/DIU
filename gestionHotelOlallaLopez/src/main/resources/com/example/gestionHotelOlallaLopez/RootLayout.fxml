@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gestionHotelOlallaLopez.controller.RootLayoutController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Aplicación">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleAplication" text="JavaDoc"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Gestión">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleOcupation" text="Ocupación Total"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleOcupacionHab" text="Ocupacion Habitacion"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Busqueda">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleBusqueda" text="Buscar Cliente por DNI"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Clientes">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleAddCliente" text="Añadir Cliente"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleEditCliente" text="Editar Cliente"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleDeleteCliente" text="Borrar Cliente"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reservas">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleAddReserva" text="Añadir reserva"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleEditReserva" text="Editar reserva"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleDeleteReserva" text="Borrar reserva"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

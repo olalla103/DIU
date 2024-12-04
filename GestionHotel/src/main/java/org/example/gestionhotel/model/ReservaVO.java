@@ -14,12 +14,12 @@ public class ReservaVO {
     Integer numeroHabitaciones;
     Boolean fumador;
     regimenAlojamiento regimenAlojamiento;
-    ClienteVO cliente;
+    ClienteVO clienteVO;
     String dni;
 
     public ReservaVO(Integer idReserva, LocalDate llegada, LocalDate salida, org.example.gestionhotel.model.repository.impl.tipoHabitacion
             tipoHabitacion, Integer numeroHabitaciones, Boolean fumador,
-                     org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento, String dni) {
+                     org.example.gestionhotel.model.repository.impl.regimenAlojamiento regimenAlojamiento, ClienteVO clienteVO) {
         this.idReserva = idReserva;
         this.llegada = llegada;
         this.salida = salida;
@@ -27,15 +27,15 @@ public class ReservaVO {
         this.numeroHabitaciones = numeroHabitaciones;
         this.fumador = fumador;
         this.regimenAlojamiento = regimenAlojamiento;
-        this.dni = dni;
+        this.clienteVO = clienteVO;
     }
 
     public ClienteVO getCliente() {
-        return cliente;
+        return clienteVO;
     }
 
-    public void setCliente(ClienteVO cliente) {
-        this.cliente = cliente;
+    public void setCliente(ClienteVO clienteVO) {
+        this.clienteVO = clienteVO;
     }
 
     public String getDni() {

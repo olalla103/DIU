@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="697c06d0-acfd-43b2-b64f-3a06dc759746" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/MainApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/BusquedaClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/CrearClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/CrearReservaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/OcupacionHabController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/OcupacionTotalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/ReservaOverviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/controller/WebViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/ReservaModelo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/ReservaVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/repository/GestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/repository/impl/ConexionJDBC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/repository/impl/regimenAlojamiento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/modelo/repository/impl/tipoHabitacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/util/ClaseUtilidad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/BusquedaCliente.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/CrearCliente.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/CrearReserva.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/JavaDoc.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/OcupacionHab.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/PorcentajeDeOcupacionTotal.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionhotelfran/ReservaOverView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/controller/ReservaOverViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/controller/RootLayoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/ClienteVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/ExcepcionHotel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/ReservaModelo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/ReservaVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/repository/GestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/repository/impl/ConexionJDBC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gestionHotelOlalla/src/main/java/com/example/gestionhotelolalla/modelo/repository/impl/GestionRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/controller/ReservaOverViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/controller/ReservaOverViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/ReservaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/ReservaModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/ReservaVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/ReservaVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/repository/impl/ReservaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/repository/impl/ReservaRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/repository/impl/regimenAlojamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/repository/impl/regimenAlojamiento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/util/ReservaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GestionHotel/src/main/java/org/example/gestionhotel/model/util/ReservaUtil.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2plKMMj3UzpYhCWIUXY2yhHoQ5H" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/olaya/Downloads/mysql-connector-java-8.0.12.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.15287356&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.gestionhotelfran" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="gestionHotelOlallaLopez" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="gestionHotelOlallaLopez" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="697c06d0-acfd-43b2-b64f-3a06dc759746" name="Changes" comment="" />
+      <created>1733335173435</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733335173435</updated>
+      <workItem from="1733335174510" duration="16447000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/gestionhotelfran/MainApp.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

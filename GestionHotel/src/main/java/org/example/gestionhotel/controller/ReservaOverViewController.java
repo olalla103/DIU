@@ -71,7 +71,7 @@ public class ReservaOverViewController {
             reservaModelo = new ReservaModelo();  // Crea una nueva instancia
         }
         // Inicializar el spinner
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1); // Rango de 1 a 10, valor inicial 1
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1); // Rango de 1 a 10, valo inicial 1
         miSpinner.setValueFactory(valueFactory);
 
         // Inicializar las columnas de la tabla de reservas con las propiedades correspondientes
@@ -90,8 +90,8 @@ public class ReservaOverViewController {
         cargarReservas();
 
         // Inicializar los ChoiceBox
-        tipoHab.getItems().addAll("Individual", "Doble", "Suite");  // Opciones para el tipo de habitación
-        regAlojamiento.getItems().addAll("Desayuno incluido", "Solo alojamiento", "Pensión completa");  // Opciones para el régimen de alojamiento
+        tipoHab.getItems().addAll("Individual", "Doble", "Suite", "Junior");  // Opciones para el tipo de habitación
+        regAlojamiento.getItems().addAll("Desayuno incluido", "Solo alojamiento", "Pensión completa", "Media pensión");  // Opciones para el régimen de alojamiento
     }
 
     private void cargarReservas() {
@@ -140,8 +140,33 @@ public class ReservaOverViewController {
             String regimenAlojamientoSeleccionado = regAlojamiento.getValue();
 
             if (tipoHabitacionSeleccionado != null && regimenAlojamientoSeleccionado != null) {
-                tipoHabitacion tipoHabitacionEnum = tipoHabitacion.valueOf(tipoHabitacionSeleccionado.toUpperCase());
-                regimenAlojamiento regimenAlojamientoEnum = regimenAlojamiento.valueOf(regimenAlojamientoSeleccionado.toUpperCase());
+                if (tipoHabitacionSeleccionado.equals("Desayuno incluido")) {
+                    tipoHabitacionSeleccionado = "ALOJAMIENTOYDESAYUNO";
+                }
+                if (tipoHabitacionSeleccionado.equals("Media pensión")) {
+                    tipoHabitacionSeleccionado = "MEDIAPENSION";
+                }
+                if (tipoHabitacionSeleccionado.equals("Pensión completa")) {
+                    tipoHabitacionSeleccionado = "PENSIONCOMPLETA";
+                }
+                if (tipoHabitacionSeleccionado.equals("Solo alojamiento")) {
+                    tipoHabitacionSeleccionado = "SOLOALOJAMIENTO";
+                }
+                tipoHabitacion tipoHabitacionEnum = tipoHabitacion.valueOf(tipoHabitacionSeleccionado);
+
+                if (regimenAlojamientoSeleccionado.equals("Individual")) {
+                    regimenAlojamientoSeleccionado = "INDIVIDUAL";
+                }
+                if (regimenAlojamientoSeleccionado.equals("Doble")) {
+                    regimenAlojamientoSeleccionado = "DOBLE";
+                }
+                if (regimenAlojamientoSeleccionado.equals("Junior")) {
+                    regimenAlojamientoSeleccionado = "Junior";
+                }
+                if (regimenAlojamientoSeleccionado.equals("Suite")) {
+                    regimenAlojamientoSeleccionado = "SUITE";
+                }
+                regimenAlojamiento regimenAlojamientoEnum = regimenAlojamiento.valueOf(regimenAlojamientoSeleccionado);
 
                 Reserva nuevaReserva = new Reserva(
                         Integer.parseInt(idReserva.getText()),
