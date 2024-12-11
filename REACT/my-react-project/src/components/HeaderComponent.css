@@ -1,0 +1,18 @@
+.Header {
+    background-color: rgb(192, 67, 94);
+    color: white;
+
+    .title {
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header-list {
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+
+
+    }
+}
