@@ -6,11 +6,23 @@ import HeaderComponent from './components/HeaderComponent'
 import ButtonComponent from './components/ButtonComponent'
 
 function App() {
+  const sayHello = () => {
+    console.log("Holiwis");
+  }
+
+  const handleChange = () => {
+
+  }
+
   return (
     <>
       <HeaderComponent></HeaderComponent>
       <main className="main-content">
-        <h2>Hola a todos</h2>
+        <h2 onClick={sayHello}>Hola a todos</h2>
+        <input type="text" onChange={ } />
+
+        <br />
+        <br />
         <ButtonComponent></ButtonComponent>
       </main>
     </>
