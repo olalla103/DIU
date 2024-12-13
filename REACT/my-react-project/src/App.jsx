@@ -10,7 +10,7 @@ function App() {
     console.log("Holiwis");
   }
 
-  const handleChange = () => {
+  const handleChange = (e) => {
 
   }
 
