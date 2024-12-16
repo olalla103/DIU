@@ -18,7 +18,6 @@ function HeaderComponent(props) {
                     <li>
                         <a href="#" className="link">Contact</a>
                     </li>
-
                 </ul>
             </nav>
         </header>

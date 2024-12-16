@@ -11,6 +11,7 @@ function App() {
   }
 
   const handleChange = (e) => {
+    console.log(e);
 
   }
 
@@ -19,7 +20,7 @@ function App() {
       <HeaderComponent></HeaderComponent>
       <main className="main-content">
         <h2 onClick={sayHello}>Hola a todos</h2>
-        <input type="text" onChange={ } />
+        <input type="text" onChange={handleChange} />
 
         <br />
         <br />
