@@ -1,13 +1,25 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.container-counter {
+  display: grid;
+  grid-template-columns: auto 500px auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". counter ."
+    ". buttons .";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.counter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  grid-area: counter;
+  justify-self: center;
+  font-size: 56px;
+}
+
+.buttons {
+  grid-area: buttons;
+  justify-self: center;
+}
+
+.incButton {
+  background-color: red;
 }

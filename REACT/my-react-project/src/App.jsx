@@ -7,8 +7,6 @@ import ButtonComponent from './components/ButtonComponent'
 
 function App() {
 
-  // let number = 0;
-
   const [number, setNumber] = useState(0);
   const [myValue, setMyValue] = useState("");
   let myPlaceholder = "Escribe aquí";
@@ -29,7 +27,6 @@ function App() {
   }
 
   const addOne = () => {
-    //number++;
     setNumber(number + 1);
     console.log(number);
   }
