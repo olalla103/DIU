@@ -1,0 +1,10 @@
+.buttons {
+    grid-area: buttons;
+    justify-self: center;
+    margin: 4%;
+    padding: 4%;
+}
+
+.incButton {
+    background-color: rgb(226, 98, 152);
+}
