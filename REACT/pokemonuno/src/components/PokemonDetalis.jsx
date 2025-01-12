@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './PokemonDetalis.css';
+import './PokemonDetails.css';
 
 function PokemonDetails(props) {
     const { pokemon } = props;
