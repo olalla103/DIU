@@ -1,63 +1,66 @@
 import './App.css'
-import './components/Funcionalidadcalculadora'
 import Funcionalidadcalculadora from './components/Funcionalidadcalculadora'
-//import { add, subtract, multiply, divide } from 'mathjs';
-//import { useState } from 'react';
-
+import { evaluate } from 'mathjs';
+import { useState } from 'react';
 
 function App() {
 
-  // const [numero, setNumero] = useState(0);
+  const [frase, setFrase] = useState("0");
+  const [isResult, setIsResult] = useState(false);
 
-  /* const handleSumar = (buttonValue) => {
-     setNumero(add(numero, buttonValue));
- 
-   }
- 
-   const handleRestar = (buttonValue) => {
-     setNumero(subtract(numero, buttonValue));
- 
-   }
- 
-   const handleDividir = (buttonValue) => {
-     setNumero(divide(numero, buttonValue));
- 
-   }
- 
-   const handleMultiplicar = (buttonValue) => {
-     setNumero(multiply(numero, buttonValue));
-   }
- 
-   const handlePosNeg = () => {
- 
-   }
- 
-   const handleBorrar = () => {
-     setNumero(0);
-   }*/
+  const handleOperacion = () => {
+    const resultado = evaluate(frase);
+    setFrase(resultado.toString());
+    setIsResult(true);
+  }
 
+  const handlePosNeg = () => {
+    if (frase !== "0") {
+      if (parseFloat(frase) > 0) {
+        setFrase((-Math.abs(parseFloat(frase))).toString());
+      } else {
+        setFrase((Math.abs(parseFloat(frase))).toString());
+      }
+    }
+  }
+
+  const handleBorrar = () => {
+    setFrase("0");
+    setIsResult(false);
+  }
+
+  const handleButtonClick = (value) => {
+    if (isResult && !isNaN(value)) {
+      setFrase(value);
+      setIsResult(false);
+    } else {
+      setFrase(prevFrase => prevFrase === "0" ? value : prevFrase + value);
+    }
+  }
+
+  const handleOperatorClick = (operator) => {
+    if (isResult) {
+      setIsResult(false);
+      setFrase(prevFrase => prevFrase + operator);
+    } else {
+      setFrase(prevFrase => prevFrase + operator);
+    }
+  }
 
   return (
     <>
       <div>
-        {/*Aquí voy a meter el componente*/}
         <Funcionalidadcalculadora
-          /*numero={numero}
-          handleSumar={handleSumar} handleRestar={handleRestar}
-          handleDividir={handleDividir} handleMultiplicar={handleMultiplicar}
+          frase={frase}
+          handleOperacion={handleOperacion}
           handlePosNeg={handlePosNeg}
-          handleBorrar={handleBorrar}*/></Funcionalidadcalculadora>
-      </div>
-
-      <div>
-        {/*Es este es el div de los botones*/}
-        <div>
-
-        </div>
-
+          handleBorrar={handleBorrar}
+          handleButtonClick={handleButtonClick}
+          handleOperatorClick={handleOperatorClick}>
+        </Funcionalidadcalculadora>
       </div>
     </>
   )
 }
 
-export default App
+export default App;

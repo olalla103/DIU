@@ -2,13 +2,20 @@
     display: flex;
     margin-top: 20px;
     width: 100%;
-    max-width: 550px;
+    max-width: 800px;
+    /* Limita el ancho máximo */
+    height: auto;
+    aspect-ratio: 4 / 3;
+    /* Relación de aspecto más ancha */
+    background-color: #9E122C;
     flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .tablaCalculadora {
     width: 100%;
-    background-color: rgb(219, 132, 161);
+    background-color: #9E122C;
     border-collapse: collapse;
     border: none;
     border-radius: 10px;
@@ -19,8 +26,7 @@
     width: 100%;
     padding: 18px;
     font-size: 1.5rem;
-    background-color: #f0f0f0;
-    border: 1px solid rgb(185, 185, 185);
+    background-color: #fcecdf;
     color: black;
     border-radius: 5px;
     cursor: pointer;
@@ -30,29 +36,101 @@
 }
 
 .tablaCalculadora button:hover {
-    background-color: #ddd;
-}
-
-.tablaCalculadora button:active {
-    background-color: #bbb;
+    background-color: #d2c4b8;
 }
 
 .tablaCalculadora button.botonAccion {
-    background-color: rgb(255, 166, 0);
+    background-color: #f3c474;
     color: white;
 }
 
-.tablaCalculadora button.botonAccion:active {
-    background-color: rgb(255, 140, 0);
+.tablaCalculadora button.botonAccion:hover {
+    background-color: #fbcb77;
+}
+
+.tablaCalculadora button.botonPunto {
+    background-color: #ee6a43;
+    color: white;
+}
+
+.tablaCalculadora button.botonPunto:hover {
+    background-color: #ee6a43;
 }
 
 .varia {
     text-align: right;
     font-size: 1.8rem;
     color: white;
-    background-color: pink;
+    background-color: #F99D90;
     padding: 8px;
     border-radius: 5px;
     margin-bottom: 10px;
     height: 50px;
+}
+
+/* Media Queries para hacer el diseño responsivo */
+@media (max-width: 768px) {
+    .contenedorCalculadora {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .tablaCalculadora {
+        padding: 20px;
+    }
+
+    .tablaCalculadora button {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+
+    .varia {
+        font-size: 1.5rem;
+        padding: 6px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedorCalculadora {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    .tablaCalculadora {
+        padding: 10px;
+    }
+
+    .tablaCalculadora button {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .varia {
+        font-size: 1.2rem;
+        padding: 4px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    .contenedorCalculadora {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    .tablaCalculadora {
+        padding: 5px;
+    }
+
+    .tablaCalculadora button {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .varia {
+        font-size: 1rem;
+        padding: 2px;
+        height: 25px;
+    }
 }
