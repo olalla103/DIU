@@ -33,6 +33,9 @@ function App() {
     if (isResult && !isNaN(value)) {
       setFrase(value);
       setIsResult(false);
+    } else if (isResult && value === '.') {
+      setFrase(prevFrase => prevFrase + value);
+      setIsResult(false);
     } else {
       setFrase(prevFrase => prevFrase === "0" ? value : prevFrase + value);
     }
