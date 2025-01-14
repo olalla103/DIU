@@ -1,45 +1,46 @@
-import './Funcionalidadcalculadora.css'
+import './Funcionalidadcalculadora.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Funcionalidadcalculadora(props) {
-
+function Funcionalidadcalculadora() {
     return (
         <div className="contenedorCalculadora">
-            <table className="tablaCalculadora">
-                <tbody>
-                    <tr>
-                        <td colSpan={5} className="varia">{props.numero}</td>
-                    </tr>
-                    <tr>
-                        <td><button>AC</button></td>
-                        <td><button>+/-</button></td>
-                        <td><button>%</button></td>
-                        <td><button className="botonAccion">÷</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>7</button></td>
-                        <td><button>8</button></td>
-                        <td><button>9</button></td>
-                        <td><button className="botonAccion">X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>4</button></td>
-                        <td><button>5</button></td>
-                        <td><button>6</button></td>
-                        <td><button className="botonAccion">-</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>1</button></td>
-                        <td><button>2</button></td>
-                        <td><button>3</button></td>
-                        <td><button className="botonAccion">+</button></td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2}><button className="botonAncho">0</button></td>
-                        <td><button>.</button></td>
-                        <td><button className="botonAccion" onClick={props.numero}>=</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <Container fluid className="tablaCalculadora">
+                <Row>
+                    <Col className="varia" xs={12}>
+                        0
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={3}><button>AC</button></Col>
+                    <Col xs={3}><button>+/-</button></Col>
+                    <Col xs={3}><button>%</button></Col>
+                    <Col xs={3}><button className="botonAccion">÷</button></Col>
+                </Row>
+                <Row>
+                    <Col xs={3}><button>7</button></Col>
+                    <Col xs={3}><button>8</button></Col>
+                    <Col xs={3}><button>9</button></Col>
+                    <Col xs={3}><button className="botonAccion">X</button></Col>
+                </Row>
+                <Row>
+                    <Col xs={3}><button>4</button></Col>
+                    <Col xs={3}><button>5</button></Col>
+                    <Col xs={3}><button>6</button></Col>
+                    <Col xs={3}><button className="botonAccion">-</button></Col>
+                </Row>
+                <Row>
+                    <Col xs={3}><button>1</button></Col>
+                    <Col xs={3}><button>2</button></Col>
+                    <Col xs={3}><button>3</button></Col>
+                    <Col xs={3}><button className="botonAccion">+</button></Col>
+                </Row>
+                <Row>
+                    <Col xs={6}><button className="botonAncho">0</button></Col>
+                    <Col xs={3}><button>.</button></Col>
+                    <Col xs={3}><button className="botonAccion">=</button></Col>
+                </Row>
+            </Container>
         </div>
     );
 }

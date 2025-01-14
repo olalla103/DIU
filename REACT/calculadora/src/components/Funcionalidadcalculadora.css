@@ -1,59 +1,58 @@
 .contenedorCalculadora {
     display: flex;
-    justify-content: center;
     margin-top: 20px;
-    height: 20vh;
-    width: 60vw;
+    width: 100%;
+    max-width: 550px;
+    flex-direction: column;
 }
 
 .tablaCalculadora {
+    width: 100%;
+    background-color: rgb(219, 132, 161);
     border-collapse: collapse;
-    width: 500vw;
-}
-
-
-.tablaCalculadora td {
-    padding: 0;
-    /* Sin espacio extra alrededor de los botones */
+    border: none;
+    border-radius: 10px;
+    padding: 35px;
 }
 
 .tablaCalculadora button {
     width: 100%;
-    /* El botón ocupa el ancho completo de la celda */
-    padding: 20px;
-    /* Espaciado interno para que los botones sean grandes */
-    font-size: 1.7rem;
-    /* Tamaño del texto */
+    padding: 18px;
+    font-size: 1.5rem;
     background-color: #f0f0f0;
-    /* Borde del botón */
-    cursor: pointer;
-    /*color negro del texto*/
+    border: 1px solid rgb(185, 185, 185);
     color: black;
-    border-radius: 0%;
-    border-color: rgb(185, 185, 185);
-
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin-bottom: 6px;
 }
 
-/* Botones de acción con color naranja */
-.tablaCalculadora button.botonAccion {
-    background-color: rgb(255, 166, 0);
-    /* Color de fondo naranja */
-    color: white;
-    /* Texto blanco */
+.tablaCalculadora button:hover {
+    background-color: #ddd;
 }
 
 .tablaCalculadora button:active {
-    background-color: #ddd;
-    /* Color al hacer clic */
+    background-color: #bbb;
 }
 
-.tablaCalculadora .wide {
-    width: 100%;
-    /* Asegura que ocupe toda la celda combinada */
+.tablaCalculadora button.botonAccion {
+    background-color: rgb(255, 166, 0);
+    color: white;
+}
+
+.tablaCalculadora button.botonAccion:active {
+    background-color: rgb(255, 140, 0);
 }
 
 .varia {
     text-align: right;
-    width: 100%;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    color: white;
+    background-color: pink;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 50px;
 }
