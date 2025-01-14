@@ -1,65 +1,59 @@
-/* Contenedor principal */
-.calculator-container {
+.contenedorCalculadora {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #d3d3d3;
-    /* Fondo de la calculadora */
+    margin-top: 20px;
+    height: 20vh;
+    width: 60vw;
 }
 
-/* Área de la pantalla */
-.display {
-    background-color: #737373;
-    color: white;
-    font-size: 2.5rem;
-    text-align: right;
+.tablaCalculadora {
+    border-collapse: collapse;
+    width: 500vw;
+}
+
+
+.tablaCalculadora td {
+    padding: 0;
+    /* Sin espacio extra alrededor de los botones */
+}
+
+.tablaCalculadora button {
+    width: 100%;
+    /* El botón ocupa el ancho completo de la celda */
     padding: 20px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    width: 320px;
-    /* Ajusta el tamaño de la calculadora */
-    box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Configuración de la cuadrícula */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* Cuatro columnas iguales */
-    gap: 100px;
-    /* Espaciado entre botones */
-    width: 320px;
-    /* Tamaño de la calculadora */
-}
-
-/* Botones generales */
-.grid button {
-    background-color: white;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    padding: 20px;
+    /* Espaciado interno para que los botones sean grandes */
+    font-size: 1.7rem;
+    /* Tamaño del texto */
+    background-color: #f0f0f0;
+    /* Borde del botón */
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    /*color negro del texto*/
+    color: black;
+    border-radius: 0%;
+    border-color: rgb(185, 185, 185);
+
 }
 
-/* Botones destacados para operaciones */
-.grid .operation {
-    background-color: orange;
+/* Botones de acción con color naranja */
+.tablaCalculadora button.botonAccion {
+    background-color: rgb(255, 166, 0);
+    /* Color de fondo naranja */
     color: white;
+    /* Texto blanco */
 }
 
-/* Botón que ocupa dos columnas */
-.grid .span-two {
-    grid-column: span 2;
-    /* Ocupa dos columnas */
+.tablaCalculadora button:active {
+    background-color: #ddd;
+    /* Color al hacer clic */
 }
 
-/* Estilo al presionar un botón */
-.grid button:active {
-    background-color: #cccccc;
+.tablaCalculadora .wide {
+    width: 100%;
+    /* Asegura que ocupe toda la celda combinada */
+}
+
+.varia {
+    text-align: right;
+    width: 100%;
+    font-size: 1.7rem;
 }

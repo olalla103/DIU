@@ -4,6 +4,34 @@ import Funcionalidadcalculadora from './components/Funcionalidadcalculadora'
 
 function App() {
 
+  const [numero, setNumero] = useState(0);
+
+  const handleSumar(buttonValue) => {
+    setNumero(numero + buttonValue);
+
+  }
+
+  const handleRestar() => {
+
+  }
+
+  const handleDividir() => {
+
+  }
+
+  const handleMultiplicar() => {
+
+  }
+
+  const handlePosNeg() => {
+
+  }
+
+  const handleBorrar() => {
+    setNumero(0);
+  }
+
+
   return (
     <>
       <div>
