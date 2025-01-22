@@ -2,3 +2,26 @@
     align-items: center;
     padding: 10px;
 }
+
+.formulario {
+    width: 80vw;
+    padding-left: 3%;
+}
+
+.botonBusqueda {
+    background-color: rgb(255, 145, 164);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font: 16px Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+.botonBusqueda:hover {
+    background-color: rgb(253, 124, 146);
+}
+
+.botonBusqueda:active {
+    background-color: rgb(241, 238, 238) !important;
+}

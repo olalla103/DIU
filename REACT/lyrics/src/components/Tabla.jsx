@@ -1,28 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
-function Tabla() {
-
+function Tabla(props) {
     return (
         <div>
-            <h2 className='text-center'>Canciones</h2>
-            <div className="container">
-                <div className="row border border-dark">
-                    <div className="col border border-dark">Nombre Canción</div>
-                    <div className="col border border-dark">Artista</div>
-                    <div className='col border border-dark'>Letra</div>
-                </div>
-                <div className="row border border-dark">
-                    <div className="col border border-dark">Canción 1</div>
-                    <div className="col border border-dark">Artista 1</div>
-                    <div className="col border border-dark">Letra 1</div>
-                </div>
-                <div className="row border border-dark">
-                    <div className="col border border-dark">Canción 2</div>
-                    <div className="col border border-dark">Artista 2</div>
-                    <div className="col border border-dark">Letra 2</div>
-                </div>
-            </div>
+            <h2 className="text-center">Canciones</h2>
+            <br />
+            <Table responsive striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <td>Nombre del Artista</td>
+                        <td>Nombre de la Canción</td>
+                        <td>Letra</td>
+                    </tr>
+                </thead>
+                <tbody className='bonito-tabla'>
+                    {props.songs.map((song, index) => (
+                        <tr key={index}>
+                            <td>{song.artist}</td> {/* Muestra el artista */}
+                            <td>{song.song}</td>   {/* Muestra la canción */}
+                            <td>{song.lyrics}</td> {/* Muestra la letra */}
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
         </div>
     );
 }
