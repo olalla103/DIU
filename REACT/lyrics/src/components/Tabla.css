@@ -1,35 +1,41 @@
 .contenedor {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
     width: 100%;
-    border: 1px solid #ff9aa2;
-    /* Borde rosa pastel */
+    padding: 2rem;
+    box-sizing: border-box;
     background-color: #fff0f5;
     /* Fondo rosa claro */
+    overflow: auto;
 }
 
 .bonito-tabla {
+    width: 100%;
+    max-width: 100%;
+    /* Asegura que no exceda el contenedor */
     background-color: white;
     border: 1px solid #ff9aa2;
-    /* Borde rosa pastel */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    /* Permite el desplazamiento horizontal si es necesario */
 }
 
 .bonito-tabla th,
 .bonito-tabla td {
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     border: 1px solid #ffccd5;
-    /* Borde rosa más claro */
+    word-wrap: break-word;
+    /* Ajusta el texto para evitar que desborde */
 }
 
 .bonito-tabla th {
     background-color: #ffb6c1;
     /* Fondo rosa claro */
     color: white;
+    font-weight: bold;
 }
 
 .bonito-tabla tr:nth-child(even) {

@@ -17,7 +17,7 @@ function Formulario(props) {
 
     return (
         <div className="formulario">
-            <h1>Formulario</h1>
+            <h1>Buscador de canciones</h1>
             <br />
             <FormGroup>
                 <Form onSubmit={onSubmit}>

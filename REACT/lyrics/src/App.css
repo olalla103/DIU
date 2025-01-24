@@ -1,8 +1,26 @@
 #root {
-  max-width: 1280px;
-  padding: 10rem;
-  justify-content: center;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   background-color: #fff0f5;
-  /* Fondo rosa claro */
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+
+.contenedor-ppal {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: auto;
+  /* Permite el desplazamiento cuando el contenido es grande */
+  max-height: 90vh;
+  /* Limita la altura máxima del contenedor */
 }

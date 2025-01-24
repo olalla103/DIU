@@ -30,8 +30,6 @@ function App() {
 
   return (
     <div>
-      <h1 className='text-center'>Buscador de canciones</h1>
-      <br />
       <Formulario handleSubmit={handleSubmit} />
       <br /><br />
       <Tabla songs={songs} />

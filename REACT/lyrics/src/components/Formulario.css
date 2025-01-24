@@ -1,37 +1,49 @@
 .botonBusqueda {
+    display: inline-flex;
     align-items: center;
-    padding: 10px;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
     background-color: #ffb6c1;
     /* Rosa claro */
     border: none;
-    border-radius: 10px;
+    border-radius: 25px;
     color: white;
-    font: 16px Arial, sans-serif;
+    font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
 .botonBusqueda:hover {
     background-color: #ff9aa2;
     /* Rosa pastel */
+    transform: translateY(-2px);
 }
 
 .botonBusqueda:active {
     background-color: #ffccd5;
     /* Rosa más claro */
+    transform: translateY(0);
 }
 
 .formulario {
-    width: 80vw;
-    padding-left: 3%;
+    width: 100%;
+    max-width: 800px;
+    /* Define un ancho máximo */
+    margin: 0 auto;
+    /* Centra el formulario */
     background-color: #ffe4e1;
-    /* Fondo rosa claro */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
+
 
 .formulario h1 {
     color: #ff6f91;
     /* Título rosa */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
