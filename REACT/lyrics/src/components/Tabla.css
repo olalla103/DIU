@@ -1,0 +1,44 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: #fff0f5;
+    /* Fondo rosa claro */
+    overflow: auto;
+}
+
+.bonito-tabla {
+    width: 100%;
+    max-width: 100%;
+    /* Asegura que no exceda el contenedor */
+    background-color: white;
+    border: 1px solid #ff9aa2;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    /* Permite el desplazamiento horizontal si es necesario */
+}
+
+.bonito-tabla th,
+.bonito-tabla td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ffccd5;
+    word-wrap: break-word;
+    /* Ajusta el texto para evitar que desborde */
+}
+
+.bonito-tabla th {
+    background-color: #ffb6c1;
+    /* Fondo rosa claro */
+    color: white;
+    font-weight: bold;
+}
+
+.bonito-tabla tr:nth-child(even) {
+    background-color: #ffe4e1;
+    /* Fondo rosa claro para filas pares */
+}
