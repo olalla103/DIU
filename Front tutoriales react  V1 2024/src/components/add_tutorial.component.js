@@ -1,8 +1,7 @@
-import React from 'react'
-import { Button, Col, Row, Form, FormGroup } from 'react-bootstrap';
+import React from "react";
+import { Button, Col, Row, Form, FormGroup } from "react-bootstrap";
 
 function AddTutorialComponent(props) {
-
   const [titulo, setTitulo] = React.useState(""); // Nombre del tutorial
   const [descripcion, setDescripcion] = React.useState(""); // Descripción del tutorial
   const [publicado, setPublicado] = React.useState(false); // Estado de publicación del tutorial
@@ -14,7 +13,7 @@ function AddTutorialComponent(props) {
     setTitulo("");
     setDescripcion("");
     setPublicado(false);
-  }
+  };
 
   return (
     <div>
@@ -27,9 +26,9 @@ function AddTutorialComponent(props) {
             <Col sm={5}>
               <Form.Group>
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control 
-                  type="text" 
-                  placeholder="Escriba el nombre" 
+                <Form.Control
+                  type="text"
+                  placeholder="Escriba el nombre"
                   value={titulo}
                   onChange={(e) => setTitulo(e.target.value)}
                 />
@@ -41,9 +40,9 @@ function AddTutorialComponent(props) {
             <Col sm={8}>
               <Form.Group>
                 <Form.Label>Descripción</Form.Label>
-                <Form.Control 
-                  type="text" 
-                  placeholder="Escriba una pequeña descripción" 
+                <Form.Control
+                  type="text"
+                  placeholder="Escriba una pequeña descripción"
                   value={descripcion}
                   onChange={(e) => setDescripcion(e.target.value)}
                 />
@@ -55,7 +54,7 @@ function AddTutorialComponent(props) {
             <Col sm={1}>
               <Form.Group>
                 <Form.Label>Publicado</Form.Label>
-                <Form.Control 
+                <Form.Control
                   type="checkbox"
                   checked={publicado}
                   onChange={(e) => setPublicado(e.target.checked)}
@@ -66,7 +65,9 @@ function AddTutorialComponent(props) {
           <br />
           <Row>
             <Col sm={5}>
-              <Button variant="primary" type="submit">Enviar</Button>
+              <Button variant="primary" type="submit">
+                Enviar
+              </Button>
             </Col>
           </Row>
         </Form>
@@ -75,4 +76,4 @@ function AddTutorialComponent(props) {
   );
 }
 
-export default AddTutorialComponent
+export default AddTutorialComponent;
