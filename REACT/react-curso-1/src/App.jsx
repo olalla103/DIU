@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import HeaderComponent from "./components/HeaderComponent";
+import ButtonComponent from "./components/ButtonComponent";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Esto lo he creado yo, suma la variable number, que la he hecho reactiva
+  // porque también hay variables estáticas
+  const [number, setNumber] = useState(0);
+
+  const suma = () => {
+    setNumber(number + 1);
+  };
+
+  const sayHello = () => {
+    console.log("Hola a todos");
+  };
+
+  const handleChange = (e) => {
+    console.log(e);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <HeaderComponent />
+      <main className="main-content">
+        <h2 onClick={sayHello}>Hola a todos</h2>
+
+        <h2>Number: {number}</h2>
+
+        <input type="text" onChange={handleChange} />
+        <br />
+        <br />
+        <ButtonComponent suma={suma} />
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
