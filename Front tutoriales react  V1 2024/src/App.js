@@ -7,7 +7,7 @@ import TutorialDataService from "./services/tutorial.service";
 // Componente para añadir un tutorial
 import AddTutorial from "./components/add_tutorial.component";
 //Componente para editar tutorial
-//import Tutorial from "./components/tutorial.component";
+import Tutorial from "./components/edit_tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/tutorials"} className="nav-link">
+              <Link to={"/edit"} className="nav-link">
                 Tutorials
               </Link>
             </li>
@@ -59,7 +59,7 @@ class App extends Component {
                 <AddTutorial {...props} addTutorial={this.addTutorial} />
               )}
             />
-            {/* <Route path="/tutorials/:id" component={Tutorial} /> */}
+            { <Route path="/tutorials/:id" component={Tutorial} /> }
           </Switch>
         </div>
       </div>
