@@ -6,8 +6,8 @@ import TutorialDataService from "./services/tutorial.service";
 
 // Componente para añadir un tutorial
 import AddTutorial from "./components/add_tutorial.component";
-//Componente para editar tutorial
-import Tutorial from "./components/edit_tutorial.component";
+// Componente para editar tutorial
+import EditTutorial from "./components/edit_tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 
 class App extends Component {
@@ -26,6 +26,7 @@ class App extends Component {
         console.log(e);
       });
   };
+
   render() {
     return (
       <div>
@@ -49,17 +50,21 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            {/*El en switch se renderizarán todas los componentes cuta URL coicidan con la activa*/}
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-            {/*Componenente para añadir tutorial */}
             <Route
               exact
-              path={["/", "/add"]}
+              path="/add"
               render={(props) => (
                 <AddTutorial {...props} addTutorial={this.addTutorial} />
               )}
             />
-            { <Route path="/tutorials/:id" component={Tutorial} /> }
+            <Route
+              path="/tutorials/:id"
+              render={(props) => {
+                const id = props.match.params.id;
+                return <EditTutorial {...props} id={id} />;
+              }}
+            />
           </Switch>
         </div>
       </div>

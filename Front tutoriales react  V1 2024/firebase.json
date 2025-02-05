@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "proyectosreact-4bb9a-4ca48",
     "public": "build",
     "ignore": [
       "firebase.json",
