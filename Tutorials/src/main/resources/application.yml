@@ -9,4 +9,4 @@ data:
   mongodb:
     database: tutorialsservice_db
     port: 27017
-    host: mongo_DB
+    host: mongo_DBc
