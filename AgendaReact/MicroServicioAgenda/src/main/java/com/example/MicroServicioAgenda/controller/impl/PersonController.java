@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde React (Vite)
 public class PersonController implements PersonAPI {
     @Autowired
     private PersonService personService;
