@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -22,4 +23,5 @@ public class PersonDto {
     private Integer codigoPostal;
     private String ciudad;
     private LocalDate cumpleanios;
+    private List<String> tutorialsIds; // Lista de IDs de Tutorials
 }

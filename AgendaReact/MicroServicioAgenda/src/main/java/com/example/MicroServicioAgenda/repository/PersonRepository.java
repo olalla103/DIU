@@ -10,7 +10,16 @@ public interface PersonRepository extends MongoRepository<PersonDto, String> {
 
     List<PersonDto> findAll();
 
-    Optional<PersonDto> getPersonByDNI();
+    Optional<PersonDto> getPersonByDNI(String DNI);
 
+    List<PersonDto> findByNombreContaining(String nombre);
+
+//    PersonDto addPerson(PersonDto person);
+//
+//    PersonDto updatePerson(PersonDto person);
+//
+//    void deletePerson(String DNI);
+//
+//    void deleteAllPerson();
 
 }

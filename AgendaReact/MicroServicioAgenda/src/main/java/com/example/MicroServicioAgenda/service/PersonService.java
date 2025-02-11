@@ -20,4 +20,5 @@ public interface PersonService {
     ResponseEntity deletePerson(String DNI);
 
     ResponseEntity deleteAllPerson();
+
 }
