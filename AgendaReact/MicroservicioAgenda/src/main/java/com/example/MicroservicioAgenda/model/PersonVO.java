@@ -1,19 +1,17 @@
-package com.example.MicroservicioAgenda.model;
+package com.example.MicroServicioAgenda.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
 @Setter
-@Document
-
-@Builder(builderClassName = "Builder", toBuilder = true)
+@Builder
 public class PersonVO {
-    @Id
     private String DNI;
     private String nombre;
     private String apellidos;
@@ -21,6 +19,5 @@ public class PersonVO {
     private Integer codigoPostal;
     private String ciudad;
     private LocalDate cumpleanios;
-
-
+    private List<String> tutorialsIds; // Lista de IDs de Tutorials en VO
 }

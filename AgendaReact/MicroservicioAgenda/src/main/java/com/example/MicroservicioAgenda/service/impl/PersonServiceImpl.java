@@ -1,10 +1,11 @@
-package com.example.MicroservicioAgenda.service.impl;
+package com.example.MicroServicioAgenda.service.impl;
 
-import com.example.MicroservicioAgenda.model.PersonVO;
-import com.example.MicroservicioAgenda.model.PersonDto;
-import com.example.MicroservicioAgenda.repository.PersonRepository;
-import com.example.MicroservicioAgenda.service.PersonService;
-import com.example.MicroservicioAgenda.util.PersonMapper;
+import com.example.MicroServicioAgenda.model.PersonDto;
+import com.example.MicroServicioAgenda.model.PersonVO;
+import com.example.MicroServicioAgenda.repository.PersonRepository;
+import com.example.MicroServicioAgenda.service.PersonService;
+
+import com.example.MicroServicioAgenda.util.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,43 +19,74 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;
 
+    // BUSCAR A TODAS LAS PERSONAS
     @Override
     public List<PersonVO> getAllPerson() {
-        List<PersonDto> personDtoList = personRepository.findAll();
+        return personRepository.findAll().stream()
+                .map(PersonMapper::personMapperEntityToDto)
+                .collect(Collectors.toList());
+    }
+
+    // BUSCAR A UNA PERSONA POR SU DNI
+    @Override
+    public Optional<PersonVO> getPersonByDNI(String DNI) {
+        Optional<PersonDto> personDtoOptional = personRepository.getPersonByDNI(DNI);
+        return personDtoOptional.map(PersonMapper::personMapperEntityToDto);
+    }
+
+
+    // BUSCAR A PERSONA POR SU NOMBRE
+    @Override
+    public List<PersonVO> findByNombreContaining(String nombre) {
+        List<PersonDto> personDtoList = personRepository.findByNombreContaining(nombre);
         return personDtoList.stream()
                 .map(PersonMapper::personMapperEntityToDto)
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public Optional<PersonVO> getPersonByDNI(String DNI) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<PersonVO> findByNombreContaining(String nombre) {
-        return List.of();
-    }
-
+    // AÑADIR A UNA PERSONA
     @Override
     public PersonVO addPerson(PersonVO personVO) {
         PersonDto personDto = PersonMapper.personMapperDtoToEntity(personVO);
-        PersonDto addedPersonEntity = personRepository.save(personDto);
-        return PersonMapper.personMapperEntityToDto(addedPersonEntity);
+        PersonDto savedPerson = personRepository.save(personDto);
+        return PersonMapper.personMapperEntityToDto(savedPerson);
+    }
+
+    // ACTUALIZAR A UNA PERSONA
+    @Override
+    public PersonVO updatePerson(PersonVO personVO) {
+        Optional<PersonDto> existingPersonOptional = personRepository.findById(personVO.getDNI());
+        if (existingPersonOptional.isPresent()) {
+            PersonDto existingPerson = getPersonDto(personVO, existingPersonOptional);
+            PersonDto updatedPerson = personRepository.save(existingPerson);
+            return PersonMapper.personMapperEntityToDto(updatedPerson);
+        } else {
+            return null; // or throw an exception if preferred
+        }
+    }
+
+
+    private static PersonDto getPersonDto(PersonVO personVO, Optional<PersonDto> existingPersonOptional) {
+        PersonDto existingPerson = existingPersonOptional.get();
+        existingPerson.setDNI(personVO.getDNI());
+        existingPerson.setNombre(personVO.getNombre());
+        existingPerson.setApellidos(personVO.getApellidos());
+        existingPerson.setCalle(personVO.getCalle());
+        existingPerson.setCodigoPostal(personVO.getCodigoPostal());
+        existingPerson.setCiudad(personVO.getCiudad());
+        existingPerson.setCumpleanios(personVO.getCumpleanios());
+        return existingPerson;
     }
 
     @Override
-    public PersonVO updatePerson(PersonVO person) {
-        return null;
+    public ResponseEntity<Void> deletePerson(String DNI) {
+        personRepository.deleteById(DNI);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
-    public ResponseEntity deletePerson(String DNI) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity deleteAllPerson() {
-        return null;
+    public ResponseEntity<Void> deleteAllPerson() {
+        personRepository.deleteAll();
+        return ResponseEntity.noContent().build();
     }
 }

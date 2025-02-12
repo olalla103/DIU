@@ -1,19 +1,25 @@
-package com.example.MicroservicioAgenda.repository;
+package com.example.MicroServicioAgenda.repository;
 
-import com.example.MicroservicioAgenda.model.PersonDto;
+import com.example.MicroServicioAgenda.model.PersonDto;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository extends MongoRepository<PersonDto, String> {
-    List<PersonDto> findByPublished();
 
     List<PersonDto> findAll();
 
-    Optional<PersonDto> getPersonByDNI();
+    Optional<PersonDto> getPersonByDNI(String DNI);
 
-    List<PersonDto> findByTitleContaining(String title);
+    List<PersonDto> findByNombreContaining(String nombre);
 
-    List<PersonDto> findByPublished(Boolean published);
+//    PersonDto addPerson(PersonDto person);
+//
+//    PersonDto updatePerson(PersonDto person);
+//
+//    void deletePerson(String DNI);
+//
+//    void deleteAllPerson();
+
 }

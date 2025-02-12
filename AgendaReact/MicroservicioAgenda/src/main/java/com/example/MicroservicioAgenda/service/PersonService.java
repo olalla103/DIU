@@ -1,6 +1,6 @@
-package com.example.MicroservicioAgenda.service;
+package com.example.MicroServicioAgenda.service;
 
-import com.example.MicroservicioAgenda.model.PersonVO;
+import com.example.MicroServicioAgenda.model.PersonVO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -20,4 +20,5 @@ public interface PersonService {
     ResponseEntity deletePerson(String DNI);
 
     ResponseEntity deleteAllPerson();
+
 }

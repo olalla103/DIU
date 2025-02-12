@@ -1,7 +1,7 @@
-package com.example.MicroservicioAgenda.util;
+package com.example.MicroServicioAgenda.util;
 
-import com.example.MicroservicioAgenda.model.PersonVO;
-import com.example.MicroservicioAgenda.model.PersonDto;
+import com.example.MicroServicioAgenda.model.PersonDto;
+import com.example.MicroServicioAgenda.model.PersonVO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,10 @@ public class PersonMapper {
                 .nombre(person.getNombre())
                 .apellidos(person.getApellidos())
                 .calle(person.getCalle())
+                .codigoPostal(person.getCodigoPostal())
+                .ciudad(person.getCiudad())
                 .cumpleanios(person.getCumpleanios())
+                .tutorialsIds(person.getTutorialsIds()) // Mapeo directo de IDs
                 .build();
     }
 
@@ -24,7 +27,10 @@ public class PersonMapper {
                 .nombre(personDto.getNombre())
                 .apellidos(personDto.getApellidos())
                 .calle(personDto.getCalle())
+                .codigoPostal(personDto.getCodigoPostal())
+                .ciudad(personDto.getCiudad())
                 .cumpleanios(personDto.getCumpleanios())
+                .tutorialsIds(personDto.getTutorialsIds()) // Mapeo directo de IDs
                 .build();
     }
 
@@ -41,4 +47,6 @@ public class PersonMapper {
                 .map(PersonMapper::personMapperEntityToDto)
                 .collect(Collectors.toList());
     }
+
+
 }
