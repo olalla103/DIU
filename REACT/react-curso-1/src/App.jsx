@@ -1,17 +1,14 @@
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
-import ButtonComponent from "./components/ButtonComponent";
 import { useState } from "react";
+import Login from "./components/Login";
+import MovieList from "./components/MovieList";
+import AnimalList from "./components/AnimalList";
 
 function App() {
   // Esto lo he creado yo, suma la variable number, que la he hecho reactiva
   // porque también hay variables estáticas
-  const [number, setNumber] = useState(0);
-  let myPlaceHolder="Escribe aquí";
-  const[myValue, setMyValue] = useState("");
-
-  let bienvenidos= "Bienvenidos";
-  const[greetings,setGreetings]=useState("Bienvenidos a mi web"); 
+  const [greetings]=useState("Bienvenidos a mi web"); 
 
   const links={
     home: "Home",
@@ -19,10 +16,13 @@ function App() {
     news:"News",
     contact: "Contact"  
   }
-  const suma = () => {
-    setNumber(number + 1);
-    console.log(number);
-  };
+
+  const [user, setUser] = useState({});
+
+  const login =(userInfo)=>{
+    setUser(userInfo);
+
+  }
 
   const sayHello = () => {
     console.log("Hola a todos");
@@ -32,21 +32,25 @@ function App() {
     console.log(e);
   };
 
+  const conditions = true; 
+
   return (
     <>
       <HeaderComponent greetings={greetings} links={links} />
       <main className="main-content">
-        <h2 onClick={sayHello}>Hola a todos</h2>
-
-        <h2>Number: {number}</h2>
-
-        <input type="text" value={myValue} placeholder={myPlaceHolder} onChange={handleChange} />
-        <br />
-        <br />
-        <ButtonComponent suma={suma} />
+        {user.username && <h2 onClick={sayHello}>Hola {user.username}</h2>}
+        {/*Se pasa por props la función que se ha hecho en el componente login
+        En la función login, encontramos un setUser que coge el usuario del componente */}
+        <Login handleLogin={login}></Login>
+          <h2>Películas</h2>
+          <MovieList></MovieList>
+          <AnimalList></AnimalList>
       </main>
     </>
   );
 }
+
+/*conditions ? (<h2>La condición se cumple</h2>)
+  : (<h2>La condición no se cumple</h2>)*/
 
 export default App;
