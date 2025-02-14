@@ -1,0 +1,49 @@
+.glass-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+    background: rgba(70, 57, 57, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: 0.3s;
+    color: white;
+    text-align: left;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+h2 {
+    color: white;
+}
+
+.list-group-item {
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+}
+
+body {
+    background-image: url("../img/fondoLista.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.btn-danger {
+    width: 100%;
+    font-weight: bold;
+}

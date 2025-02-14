@@ -1,104 +1,85 @@
-body {
-  font-family: "Euclid Circ.menuar A", "Poppins";
-  font-size: 18px;
-  margin: 0;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  background: #1a2027;
-}
-
-ul {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-nav {
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: peachpuff;
+}
+
+.navbar-container {
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background:rgba(112, 97, 84, 0.171);
+  backdrop-filter: blur(10px);
 }
 
-a {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.navbar-burger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.menu {
-  margin: 0;
-  padding: 0;
+.navbar-title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navbar-menu {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
-  height: 70px;
+  gap: 15px;
 }
 
-.menu li {
-  display: inline-block;
-  width: 90px;
-  transition: all 0.3s ease-in-out;
+.navbar-menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  transition: 0.3s;
 }
 
-.menu li:hover .submenu {
-  height: 85px;
-}
-
-.menu > li:hover > a {
+.navbar-menu a:hover {
   color: #3e95ff;
 }
 
-.menu > li:hover > a::before {
-  visibility: visible;
-  scale: 1 1;
-}
+/* Animación para el menú en responsive */
+@media (max-width: 768px) {
+  .navbar-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 20px 0;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+  }
 
-.submenu {
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  width: 100%;
-  background-color: #3e95ff;
-  height: 0;
-  line-height: 40px;
-  box-sizing: border-box;
-  transition: height 0.3s ease-in-out;
-}
-.menu li .submenu a {
-  color: #fff;
-  opacity: 0;
-  font-size: 16px;
-  transition: opacity 0.25s;
-}
+  .navbar-menu.open {
+      transform: translateY(0);
+  }
 
-.menu > li:hover .submenu a {
-  opacity: 1;
-}
-
-.menu > li .submenu a:hover {
-  background: rgb(0 0 0 / 20%);
-}
-
-.menu > li a {
-  color: #999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 7px;
-  text-decoration: none;
-  position: relative;
-  height: 100%;
-}
-
-.menu > li > a::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  bottom: 3px;
-  left: 0px;
-  background-color: #3e95ff;
-  transition: all 0.2s ease-in-out;
-  scale: 0 0;
-  visibility: hidden;
+  .navbar-menu a {
+      display: block;
+      padding: 10px 0;
+  }
 }

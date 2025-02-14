@@ -2,16 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ListaPersonas from "./components/ListaPersonas";
 import AniadirPersona from "./components/AniadirPersona";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
     return (
         <Router>
             <div className="d-flex">
-                {/* Navbar fija en el lateral */}
-                <Navbar />
-
-                {/* Contenido principal ajustado */}
-                <div className="container-fluid" style={{ marginLeft: "80px", transition: "margin-left 0.3s ease" }}>
+                <div className="container-fluid">
+                <Navbar></Navbar>
+                <br />
+                <br />
+                <br />
                     <Routes>
                         <Route path="/" element={<h1 className="mt-4">Inicio</h1>} />
                         <Route path="/personas" element={<ListaPersonas />} />
@@ -20,10 +22,7 @@ function App() {
                 </div>
             </div>
         </Router>
-
-        
     );
-
 }
 
 export default App;
