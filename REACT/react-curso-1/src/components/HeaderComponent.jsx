@@ -8,7 +8,7 @@ function HeaderComponent(props) {
       <nav>
         <ul className="header-list">
           <li>
-            <a className="link" href="#">{links.home}</a>
+            <a className="link" href="#">{links.meme}</a>
           </li>
           <li>
             <a className="link" href="#">{links.news}</a>
