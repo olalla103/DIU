@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 
-const DetallePersona = () => {
+function DetallePersona() {
     const { dni } = useParams(); // Obtener el parámetro de la URL
     const [persona, setPersona] = useState(null);
 
@@ -33,6 +33,7 @@ const DetallePersona = () => {
             <Link to="/personas" className="btn btn-primary mt-3">Volver a la lista</Link>
         </div>
     );
-};
+}
 
 export default DetallePersona;
+

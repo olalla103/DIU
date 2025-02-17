@@ -3,7 +3,7 @@ import api from "../services/api";
 import "../styles/GlassContacts.css"; // Asegúrate de que el CSS está bien referenciado
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ListaPersonas = () => {
+function ListaPersonas() {
     const [personas, setPersonas] = useState([]);
     const [contactoSeleccionado, setContactoSeleccionado] = useState(null); // Estado para el contacto seleccionado
 
@@ -30,15 +30,17 @@ const ListaPersonas = () => {
         <div className="container mt-5">
             <div className="row">
                 {personas.length > 0 ? (
-                    personas.map(person => (
-                        <div key={person.dni} className="col-md-4">
-                            <div className="glass-card" onClick={() => setContactoSeleccionado(person)}>
-                                <h4>{person.nombre} {person.apellidos}</h4>
-                                <p><strong>Ciudad:</strong> {person.ciudad}</p>
-                                <p><strong>DNI:</strong> {person.dni}</p>
+                    personas.map(function(person) {
+                        return (
+                            <div key={person.dni} className="col-md-4">
+                                <div className="glass-card" onClick={() => setContactoSeleccionado(person)}>
+                                    <h4>{person.nombre} {person.apellidos}</h4>
+                                    <p><strong>Ciudad:</strong> {person.ciudad}</p>
+                                    <p><strong>DNI:</strong> {person.dni}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))
+                        );
+                    })
                 ) : (
                     <p className="text-center">⚠️ No hay personas registradas.</p>
                 )}
@@ -61,6 +63,6 @@ const ListaPersonas = () => {
             )}
         </div>
     );
-};
+}
 
 export default ListaPersonas;

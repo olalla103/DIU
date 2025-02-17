@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css"; // Asegúrate de que esta hoja de estilos existe
-//import fondoLista from "../img/fondoLista.jpg";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "../styles/Navbar.css";
 
-const Navbar = () => {
+function Navbar() {
+
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -20,7 +22,7 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
-    );
-};
+    );    
+}
 
 export default Navbar;

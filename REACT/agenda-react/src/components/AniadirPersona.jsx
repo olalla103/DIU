@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const AniadirPersona = () => {
+function AniadirPersona() {
     const [formData, setFormData] = useState({
         dni: "",
         nombre: "",
@@ -14,11 +14,11 @@ const AniadirPersona = () => {
 
     const [mensaje, setMensaje] = useState("");
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    }
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:8090/api/v1/person", formData);
@@ -38,17 +38,18 @@ const AniadirPersona = () => {
             setMensaje("Error al añadir persona.");
             console.error("Error al enviar datos:", error);
         }
-    };
+    }
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center text-primary">Añadir Persona</h2>
+            <h2 className="text-center">Añadir Persona</h2>
             {mensaje && <div className="alert alert-info text-center">{mensaje}</div>}
             <form onSubmit={handleSubmit} className="p-4 border rounded bg-light">
                 <div className="row mb-3">
                     <div className="col-md-6">
                         <label className="form-label">DNI</label>
                         <input
+                            placeholder="Introduzca su DNI"
                             type="text"
                             className="form-control"
                             name="dni"
@@ -60,6 +61,7 @@ const AniadirPersona = () => {
                     <div className="col-md-6">
                         <label className="form-label">Nombre</label>
                         <input
+                            placeholder="Introduzca su nombre"
                             type="text"
                             className="form-control"
                             name="nombre"
@@ -74,6 +76,7 @@ const AniadirPersona = () => {
                     <div className="col-md-6">
                         <label className="form-label">Apellidos</label>
                         <input
+                            placeholder="Introduzca sus apellidos"
                             type="text"
                             className="form-control"
                             name="apellidos"
@@ -85,6 +88,7 @@ const AniadirPersona = () => {
                     <div className="col-md-6">
                         <label className="form-label">Calle</label>
                         <input
+                            placeholder="Introduzca su calle"
                             type="text"
                             className="form-control"
                             name="calle"
@@ -99,6 +103,7 @@ const AniadirPersona = () => {
                     <div className="col-md-6">
                         <label className="form-label">Código Postal</label>
                         <input
+                            placeholder="Introduzca su código postal"
                             type="number"
                             className="form-control"
                             name="codigoPostal"
@@ -110,6 +115,7 @@ const AniadirPersona = () => {
                     <div className="col-md-6">
                         <label className="form-label">Ciudad</label>
                         <input
+                            placeholder="Introduzca su ciudad"
                             type="text"
                             className="form-control"
                             name="ciudad"
@@ -140,6 +146,6 @@ const AniadirPersona = () => {
             </form>
         </div>
     );
-};
+}
 
 export default AniadirPersona;
