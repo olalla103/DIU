@@ -47,3 +47,88 @@ body {
     width: 100%;
     font-weight: bold;
 }
+
+/* Estilos para el modal flotante */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 400px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+.modal-content input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-buttons button {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-save {
+    background: rgba(0, 123, 255, 0.8);
+    color: white;
+}
+
+.btn-save:hover {
+    background: rgba(0, 123, 255, 1);
+}
+
+.btn-delete {
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: rgba(255, 0, 0, 1);
+}
+
+.btn-close {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.btn-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+

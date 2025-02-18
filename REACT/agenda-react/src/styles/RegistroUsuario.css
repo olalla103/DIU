@@ -1,0 +1,58 @@
+/* Fondo borroso con efecto glass */
+.registro-container {
+    width: 450px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    margin: auto;
+    margin-top: 5%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Input fields con estilo glass */
+.registro-container input {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.registro-container input::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+/* Botón con efecto */
+.registro-container button {
+    background: rgba(255, 255, 255, 0.911);
+    border: none;
+    color: rgba(19, 17, 17, 0.445);
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.registro-container button:hover {
+    background: rgba(0, 123, 255, 1);
+}
+
+/* Texto de links */
+.registro-container a {
+    color: #90caf9;
+    text-decoration: none;
+}
+
+.registro-container a:hover {
+    text-decoration: underline;
+}

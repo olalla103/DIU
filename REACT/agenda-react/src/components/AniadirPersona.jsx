@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "../styles/AniadirPersona.css"; // Importa los estilos glass
 
 function AniadirPersona() {
     const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ function AniadirPersona() {
         try {
             const response = await axios.post("http://localhost:8090/api/v1/person", formData);
             if (response.status === 201 || response.status === 200) {
-                setMensaje("✅ Persona añadida con éxito.");
+                setMensaje("Persona añadida con éxito.");
                 setFormData({
                     dni: "",
                     nombre: "",
@@ -41,108 +42,19 @@ function AniadirPersona() {
     }
 
     return (
-        <div className="container mt-4">
+        <div className="aniadir-persona-container">
             <h2 className="text-center">Añadir Persona</h2>
             {mensaje && <div className="alert alert-info text-center">{mensaje}</div>}
-            <form onSubmit={handleSubmit} className="p-4 border rounded bg-light">
-                <div className="row mb-3">
-                    <div className="col-md-6">
-                        <label className="form-label">DNI</label>
-                        <input
-                            placeholder="Introduzca su DNI"
-                            type="text"
-                            className="form-control"
-                            name="dni"
-                            value={formData.dni}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Nombre</label>
-                        <input
-                            placeholder="Introduzca su nombre"
-                            type="text"
-                            className="form-control"
-                            name="nombre"
-                            value={formData.nombre}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-
-                <div className="row mb-3">
-                    <div className="col-md-6">
-                        <label className="form-label">Apellidos</label>
-                        <input
-                            placeholder="Introduzca sus apellidos"
-                            type="text"
-                            className="form-control"
-                            name="apellidos"
-                            value={formData.apellidos}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Calle</label>
-                        <input
-                            placeholder="Introduzca su calle"
-                            type="text"
-                            className="form-control"
-                            name="calle"
-                            value={formData.calle}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-
-                <div className="row mb-3">
-                    <div className="col-md-6">
-                        <label className="form-label">Código Postal</label>
-                        <input
-                            placeholder="Introduzca su código postal"
-                            type="number"
-                            className="form-control"
-                            name="codigoPostal"
-                            value={formData.codigoPostal}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Ciudad</label>
-                        <input
-                            placeholder="Introduzca su ciudad"
-                            type="text"
-                            className="form-control"
-                            name="ciudad"
-                            value={formData.ciudad}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Fecha de Nacimiento</label>
-                    <input
-                        type="date"
-                        className="form-control"
-                        name="cumpleanios"
-                        value={formData.cumpleanios}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div className="text-center">
-                    <button type="submit" className="btn btn-success">
-                        Agregar Persona
-                    </button>
-                </div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="dni" placeholder="DNI" value={formData.dni} onChange={handleChange} required />
+                <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
+                <input type="text" name="apellidos" placeholder="Apellidos" value={formData.apellidos} onChange={handleChange} required />
+                <input type="text" name="calle" placeholder="Calle" value={formData.calle} onChange={handleChange} required />
+                <input type="number" name="codigoPostal" placeholder="Código Postal" value={formData.codigoPostal} onChange={handleChange} required />
+                <input type="text" name="ciudad" placeholder="Ciudad" value={formData.ciudad} onChange={handleChange} required />
+                <input type="date" name="cumpleanios" value={formData.cumpleanios} onChange={handleChange} required />
+                
+                <button type="submit">Agregar Persona</button>
             </form>
         </div>
     );

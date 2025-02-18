@@ -1,0 +1,48 @@
+/* Fondo borroso con efecto glass */
+.aniadir-persona-container {
+    width: 450px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(22, 18, 18, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    margin: auto;
+    margin-top: 5%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Input fields con estilo glass */
+.aniadir-persona-container input {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.aniadir-persona-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Botón con efecto */
+.aniadir-persona-container button {
+    background: rgba(0, 123, 255, 0.8);
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.aniadir-persona-container button:hover {
+    background: rgba(0, 123, 255, 1);
+}
