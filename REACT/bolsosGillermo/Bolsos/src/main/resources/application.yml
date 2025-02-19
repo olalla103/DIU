@@ -1,0 +1,13 @@
+server:
+  port: 9595
+spring:
+  application:
+    name:BolsoService
+main:
+  allow-bean-definition-overriding: true
+data:
+  mongodb:
+    host: localhost
+    database: bolsos_db
+    port: 27017
+
