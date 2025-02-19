@@ -53,14 +53,21 @@ public class PersonServiceImpl implements PersonService {
 
     // ACTUALIZAR A UNA PERSONA
     @Override
-    public PersonVO updatePerson(PersonVO personVO) {
-        Optional<PersonDto> existingPersonOptional = personRepository.findById(personVO.getDNI());
+    public PersonVO updatePerson(PersonVO personVO, String dni) {
+        Optional<PersonDto> existingPersonOptional = personRepository.findById(dni);
         if (existingPersonOptional.isPresent()) {
-            PersonDto existingPerson = getPersonDto(personVO, existingPersonOptional);
+            PersonDto existingPerson = existingPersonOptional.get();
+            existingPerson.setNombre(personVO.getNombre());
+            existingPerson.setApellidos(personVO.getApellidos());
+            existingPerson.setCalle(personVO.getCalle());
+            existingPerson.setCodigoPostal(personVO.getCodigoPostal());
+            existingPerson.setCiudad(personVO.getCiudad());
+            existingPerson.setCumpleanios(personVO.getCumpleanios());
+
             PersonDto updatedPerson = personRepository.save(existingPerson);
             return PersonMapper.personMapperEntityToDto(updatedPerson);
         } else {
-            return null; // or throw an exception if preferred
+            throw new RuntimeException("Persona no encontrada con DNI: " + dni);
         }
     }
 
@@ -76,6 +83,7 @@ public class PersonServiceImpl implements PersonService {
         existingPerson.setCumpleanios(personVO.getCumpleanios());
         return existingPerson;
     }
+
 
     @Override
     public ResponseEntity<Void> deletePerson(String DNI) {

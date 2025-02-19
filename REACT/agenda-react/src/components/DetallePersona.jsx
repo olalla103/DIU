@@ -1,13 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import PersonaDataService from "../services/api";
 
 function DetallePersona() {
     const { dni } = useParams(); // Obtener el parámetro de la URL
     const [persona, setPersona] = useState(null);
 
     useEffect(() => {
-        api.get(`/person/${dni}`)
+        PersonaDataService.get(dni)
             .then(response => {
                 setPersona(response.data);
             })
@@ -36,4 +36,3 @@ function DetallePersona() {
 }
 
 export default DetallePersona;
-

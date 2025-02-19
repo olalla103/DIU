@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import PersonaDataService from "../services/api"; // Importar el servicio centralizado
 import "../styles/GlassContacts.css"; // Importar los estilos
 
 function ListaPersonas() {
     const [personas, setPersonas] = useState([]);
     const [personaSeleccionada, setPersonaSeleccionada] = useState(null);
-    const [formData, setFormData] = useState({});
+    const [datosFormulario, setDatosFormulario] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:8090/api/v1/person")
+        PersonaDataService.getAll()
             .then(response => {
                 setPersonas(response.data);
             })
@@ -19,7 +19,7 @@ function ListaPersonas() {
 
     function abrirModal(persona) {
         setPersonaSeleccionada(persona);
-        setFormData(persona); // Cargar los datos en el formulario
+        setDatosFormulario(persona); // Cargar los datos en el formulario
     }
 
     function cerrarModal() {
@@ -27,13 +27,14 @@ function ListaPersonas() {
     }
 
     function handleChange(e) {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setDatosFormulario({ ...datosFormulario, [e.target.name]: e.target.value });
     }
 
     async function guardarCambios() {
         try {
-            await axios.put(`http://localhost:8090/api/v1/person/${formData.dni}`, formData);
-            setPersonas(personas.map(p => (p.dni === formData.dni ? formData : p)));
+            await PersonaDataService.update(datosFormulario.dni,datosFormulario);
+            setPersonas(personas.map(persona => (persona.dni === datosFormulario.dni ? datosFormulario : persona)));
+            
             cerrarModal();
         } catch (error) {
             console.error("Error al actualizar persona:", error);
@@ -44,8 +45,8 @@ function ListaPersonas() {
         const confirmacion = window.confirm("¿Estás seguro de eliminar esta persona?");
         if (confirmacion) {
             try {
-                await axios.delete(`http://localhost:8090/api/v1/person/${personaSeleccionada.dni}`);
-                setPersonas(personas.filter(p => p.dni !== personaSeleccionada.dni));
+                await PersonaDataService.delete(personaSeleccionada.dni);
+                setPersonas(personas.filter(persona => persona.dni !== personaSeleccionada.dni));
                 cerrarModal();
             } catch (error) {
                 console.error("Error al eliminar persona:", error);
@@ -68,7 +69,7 @@ function ListaPersonas() {
                         </div>
                     ))
                 ) : (
-                    <p className="text-center">⚠️ No hay personas registradas.</p>
+                    <p className="text-center">No hay personas registradas.</p>
                 )}
             </div>
 
@@ -77,12 +78,12 @@ function ListaPersonas() {
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <h2>Editar Persona</h2>
-                        <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Nombre" />
-                        <input type="text" name="apellidos" value={formData.apellidos} onChange={handleChange} placeholder="Apellidos" />
-                        <input type="text" name="ciudad" value={formData.ciudad} onChange={handleChange} placeholder="Ciudad" />
-                        <input type="text" name="calle" value={formData.calle} onChange={handleChange} placeholder="Calle" />
-                        <input type="number" name="codigoPostal" value={formData.codigoPostal} onChange={handleChange} placeholder="Código Postal" />
-                        <input type="date" name="cumpleanios" value={formData.cumpleanios} onChange={handleChange} />
+                        <input type="text" name="nombre" value={datosFormulario.nombre} onChange={handleChange} placeholder="Nombre" />
+                        <input type="text" name="apellidos" value={datosFormulario.apellidos} onChange={handleChange} placeholder="Apellidos" />
+                        <input type="text" name="ciudad" value={datosFormulario.ciudad} onChange={handleChange} placeholder="Ciudad" />
+                        <input type="text" name="calle" value={datosFormulario.calle} onChange={handleChange} placeholder="Calle" />
+                        <input type="number" name="codigoPostal" value={datosFormulario.codigoPostal} onChange={handleChange} placeholder="Código Postal" />
+                        <input type="date" name="cumpleanios" value={datosFormulario.cumpleanios} onChange={handleChange} />
 
                         <div className="modal-buttons">
                             <button className="btn-save" onClick={guardarCambios}>Guardar</button>

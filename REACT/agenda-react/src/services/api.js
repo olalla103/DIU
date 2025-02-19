@@ -1,11 +1,29 @@
-import axios from "axios";
+import http from "../services/http_commons";
 
-const API_URL = "http://localhost:8090/api/v1"; // URL de la API
-const api = axios.create({
-    baseURL: API_URL,
-    headers: {
-        "Content-Type": "application/json",
-    },
-});
+class PersonaDataService {
+  getAll() {
+    return http.get("/person"); // Usa minúsculas si el backend lo usa así
+  }
 
-export default api;
+  get(id) {
+    return http.get(`/person/${id}`);
+  }
+
+  create(data) {
+    return http.post("/person", data);
+  }
+
+  update(id, data) {
+    return http.put(`/person/${id}`, data);
+}
+
+  delete(id) {
+    return http.delete(`/person/${id}`);
+  }
+
+  deleteAll() {
+    return http.delete("/person");
+  }
+}
+
+export default new PersonaDataService();

@@ -15,12 +15,12 @@ public interface PersonRepository extends MongoRepository<PersonDto, String> {
 
     List<PersonDto> findByNombreContaining(String nombre);
 
-//    PersonDto addPerson(PersonDto person);
-//
-//    PersonDto updatePerson(PersonDto person);
-//
-//    void deletePerson(String DNI);
-//
+  //  PersonDto addPerson(PersonDto person);
+
+  //  PersonDto updatePerson(PersonDto person);
+
+   // void deletePerson(String DNI);
+
 //    void deleteAllPerson();
 
 }

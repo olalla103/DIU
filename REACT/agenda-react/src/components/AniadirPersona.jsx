@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import PersonaDataService from "../services/api"; // Importa el servicio centralizado
 import "../styles/AniadirPersona.css"; // Importa los estilos glass
 
 function AniadirPersona() {
@@ -22,7 +22,7 @@ function AniadirPersona() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8090/api/v1/person", formData);
+            const response = await PersonaDataService.create(formData);
             if (response.status === 201 || response.status === 200) {
                 setMensaje("Persona añadida con éxito.");
                 setFormData({

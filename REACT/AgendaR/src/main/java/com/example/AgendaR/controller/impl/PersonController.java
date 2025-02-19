@@ -1,6 +1,7 @@
 package com.example.AgendaR.controller.impl;
 
 
+import com.example.AgendaR.model.PersonDto;
 import com.example.AgendaR.model.PersonVO;
 import com.example.AgendaR.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,11 @@ public class PersonController {
     public void deleteAllPerson() {
         personService.deleteAllPerson();
     }
+
+
+    @PutMapping("/person/{dni}")
+    public PersonVO updatePerson(@RequestBody PersonVO personVO, @PathVariable String dni) {
+        return personService.updatePerson(personVO, dni);
+    }
+
 }

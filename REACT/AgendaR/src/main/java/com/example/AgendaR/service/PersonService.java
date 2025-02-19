@@ -16,7 +16,7 @@ public interface PersonService {
 
     PersonVO addPerson(PersonVO person);
 
-    PersonVO updatePerson(PersonVO person);
+    PersonVO updatePerson(PersonVO person,String DNI);
 
     ResponseEntity deletePerson(String DNI);
 
