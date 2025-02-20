@@ -1,30 +1,26 @@
-import './App.css'
-import './index.css'
-import React from 'react'
-import ListaProductos from './components/ListaProductos'
+import './App.css';
+import './index.css';
+import React from 'react';
+import ListaProductos from './components/ListaProductos';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import AniadirProducto from './components/AniadirProducto'
+import AniadirProducto from './components/AniadirProducto';
 import EditarProducto from './components/EditarProducto';
+import ComprarProductos from './components/ComprarProducto';
+import { ProgresoProvider } from './providers/ContextoProgressBar'; // Importar el Proveedor de contexto
+import ProgressBar from './components/ProgressBar'; // Importar la barra de progreso
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <>
+    <ProgresoProvider> {/* Envuelve toda la app */}
+      <ProgressBar />  {/* Ahora se mostrará en toda la aplicación */}
+
       <Router>
         <nav className="navbar navbar-expand-lg navbar-pink fixed-top">
           <div className="container-fluid">
-            {/* Botón de hamburguesa */}
-            <button
-              className="navbar-toggler d-lg-none"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-label="Toggle navigation"
-            >
+            <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <span className="navbar-toggler-icon"></span>
             </button>
-
-            {/* Enlaces de la barra de navegación */}
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
@@ -42,11 +38,12 @@ function App() {
           <Routes>
             <Route path='/' element={<ListaProductos />} />
             <Route path='/aniadirProducto' element={<AniadirProducto />} />
-            <Route path='/editarProducto/:id' element={<EditarProducto/>}></Route>
+            <Route path='/editarProducto/:id' element={<EditarProducto />} />
+            <Route path='/comprarProducto/:id' element={<ComprarProductos/>}></Route>
           </Routes>
         </div>
       </Router>
-    </>
+    </ProgresoProvider>
   );
 }
 

@@ -1,39 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ProductDataService from "../services/api.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import '../styles/ListaProductos.css'
+import '../styles/ListaProductos.css';
+import { ProgresoContext } from '../providers/ContextoProgressBar';
 
 function ListaProductos() {
   const [productos, setProductos] = useState([]);
   const [productoActual, setProductoActual] = useState(null);
+  const { setProgreso } = useContext(ProgresoContext);
 
   const obtenerListaProductos = () => {
     ProductDataService.getAll()
       .then(response => {
-        console.log(response.data);
         setProductos(response.data);
-      });
+        setProgreso(response.data.length);
+      })
+      .catch(error => console.error("Error al obtener los productos:", error)); // 🔥 Evita crasheo si la API falla
   };
 
   const handleDelete = (id, event) => {
-    event.preventDefault(); // Evita que el link recargue la página
+    event.preventDefault();
     ProductDataService.delete(id)
       .then(() => {
-        obtenerListaProductos(); // Refresca la lista después de eliminar
-        setProductoActual(null); // Limpia la selección
+        obtenerListaProductos();
+        setProductoActual(null);
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
+  const handleComprar = (id,event) =>{
+    event.preventDefault();
+    ProductDataService.update(id)
+    .then(()=>{
+      obtenerListaProductos();
+    })
+  }
+
   useEffect(() => {
     obtenerListaProductos();
-  }, []);
+  }, []); // No usar [setProgreso] porque puede causar re-render infinitos
 
   const setProductoActivo = (producto) => {
-    console.log(producto);
     setProductoActual(producto);
   };
 
@@ -42,7 +52,6 @@ function ListaProductos() {
       <h2 className="text-center text-dark mb-4">Lista de Productos</h2>
 
       <div className="row">
-        {/* Lista de productos */}
         <div className="col-md-6">
           <ul className="list-group">
             {productos.map((producto) => (
@@ -56,7 +65,6 @@ function ListaProductos() {
           </ul>
         </div>
 
-        {/* Detalles del producto seleccionado */}
         <div className="col-md-6">
           {productoActual ? (
             <div className="card p-3" style={{ backgroundColor: "#fce4ec" }}>
@@ -65,20 +73,20 @@ function ListaProductos() {
               <p><strong>Nombre:</strong> {productoActual.name}</p>
               <p><strong>Stock:</strong> {productoActual.stock}</p>
               <p><strong>Precio:</strong> {productoActual.price}€</p>
+              <p><strong>Estado:</strong> {productoActual.active ? "Activado" : "Desactivado"}</p>
 
-                <div>
-                {/* Enlace para Editar */}
+              <div>
                 {productoActual.id && (
-                    <button className='rounded btn btn-pink espacio'>
+                  <button className='rounded btn btn-pink espacio'>
                     <Link to={`/editarProducto/${productoActual.id}`} className="nav-link">Editar</Link>
-                    </button>
+                  </button>
                 )}
-                
-                {/* Botón para Eliminar */}
                 <button className='btn btn-danger espacio'>
-                    <Link to="#" className="nav-link" onClick={(e) => handleDelete(productoActual.id, e)}>
-                    Eliminar
-                    </Link>
+                  <Link to="#" className="nav-link" onClick={(e) => handleDelete(productoActual.id, e)}>Eliminar</Link>
+                </button>
+
+                <button className='btn btn-success espacio'>
+                  <Link to={`/comprarProducto/${productoActual.id}`} className='nav-link'>Comprar</Link>
                 </button>
               </div>
             </div>
@@ -91,4 +99,4 @@ function ListaProductos() {
   );
 }
 
-export default ListaProductos;  
+export default ListaProductos;
