@@ -2,7 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProgressBar({ current, max }) {
-  const percentage = (current / max) * 100; // 🔥 Calcula el porcentaje
+  // const {max,current} = props; 
+  const percentage = (current / max) * 100; // Calcula el porcentaje
 
   return (
     <div className="mb-3">
