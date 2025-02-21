@@ -6,7 +6,7 @@ function ProgressBar() {
   const { progreso, setProgreso } = useContext(ProgresoContext);
 
   useEffect(() => {
-    // 🔥 Cuando la barra se monta, asegurarse de que tiene el valor correcto
+    // Cuando la barra se monta, asegurarse de que tiene el valor correcto
     ProductDataService.getAll().then(response => {
       setProgreso(response.data.length);
     });
@@ -16,7 +16,7 @@ function ProgressBar() {
     <div className="container mt-3">
       <div className="progress">
         <div
-          className="progress-bar bg-warning progress-bar-striped progress-bar-animated bg-primary"
+          className="progress-bar bg-warning progress-bar-animated bg-primary"
           role="progressbar"
           style={{ width: `${(progreso / 7) * 100}%`, height: "20px" }}
           aria-valuenow={progreso}
