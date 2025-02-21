@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ProgresoContext } from "../providers/ContextoProgressBar";
-import ProductDataService from "../services/api.js"; // 🔥 Importar API
+import ProductDataService from "../services/api.js"; // Importar API
 
 function ProgressBar() {
   const { progreso, setProgreso } = useContext(ProgresoContext);
@@ -10,7 +10,7 @@ function ProgressBar() {
     ProductDataService.getAll().then(response => {
       setProgreso(response.data.length);
     });
-  }, [setProgreso]); // 🔥 Solo se ejecuta cuando `setProgreso` cambia
+  }, [setProgreso]); // Solo se ejecuta cuando `setProgreso` cambia
 
   return (
     <div className="container mt-3">
@@ -18,12 +18,12 @@ function ProgressBar() {
         <div
           className="progress-bar bg-warning progress-bar-animated bg-primary"
           role="progressbar"
-          style={{ width: `${(progreso / 7) * 100}%`, height: "20px" }}
+          style={{ width: `${(progreso / 20) * 100}%`, height: "20px" }}
           aria-valuenow={progreso}
           aria-valuemin="0"
-          aria-valuemax="7"
+          aria-valuemax="20"
         >
-          {progreso} / 7 productos
+          {progreso} / 20 productos
         </div>
       </div>
     </div>

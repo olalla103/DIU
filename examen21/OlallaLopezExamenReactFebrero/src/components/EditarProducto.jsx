@@ -10,7 +10,7 @@ function EditarProducto() {
     const navigate = useNavigate();
     
     useEffect(() => {
-        ProductsDataService.getAll() // Suponiendo que `getAll()` devuelve una lista de productos
+        ProductsDataService.getAll() // Suponiendo que getAll() devuelve una lista de productos
             .then((response) => {
                 const filteredProduct = response.data.find(product => product.id.toString() === id); 
                 

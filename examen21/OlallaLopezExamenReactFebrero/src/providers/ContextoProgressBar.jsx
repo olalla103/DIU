@@ -1,19 +1,18 @@
-import { createContext, useState, useEffect } from "react";
-import ProductDataService from "../services/api.js"; // 🔥 Importar API
+import { createContext, useState } from "react";
 
+// Crear el contexto
 export const ProgresoContext = createContext();
 
+// Proveedor del contexto
 export function ProgresoProvider({ children }) {
     const [progreso, setProgreso] = useState(0);
+    const [stock, setStock] = useState(0);
 
-    useEffect(() => {
-        ProductDataService.getAll().then(response => {
-            setProgreso(response.data.length); // 🔥 Cargar el progreso real al iniciar
-        });
-    }, []);
+    // Definir el mismo máximo de stock para todos los productos
+    const MAX_STOCK = 20; 
 
     return (
-        <ProgresoContext.Provider value={{ progreso, setProgreso }}>
+        <ProgresoContext.Provider value={{ progreso, setProgreso, stock, setStock, MAX_STOCK }}>
             {children}
         </ProgresoContext.Provider>
     );

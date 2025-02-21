@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ProductsDataService from '../services/api.js';
 import { useParams, useNavigate } from 'react-router-dom';
+import StockProgressBar from './StockProgressBar'; // Importación de la barra de progreso
 
 function ComprarProducto() {
     const [name, setName] = useState('');
     const [stock, setStock] = useState('');
     const [price, setPrice] = useState('');
-    const [cantidad, setCantidad] = useState(''); // 🔥 Nueva variable para la cantidad de compra
+    const [cantidad, setCantidad] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
     
@@ -46,7 +47,6 @@ function ComprarProducto() {
             return;
         }
 
-        // 🔥 Actualizar stock restando la cantidad comprada
         const nuevoStock = stock - cantidadNumerica;
 
         const formData = {
@@ -71,13 +71,15 @@ function ComprarProducto() {
             <h2 className="mb-4 text-center text-dark">Comprar Producto</h2>
 
             <div className="mb-3">
-                <h4>Producto:  {name}</h4>
-                <h5>Stock Disponible:  {stock}</h5>
-                <h5>Precio:  {price}€</h5>
+                <h4>Producto: {name}</h4>
+                <h5>Stock Disponible: {stock}</h5>
+                <h5>Precio: {price}€</h5>
             </div>
 
+            {/* Barra de progreso de stock */}
+            <StockProgressBar stock={stock} maxStock={10} />
+
             <form onSubmit={handleSubmit}>
-                {/* Cantidad a comprar */}
                 <div className="mb-3">
                     <label className="form-label">Cantidad a comprar</label>
                     <input
