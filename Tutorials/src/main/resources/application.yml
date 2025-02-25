@@ -2,11 +2,11 @@ server:
   port: 8080
 spring:
   application:
-    name:tutorialsService
+    name:productosService
 #main:
 #  allow-bean-definition-overriding: true
 data:
   mongodb:
-    database: tutorialsservice_db
+    database: productoservice_db
     port: 27017
     host: mongo_DBc
