@@ -56,7 +56,6 @@ function ListaPersonas() {
 
     return (
         <div className="container mt-5">
-            <h2 className="text-center">Lista de Personas</h2>
             <div className="row">
                 {personas.length > 0 ? (
                     personas.map(person => (

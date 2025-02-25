@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:5174") // Permitir acceso desde el frontend
+@CrossOrigin(origins = "http://localhost:5173 ") // Permitir acceso desde el frontend
 public class PersonController {
     @Autowired
     private PersonService personService;
@@ -46,5 +46,11 @@ public class PersonController {
     public PersonVO updatePerson(@RequestBody PersonVO personVO, @PathVariable String dni) {
         return personService.updatePerson(personVO, dni);
     }
+
+    @PutMapping("/person/{DNI}/add-tutorial/{tutorialId}")
+    public PersonVO addTutorialToPerson(@PathVariable String DNI, @PathVariable String tutorialId) {
+        return personService.addTutorialToPerson(DNI, tutorialId);
+    }
+
 
 }

@@ -18,6 +18,8 @@ public interface PersonService {
 
     PersonVO updatePerson(PersonVO person,String DNI);
 
+    PersonVO addTutorialToPerson(String DNI, String tutorialId);
+
     ResponseEntity deletePerson(String DNI);
 
     ResponseEntity deleteAllPerson();

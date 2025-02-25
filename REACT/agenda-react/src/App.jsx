@@ -12,7 +12,8 @@ function App() {
         <Router>
             <div className="d-flex">
                 <div className="container-fluid">
-                    <Navbar />
+                     {/* Solo mostrar Navbar si NO estamos en la ruta /login */}
+                    {location.pathname !== "/login" && <Navbar />}
                     
                     <br /><br /><br />
 

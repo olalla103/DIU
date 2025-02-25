@@ -8,7 +8,9 @@ import com.example.AgendaR.util.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -82,6 +84,33 @@ public class PersonServiceImpl implements PersonService {
         existingPerson.setCiudad(personVO.getCiudad());
         existingPerson.setCumpleanios(personVO.getCumpleanios());
         return existingPerson;
+    }
+
+    @Override
+    public PersonVO addTutorialToPerson(String DNI, String tutorialId) {
+        String tutorialServiceUrl = "http://localhost:8080/api/v1/tutorials/" + tutorialId;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> response = restTemplate.getForEntity(tutorialServiceUrl, Boolean.class);
+
+        if (response.getBody() != null && response.getBody()) {
+            Optional<PersonDto> existingPersonOptional = personRepository.findById(DNI);
+            if (existingPersonOptional.isPresent()) {
+                PersonDto person = existingPersonOptional.get();
+                List<String> tutorials = person.getTutorialsIds();
+                if (tutorials == null) {
+                    tutorials = new ArrayList<>();
+                }
+                if (!tutorials.contains(tutorialId)) {
+                    tutorials.add(tutorialId);
+                }
+                person.setTutorialsIds(tutorials);
+                PersonDto updatedPerson = personRepository.save(person);
+                return PersonMapper.personMapperEntityToDto(updatedPerson);
+            }
+        } else {
+            throw new RuntimeException("El tutorial no existe en el microservicio de tutoriales.");
+        }
+        return null;
     }
 
 

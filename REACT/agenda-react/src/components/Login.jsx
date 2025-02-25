@@ -30,7 +30,7 @@ function Login() {
     }
 
     return (
-        <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="d-flex justify-content-center align-items-center vh-100 fondo">
             <div className="glass-container">
                 <i className="bi bi-person-circle user-icon"></i> {/* Icono de usuario */}
                 <h2>Iniciar Sesión</h2>

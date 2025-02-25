@@ -18,7 +18,7 @@ public class PersonMapper {
                 .codigoPostal(person.getCodigoPostal())
                 .ciudad(person.getCiudad())
                 .cumpleanios(person.getCumpleanios())
-                // .tutorialsIds(person.getTutorialsIds()) // Mapeo directo de IDs
+                .tutorialsIds(person.getTutorialsIds()) // Mapeo directo de IDs
                 .build();
     }
 
@@ -31,7 +31,7 @@ public class PersonMapper {
                 .codigoPostal(personDto.getCodigoPostal())
                 .ciudad(personDto.getCiudad())
                 .cumpleanios(personDto.getCumpleanios())
-                // .tutorialsIds(personDto.getTutorialsIds()) // Mapeo directo de IDs
+                .tutorialsIds(personDto.getTutorialsIds()) // Mapeo directo de IDs
                 .build();
     }
 

@@ -19,5 +19,5 @@ public class PersonVO {
     private Integer codigoPostal;
     private String ciudad;
     private LocalDate cumpleanios;
-    //private List<String> tutorialsIds; // Lista de IDs de Tutorials en VO
+    private List<String> tutorialsIds; // Lista de IDs de tutoriales
 }

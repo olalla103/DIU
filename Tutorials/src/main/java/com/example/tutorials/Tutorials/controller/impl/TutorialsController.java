@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(originPatterns = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1")
 public class TutorialsController implements TutorialsAPI {
