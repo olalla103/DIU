@@ -11,7 +11,7 @@
 }
 
 .glass-card {
-    background:rgba(238, 176, 140, 0.438);
+    background:rgba(197, 120, 75, 0.438);
     backdrop-filter: blur(8px);
     border-radius: 10px;
     padding: 15px;
@@ -22,7 +22,7 @@
 }
 
 .glass-card:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(136, 71, 34, 0.438);
     transform: scale(1.05);
 }
 
@@ -125,3 +125,47 @@ h2 {
     background: rgba(255, 255, 255, 0.3);
 }
 
+
+
+/* 🖥️ Contenedor de los dos modales (Detalles a la izquierda y Tutoriales a la derecha) */
+.modals-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background: rgba(197, 120, 75, 0.438);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 📄 Modal Izquierdo */
+.modal-content.left {
+    width: 48%;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(236,186,171,0.438);
+}
+
+/* 🎓 Modal Derecho (Carrusel) */
+.modal-content.right {
+    width: 48%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(236,186,171,0.438);
+}
+
+/* 🎠 Estilos para el carrusel */
+.carousel {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 🎞️ Imágenes del carrusel */
+.tutorial-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}

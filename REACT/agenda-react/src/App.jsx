@@ -4,6 +4,7 @@ import ListaPersonas from "./components/ListaPersonas";
 import AniadirPersona from "./components/AniadirPersona";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min"; 
 import "./App.css";
 import RegistroUsuario from "./components/RegistroUsuario";
 

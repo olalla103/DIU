@@ -15,7 +15,7 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  background:rgba(112, 97, 84, 0.171);
+  background:rgba(197, 120, 75, 0.356);
   backdrop-filter: blur(10px);
 }
 
