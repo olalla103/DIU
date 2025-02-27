@@ -7,6 +7,6 @@ spring:
 #  allow-bean-definition-overriding: true
 data:
   mongodb:
+    host: localhost
     database: productoservice_db
     port: 27017
-    host: mongo_DBc
