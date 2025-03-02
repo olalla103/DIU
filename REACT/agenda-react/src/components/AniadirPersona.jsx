@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import PersonaDataService from "../services/api"; // Servicio para personas
 import TutorialDataService from "../services/tutorialsapi"; // Servicio para tutoriales
 import "../styles/AniadirPersona.css"; // Importar estilos glass
+import { usePersonas } from "../context/PersonasContext";
 
 function AniadirPersona() {
+    const { cantidadPersonas } = usePersonas(); // Obtener la cantidad de personas del contexto
+    const MAX_PERSONAS = 5; // Definir el máximo de personas
+
     const [formData, setFormData] = useState({
         dni: "",
         nombre: "",
@@ -66,7 +70,7 @@ function AniadirPersona() {
                 setTutorialesSeleccionados([]); // Limpiar la lista de tutoriales seleccionados
             }
         } catch (error) {
-            setMensaje("❌ Error al añadir persona.");
+            setMensaje("Error al añadir persona.");
             console.error("Error al enviar datos:", error);
         }
 
@@ -105,7 +109,7 @@ function AniadirPersona() {
                     </div>
                 )}
 
-                <button type="submit" disabled={cargando}>
+                <button type="submit" disabled={cargando || cantidadPersonas >= MAX_PERSONAS}>
                     {cargando ? "Guardando..." : "Agregar Persona"}
                 </button>
             </form>

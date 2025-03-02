@@ -1,33 +1,30 @@
-import { useState } from "react";
+import { usePersonas } from "../context/PersonasContext";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "../styles/Navbar.css";
+import "../styles/Navbar.css"; // ✅ Verifica que la ruta es correcta
 
 function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleIniciado = () =>{
-        iniciado
-    }
-
+    const { cantidadPersonas } = usePersonas();
+    const MAX_PERSONAS = 5;
+    
     return (
-        <nav className="navbar-container">
-            <div className="navbar">
-                <button className="navbar-burger" onClick={() => setIsOpen(!isOpen)}>
-                    <span className="material-icons">
-
-                        <Link to="/personas">Inicio</Link>
-                    </span>
-                </button>
-                <h1 className="navbar-title">Mi Proyecto</h1>
-                <div className={`navbar-menu ${isOpen ? "open" : ""}`}>
-                    <Link to="/personas" className="nav-item">Personas</Link>
-                    <Link to="/agregar" className="nav-item">Agregar</Link>
+        <nav className="navbar-container">  {/* 🔍 Ajusté esta clase para que coincida con el CSS */}
+            <Link to="/" className="navbar-title">Mi Proyecto</Link>
+            
+            <div className="progress-container">
+                <label>Agenda: {cantidadPersonas}/{MAX_PERSONAS}</label>
+                <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: `${(cantidadPersonas / MAX_PERSONAS) * 100}%` }}></div>
                 </div>
             </div>
+
+            <div className="navbar-menu">
+                <Link to="/personas">Personas</Link>
+                <Link to="/agregar" className={cantidadPersonas >= MAX_PERSONAS ? "disabled-link" : ""}>
+                    Agregar
+                </Link>
+            </div>
         </nav>
-    );    
+    );
 }
 
 export default Navbar;

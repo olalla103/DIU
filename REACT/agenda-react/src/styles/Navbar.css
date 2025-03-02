@@ -15,17 +15,24 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  background:rgba(197, 120, 75, 0.356);
+  background: rgba(197, 120, 75, 0.356);
   backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* Espacia los elementos */
+  align-items: center; /* Alinea verticalmente */
 }
 
 .navbar {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  max-width: 1200px;
-  margin: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px; /* Espaciado entre enlaces */
 }
 
 .navbar-burger {
@@ -83,3 +90,31 @@ body {
       padding: 10px 0;
   }
 }
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre texto y barra */
+}
+
+.progress-bar {
+  width: 100px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: rgba(0, 123, 255, 0.8);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Deshabilitar link cuando se llega al límite */
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
