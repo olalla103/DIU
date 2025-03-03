@@ -3,10 +3,15 @@ import PersonaDataService from "../services/api";
 import "../styles/GlassContacts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalPersona from "./ModalPersona"; // Importa el nuevo componente
+import { usePersonas } from "../context/PersonasContext";
+import { useNavigate } from "react-router-dom";
+
 
 function ListaPersonas() {
     const [personas, setPersonas] = useState([]);
     const [personaSeleccionada, setPersonaSeleccionada] = useState(null);
+    const {actualizarCantidad} = usePersonas();
+    const navigate = useNavigate();
 
     useEffect(() => {
         PersonaDataService.getAll()
@@ -27,6 +32,7 @@ function ListaPersonas() {
             await PersonaDataService.update(datosFormulario.dni, datosFormulario);
             setPersonas(personas.map(persona => (persona.dni === datosFormulario.dni ? datosFormulario : persona)));
             cerrarModal();
+            navigate("/personas");
         } catch (error) {
             console.error("Error al actualizar persona:", error);
         }
@@ -39,6 +45,9 @@ function ListaPersonas() {
     
                 if (response.status === 200 || response.status === 204) {
                     setPersonas(prevPersonas => prevPersonas.filter(persona => persona.dni !== dni));
+                    actualizarCantidad();
+                    cerrarModal();
+                    navigate("/personas");
                     console.log("Persona eliminada correctamente.");
                 } else {
                     console.error("Error: No se eliminó correctamente.");

@@ -53,7 +53,6 @@ h2 {
     align-items: center;
 }
 
-
 .modal-content {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -99,81 +98,130 @@ h2 {
 }
 
 .btn-save {
-    background: rgba(0, 123, 255, 0.8);
+    background:rgb(109, 164, 144);
     color: white;
 }
 
 .btn-save:hover {
-    background: rgba(0, 123, 255, 1);
+    background: rgb(165, 194, 183);
 }
 
 .btn-delete {
-    background: rgba(255, 0, 0, 0.8);
+    background: #f65c48;
     color: white;
 }
 
 .btn-delete:hover {
-    background: rgba(255, 0, 0, 1);
+    background: #e3948a;
 }
 
 .btn-close {
-    background: rgba(255, 255, 255, 0.2);
+    background:  rgba(255, 255, 255, 0.824);
     color: white;
 }
 
 .btn-close:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(230, 201, 201, 0.754);
 }
 
-
-
-/* 🖥️ Contenedor de los dos modales (Detalles a la izquierda y Tutoriales a la derecha) */
+/* Contenedor del modal doble */
 .modals-container {
     display: flex;
     justify-content: space-between;
+    align-items: stretch; /* Asegura que ambos modales tengan la misma altura */
     width: 80%;
+    max-width: 900px;
     background: rgba(197, 120, 75, 0.438);
     backdrop-filter: blur(10px);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    gap: 20px; /* Espacio entre los paneles */
 }
 
-/* 📄 Modal Izquierdo */
+/* Modal Izquierdo (Datos de la persona) */
 .modal-content.left {
     width: 48%;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(236,186,171,0.438);
+    background: rgba(219, 133, 99, 0.591);
+    backdrop-filter: blur(10px);
+    text-align: left;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 🎓 Modal Derecho (Carrusel) */
+/* Modal Derecho (Tutoriales) */
 .modal-content.right {
     width: 48%;
-    text-align: center;
+    min-height: 100%; /* Hace que el lado derecho sea más alto */
     padding: 15px;
     border-radius: 10px;
-    background: rgba(236,186,171,0.438);
+    background: rgba(219, 133, 99, 0.591);
+    backdrop-filter: blur(10px);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Mantiene el contenido alineado */
 }
 
-/* 🎠 Estilos para el carrusel */
+/* Lista de detalles */
+.list-group-item {
+    border: none;
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* Estilos del carrusel con imágenes más grandes */
 .carousel {
     width: 100%;
-    height: 300px; /* Ajusta este valor según necesites */
+    height: 400px; /* Mayor altura del carrusel */
     border-radius: 10px;
     overflow: hidden;
 }
 
-.carousel-inner {
-    height: 100%;
-}
-
-.carousel-item {
-    height: 100%;
-}
-
-/* 🎞️ Imágenes del carrusel */
+/* Imágenes dentro del carrusel */
 .tutorial-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que la imagen llene el div sin deformarse */
+    object-fit: cover; /* Hace que la imagen ocupe todo sin deformarse */
+    border-radius: 10px;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Modo apilado en móviles */
+@media (max-width: 768px) {
+    .modals-container {
+        flex-direction: column;
+        width: 90%;
+        padding: 15px;
+    }
+
+    .modal-content.left, .modal-content.right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .carousel {
+        height: 300px; /* Ajuste de altura en móviles */
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .modals-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .modal-content.left, .modal-content.right {
+        padding: 10px;
+    }
+
+    .carousel {
+        height: 250px; /* Reducimos un poco en pantallas pequeñas */
+    }
 }

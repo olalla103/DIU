@@ -1,77 +1,141 @@
-/* Fondo borroso con efecto glass */
+/* Contenedor con efecto glass responsivo */
 .aniadir-persona-container {
-    width: 600px;
-    padding: 20px;
+    width: 95%;
+    max-width: 1100px;
+    padding: 30px;
     border-radius: 15px;
-    background: rgba(175, 106, 66, 0.438);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    background: rgba(175, 106, 66, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: white;
-    margin: auto;
-    margin-top: 1%;
+    margin: 5vh auto;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-/* Input fields con estilo glass */
-.aniadir-persona-container input {
-    background:rgba(175, 106, 66, 0.438);
-    border: none;
-    color: white;
-    padding: 10px;
+/* Distribuir los inputs en dos columnas y aumentar el espacio */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 50px; /* Espacio extra entre columnas y filas */
     width: 100%;
-    margin-bottom: 15px;
+    align-items: center;
+}
+
+/* Inputs con separación y líneas divisorias */
+.aniadir-persona-container input {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Línea divisoria */
+    color: white;
+    padding: 14px;
+    width: 100%;
     border-radius: 10px;
     outline: none;
+    font-size: 18px;
+    transition: border-bottom 0.3s ease-in-out;
+    margin-bottom: 15px; /* Agregar separación real */
 }
 
+/* Efecto al hacer focus en el input */
+.aniadir-persona-container input:focus {
+    border-bottom: 2px solid white;
+}
+
+/* Placeholder más visible */
 .aniadir-persona-container input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
 }
 
-/* Botón con efecto */
+/* Botón */
 .aniadir-persona-container button {
     background: rgb(110, 161, 142);
     border: none;
     color: white;
-    padding: 10px;
+    padding: 14px;
     width: 100%;
     border-radius: 10px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
+/* Efecto hover */
 .aniadir-persona-container button:hover {
     background: rgb(76, 124, 106);
-}
-
-/* Spinner de carga */
-.spinner {
-    width: 30px;
-    height: 30px;
-    border: 4px solid rgba(175, 106, 66, 0.438);
-    border-top: 4px solid #fff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 10px auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    transform: scale(1.05);
 }
 
 /* Selector de tutoriales */
 .select-tutoriales {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     border-radius: 10px;
-    background: rgba(175, 106, 66, 0.438);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
     outline: none;
     margin-bottom: 15px;
-    text-align: center;
+    font-size: 18px;
+    max-height: 120px;
+    overflow-y: auto;
 }
 
+/* RESPONSIVE DESIGN */
+
+/* Estilos para tablets */
+@media (max-width: 1024px) {
+    .aniadir-persona-container {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(1, 1fr); /* Pasar a una sola columna */
+        gap: 25px; /* Más separación en vertical */
+    }
+}
+
+/* Estilos para móviles */
+@media (max-width: 768px) {
+    .aniadir-persona-container {
+        width: 95%;
+        padding: 20px;
+        max-height: 85vh;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px; /* Menos espacio en móviles */
+    }
+
+    .aniadir-persona-container input,
+    .aniadir-persona-container button,
+    .select-tutoriales {
+        font-size: 16px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .aniadir-persona-container {
+        width: 100%;
+        border-radius: 0;
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .aniadir-persona-container input,
+    .aniadir-persona-container button,
+    .select-tutoriales {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .aniadir-persona-container h2 {
+        font-size: 18px;
+    }
+}
