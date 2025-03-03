@@ -1,13 +1,15 @@
 import { usePersonas } from "../context/PersonasContext";
+import { useUsuarios } from "../context/UsuariosContext"; // Importar el contexto de usuario
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css"; // ✅ Verifica que la ruta es correcta
+import "../styles/Navbar.css"; 
 
 function Navbar() {
     const { cantidadPersonas } = usePersonas();
+    const { userInfo } = useUsuarios(); // Obtener info del usuario desde el contexto
     const MAX_PERSONAS = 5;
-    
+
     return (
-        <nav className="navbar-container">  {/* 🔍 Ajusté esta clase para que coincida con el CSS */}
+        <nav className="navbar-container">
             <Link to="/" className="navbar-title">Mi Proyecto</Link>
             
             <div className="progress-container">
@@ -19,9 +21,12 @@ function Navbar() {
 
             <div className="navbar-menu">
                 <Link to="/personas">Personas</Link>
-                <Link to="/agregar" className={cantidadPersonas >= MAX_PERSONAS ? "disabled-link" : ""}>
-                    Agregar
-                </Link>
+                {/* Ocultar botón "Agregar" si el usuario es anónimo */}
+                {!userInfo.name == "anonimo" && (
+                    <Link to="/agregar" className={cantidadPersonas >= MAX_PERSONAS ? "disabled-link" : ""}>
+                        Agregar
+                    </Link>
+                )}
             </div>
         </nav>
     );

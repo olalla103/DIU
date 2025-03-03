@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { UsuariosProvider } from "./context/UsuariosContext"; // Importar el contexto
 import Navbar from "./components/Navbar";
 import ListaPersonas from "./components/ListaPersonas";
 import AniadirPersona from "./components/AniadirPersona";
@@ -10,14 +11,16 @@ import "./App.css";
 
 function App() {
     return (
-        <Router>
-            <AppWithNavbar />
-        </Router>
+        <UsuariosProvider> 
+            <Router>
+                <AppWithNavbar />
+            </Router>
+        </UsuariosProvider>
     );
 }
 
 function AppWithNavbar() {
-    const location = useLocation(); //  Ahora está dentro de Router y no da error
+    const location = useLocation(); // Ahora está dentro de Router y no da error
 
     return (
         <div className="d-flex">

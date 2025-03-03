@@ -1,25 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import "bootstrap-icons/font/bootstrap-icons.css"; // Asegurar que los íconos de Bootstrap están cargados
-import "../styles/Login.css"; // Importar los estilos de glassmorphism
+import { signInWithEmailAndPassword, signInAnonymously } from "firebase/auth";
+import { useUsuarios } from "../context/UsuariosContext"; // Importar el contexto
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "../styles/Login.css";
 
 function Login() {
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
     const [error, setError] = React.useState(null);
     const navigate = useNavigate();
+    const { setUserInfo } = useUsuarios(); // Obtener la función para actualizar el usuario
 
     async function LoginWithEmailAndPasswordHandler(event) {
         event.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate("/personas"); // Navegar solo después de iniciar sesión correctamente
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            setUserInfo({ name: userCredential.user.displayName || "Usuario" }); // Guardar el nombre en contexto
+            navigate("/personas");
         } catch (error) {
             setError("Error al iniciar sesión. Verifica tus credenciales.");
             console.error("Error de Login con contraseña y correo", error);
+        }
+    }
+
+    async function LoginAnonymouslyHandler() {
+        try {
+            await signInAnonymously(auth);
+            setUserInfo({ name: "anonimo" }); // Guardar como "Anónimo"
+            navigate("/personas");
+        } catch (error) {
+            setError("Error al iniciar sesión anónima.");
+            console.error("Error al iniciar como anónimo", error);
         }
     }
 
@@ -32,7 +45,7 @@ function Login() {
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 fondo">
             <div className="glass-container">
-                <i className="bi bi-person-circle user-icon"></i> {/* Icono de usuario */}
+                <i className="bi bi-person-circle user-icon"></i>
                 <h2>Iniciar Sesión</h2>
 
                 {error && <div className="alert alert-danger">{error}</div>}
@@ -60,13 +73,16 @@ function Login() {
                         Iniciar sesión
                     </button>
                 </form>
+
                 <p className="text-center mt-3">
                     ¿No tienes cuenta?{" "}
                     <Link to="/registro" className="text-light">Regístrate</Link>
                 </p>
 
                 <p className="text-center mt-3">
-                    <Link to="/personas" className="text-light">Entrar como usuario anónimo</Link>
+                    <button onClick={LoginAnonymouslyHandler} className="btn btn-secondary">
+                        Entrar como usuario anónimo
+                    </button>
                 </p>
             </div>
         </div>
