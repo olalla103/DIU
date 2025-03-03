@@ -1,24 +1,34 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ListaPersonas from "./components/ListaPersonas";
 import AniadirPersona from "./components/AniadirPersona";
 import Login from "./components/Login";
+import RegistroUsuario from "./components/RegistroUsuario";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min"; 
 import "./App.css";
-import RegistroUsuario from "./components/RegistroUsuario";
 
-function AppContent() {
-    const location = useLocation(); // ✅ Obtiene la ubicación actual
+function App() {
+    return (
+        <Router>
+            <AppWithNavbar />
+        </Router>
+    );
+}
+
+function AppWithNavbar() {
+    const location = useLocation(); //  Ahora está dentro de Router y no da error
+
     return (
         <div className="d-flex">
             <div className="container-fluid">
-                {/* ✅ Solo mostrar Navbar si NO estamos en la ruta /login */}
+                {/* Mostrar Navbar solo si NO estás en /login */}
                 {location.pathname !== "/login" && <Navbar />}
                 
                 <br /><br /><br />
+
                 <Routes>
-                    <Route path="/" element={<ListaPersonas />} />
+                    <Route path="/" element={<Navigate to="/login" />} /> {/* Redirigir a Login por defecto */}
                     <Route path="/personas" element={<ListaPersonas />} />
                     <Route path="/agregar" element={<AniadirPersona />} />
                     <Route path="/login" element={<Login />} />
@@ -26,14 +36,6 @@ function AppContent() {
                 </Routes>
             </div>
         </div>
-    );
-}
-
-function App() {
-    return (
-        <Router>
-            <AppContent />
-        </Router>
     );
 }
 

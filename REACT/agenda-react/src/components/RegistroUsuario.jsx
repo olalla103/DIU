@@ -13,6 +13,7 @@ function RegistroUsuario() {
     async function createUserWithEmailAndPasswordHandler(event, email, password) {
         event.preventDefault();
         try {
+            console.log(email,password)
             const { user } = await createUserWithEmailAndPassword(auth, email, password);
             console.log("Usuario creado:", user);
         } catch (error) {

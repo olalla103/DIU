@@ -11,7 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:5173 ") // Permitir acceso desde el frontend
+@CrossOrigin(origins = "http://localhost:5173 " +
+        "") // Permitir acceso desde el frontend
 public class PersonController {
     @Autowired
     private PersonService personService;

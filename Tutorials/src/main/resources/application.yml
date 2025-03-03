@@ -1,12 +1,12 @@
 server:
   port: 8080
+
 spring:
   application:
-    name:productosService
-#main:
-#  allow-bean-definition-overriding: true
-data:
-  mongodb:
-    host: localhost
-    database: productoservice_db
-    port: 27017
+    name: productosService
+
+  data:
+    mongodb:
+      host: agenda_db
+      database: productoservice_db
+      port: 27017
