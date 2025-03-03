@@ -1,0 +1,42 @@
+networks: #Define la/s redes que usarán los contenedores
+  mired: #Nombre de la red
+    ipam: #Administra las direcciones ips
+      config: #Etiqueta usada para definir la configuración de la red
+        - subnet: 182.28.0.0/16 #Aquí definimos la subred a usar
+          gateway: 182.28.0.1 #Aquí definimos la puerta de enlace de la red
+services: #Esta etiqueta es usada para definir los contenedores que instalaremos en Docker
+  db: #Nombre del servicio
+    image: bitnami/mongodb:latest #Especificamos la imagen a usar.
+    container_name: agenda_db #Nombre del contenedor en nuestro Docker
+    networks:
+      mired:
+        ipv4_address: 182.28.0.11 #Dirección ip del contenedor
+    ports:
+      - "27017:27017" #Especificamos los puertos
+    expose:
+      - 27017 #Expone los puertos sin publicarlos al host.
+  app-tutorials:
+    image: olallalnc/tutoriales:4
+    container_name: tutorialsapp
+    networks:
+      mired:
+        ipv4_address: 182.28.0.12
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    depends_on: #En esta etiqueta colocamos de qué servicio depende este contenedor
+      - db
+
+  pp-tutorials:
+    image: olallalnc/agenda:4
+    container_name: agenda_app
+    networks:
+      mired:
+        ipv4_address: 182.28.0.13
+    expose:
+      - 8090
+    ports:
+      - "8090:8090"
+    depends_on: #En esta etiqueta colocamos de qué servicio depende este contenedor
+      - db
